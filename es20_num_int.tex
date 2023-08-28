@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: numerical integration}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+
+
+%***********************************************
+
+
+
+
+%***************************************
+
+\subsection*{Definitions}
+\begin{namedtheorem}[Trapezoidal rule] Let $f$ be an integrable function on $[a,b]$, let $n$ be a positive integer, and let
+  \[
+  a=x_0< x_1< x_2<\cdots < x_n=b
+  \]
+  be partition of $[a,b]$ into $n$ subintervals of equal length $\Delta x=\frac{b-a}{n}$.
+  \vspace{.1in}
+  \\
+  The {\bf $n$-th trapezoidal estimate} of $\displaystyle\int f(x)\, dx$, denoted $T_n$, is defined as
+  \[
+  T_n=\frac{1}{2}\Delta x(f(x_0)+2f(x_1)+2f(x_2)+\cdots +2f(x_{n-1})+f(x_n))\approx \int_a^b f(x)\, dx.
+  \]
+  The trapezoidal estimate is the result of approximating the graph of $f$ with the polygon passing through the points $P_0=(x_0, f(x_0)), P_1=(x_1,f(x_1)), \dots, P_n=(x_n, f(x_n))$.
+\end{namedtheorem}
+\begin{namedtheorem}[Simpson's rule]  Let $f$ be an integrable function on $[a,b]$, let $n=2r$ be an even positive integer, and let
+  \[
+  a=x_0< x_1< x_2<\cdots < x_n=b
+  \]
+  be partition of $[a,b]$ into $n$ subintervals of equal length $\Delta x=\frac{b-a}{n}$.
+  \vspace{.1in}
+  \\
+  The {\bf $n$-th Simpson's rule estimate} of $\displaystyle\int f(x)\, dx$, denoted $S_n$, is defined as
+  \[
+  S_n=\frac{1}{3}\Delta x(f(x_0)+4f(x_1)+2f(x_2)+\cdots +2f(x_{n-2})+4f(x_{n-1})+f(x_n))\approx \int_a^b f(x)\, dx.
+  \]
+  The Simpson's rule estimate is the result of approximating the graph of $f$ over each of the $r$ subintervals $[x_{2(k-1)},x_{2k}]$ with the unique ``parabolic arc"\footnote{If the three points happen to be colinear, then the ``parabolic arc" will actually be a line.} passing through $P_{2(k-1)}=(x_{2(k-1)}, f(x_{2(k-1)}))$, $P_{2k-1}=(x_{2k-1}, f(x_{2k-1})), P_{2k}=(x_{2k},f(x_{2k}))$.
+\end{namedtheorem}
+
+%************************
+\subsection*{Theory}
+\begin{namedtheorem}[Error estimates] Let $f$ be an integrable function on $[a,b]$, let $n$ be a positive integer, and let
+  \[
+  a=x_0< x_1< x_2<\cdots < x_n=b.
+  \]
+  be partition of $[a,b]$ into $n$ subintervals of equal length $\Delta x=\frac{b-a}{n}$.
+  \begin{enumerate}
+    \item Let $RS_n$ be either the right or left Riemann sum for this partition. Suppose $\vert f'(x)\vert \leq M$ for all $x$ in $[a,b]$. Then
+    \[
+    \left\vert\int_a^b f(x)\, dx - RS_n\right\vert\leq \frac{M(b-a)^2}{2n}.
+    \]
+    \item Let $T_n$ be the $n$-th trapezoidal estimate of $\int_a^b f(x)\, dx$. Suppose $\vert f''(x)\vert\leq N$ for all $x$ in $[a,b]$. Then
+    \[
+    \left\vert\int_a^b f(x)\, dx - T_n\right\vert\leq\frac{N(b-a)^3}{12n^2}.
+    \]
+    \item Suppose $n$ is even, and let $S_n$ be the $n$-th Simpson's rule estimate of $\int_a^bf(x)\, dx$. Suppose $\vert f^{(4)}(x)\vert\leq K$ for all $x$ in $[a,b]$. Then
+    \[
+    \left\vert\int_a^b f(x)\, dx - S_n\right\vert\leq\frac{K(b-a)^5}{180n^4}.
+    \]
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Let $f(x)=\frac{1}{x}$. Recall that we have by definition $\ln 4=\int_1^4f(x)\, dx$. Compute (a) the $n=6$ trapezoidal estimate of $I$, and (b) the $n=6$ Simpson's rule estimate of $I$.
+  \item Let $f(x)=\frac{4}{x^2+1}$, and let $I=\int_0^1f(x)\, dx$. Observe that $I=4(\arctan(1)-\arctan 0)=\pi$.
+
+  Compute (a) the $n=6$ trapezoidal estimate of $I$, and (b) the $n=6$ Simpson's rule estimate of $I$.
+
+  \item Compute bounds for the errors in (a) the $n=10$ trapezoidal estimate of $\ln 4$ and (b) the $n=10$ Simpson's rule estimate of $\ln 4$.
+
+  \item Compute bounds for the errors in (a) the $n=10$ trapezoidal estimate of $\pi=\int_0^14/(x^2+1)\, dx$ and (b) the $n=10$ Simpson's rule estimate of $\pi=\int_0^14/(x^2+1)\, dx$.
+
+  {\bf Hint}. Letting $f(x)=4/(x^2+1)$, we have
+  \begin{align*}
+    f''(x)&=\frac{8(3x^2-1)}{(x^2+1)^3}\\
+    f^{(4)}(x)&=\frac{96(5x^4-10x^2+1)}{(x^2+1)^5}.
+  \end{align*}
+  \item Find (a) an $n$ such that the $n$-th trapezoidal estimate of $\pi=\int_0^14/(x^2+1)\, dx$ is within $10^{-9}$ of the actual value, and (b) an $n$ such that the $n$-th Simpson's rule estimate of $\pi=\int_0^14/(x^2+1)\, dx$ is within $10^{-9}$ of the actual value.
+\end{enumerate}
+
+
+
+
+\end{document}

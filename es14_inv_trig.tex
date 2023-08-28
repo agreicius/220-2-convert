@@ -1,0 +1,173 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: inverse trigonometric functions}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Inverse trigonometric functions] The following are examples of what are called {\bf inverse trigonometric functions}.
+  \begin{itemize}
+    \item On the restricted domain $[-\pi/2, \pi/2]$ the function $f(x)=\sin x$ is one-to-one, with range $[-1,1]$. The inverse function of $f$ restricted to this domain is called the {\bf arcsine function}, denoted $f^{-1}(x)=\arcsin x$.
+    \item On the restricted domain $[0, \pi]$ the function $g(x)=\cos x$ is one-to-one, with range $[-1,1]$. The inverse function of $g$ restricted to this domain is called the {\bf arccosine function}, denoted $g^{-1}(x)=\arccos x$.
+    \item On the restricted domain $(-\pi/2, \pi/2)$ the function $h(x)=\tan x$ is one-to-one, with range $(-\infty, \infty)$. The inverse function of $h$ restricted to this domain is called the {\bf arctangent function}, denoted $h^{-1}(x)=\arctan x$.
+  \end{itemize}
+
+\end{namedtheorem}
+\begin{comment}
+Occasionally an alternative notation is used to denote inverse trig functions: namely,
+\begin{align*}
+  \arcsin x&=\sin^{-1} x & \arccos x&=\cos^{-1} x & \arctan x&=\tan^{-1} x.
+\end{align*}
+We will avoid this alternative notation as it misleadingly suggests these inverse trigonometric functions are {\em reciprocals} of the corresponding trigonometric functions. They are not!
+\end{comment}
+
+%***********************************************
+ \subsection*{Theory}
+
+\begin{namedtheorem}[Properties of inverse trigonometric functions]\
+  \begin{itemize}
+    \item The function $\arcsin$ is an increasing function with domain $[-1,1]$ and range $[0,\pi]$. It satisfies the following properties:
+    \begin{align*}
+      \arcsin(x)=\theta &\iff \sin\theta=x \text{ and } -\pi/2\leq \theta\leq \pi/2\\
+      \arcsin(\sin \theta)&=\theta \text{ for all } -\pi/2\leq \theta\leq \pi/2\\
+      \sin(\arcsin x)&=x \text{ for all } -1\leq x\leq 1.
+    \end{align*}
+    \item The function $\arccos$ is a decreasing function with domain $[-1,1]$ and range $[0,\pi]$. It satisfies the following properties:
+    \begin{align*}
+      \arccos(x)=\theta &\iff \cos\theta=x \text{ and } 0\leq \theta\leq \pi\\
+      \arccos(\cos \theta)&=\theta \text{ for all } 0\leq \theta\leq \pi\\
+      \cos(\arccos x)&=x \text{ for all } -1\leq x\leq 1.
+    \end{align*}
+    \item The function $\arctan$ is an increasing function with domain $(-\infty, \infty)$ and range $(-\pi/2, \pi/2)$. It satisfies the following properties:
+    \begin{align*}
+      \arctan(x)=\theta &\iff \tan\theta=x \text{ and } -\pi/2< \theta< \pi/2\\
+      \arctan(\tan \theta)&=\theta \text{ for all } -\pi/2< \theta< \pi/2\\
+      \tan(\arctan x)&=x \text{ for all } x\\
+      \lim_{x\to\infty}\arctan x&=\pi/2,\hspace{5pt} \lim_{x\to-\infty}\arctan x=-\pi/2
+    \end{align*}
+  \end{itemize}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Derivative formulas for inverse trigonometric functions] The following derivative/antiderivative formulas hold:
+  \begin{align*}
+    \frac{d}{dx} \arcsin x=\frac{1}{\sqrt{1-x^2}}&\iff \int \frac{1}{\sqrt{1-x^2}}\, dx=\arcsin x+C &\text{(for all $x$ in $(-1,1)$)}\\
+    \frac{d}{dx} \arccos x=-\frac{1}{\sqrt{1-x^2}}&\iff \int \frac{1}{\sqrt{1-x^2}}\, dx=-\arccos x+C &\text{(for all $x$ in $(-1,1)$)}\\
+    \frac{d}{dx} \arctan x=\frac{1}{1+x^2}&\iff \int \frac{1}{1+x^2}\, dx=\arctan x+C &\text{(for all $x$)}.
+  \end{align*}
+
+\end{namedtheorem}
+%***************************************
+
+% \subsection*{Procedures}
+
+%*********************************************************
+\subsection*{Examples}
+
+\begin{enumerate}
+  \item Compute the following values of trigonometric functions by hand.
+  \begin{enumerate}
+    \item $\displaystyle\arcsin(-1)$
+    \item $\displaystyle\arccos(-\sqrt{2}/2)$
+    \item $\displaystyle\arctan(-1/\sqrt{3})$
+    \item $\displaystyle\arcsin\left(\sin\left(\frac{10\pi}{11}\right)\right)$
+
+    {\bf Hint}. The answer is not $10\pi/11$.
+  \end{enumerate}
+  \item Find all solutions to the following trigonometric equations lying within the interval $[0,2\pi]$. You may express your answer in terms of values of inverse trigonometric functions.
+  \begin{enumerate}
+    \item $\displaystyle 3\sin 2\theta +4=6$
+    \item $\displaystyle \tan (\theta+\pi)=-10$
+  \end{enumerate}
+  \item Find the equation of the tangent line to $f(x)=\arccos x $ at $x=1/2$.
+
+  \item Compute $\displaystyle\lim_{x\rightarrow 1^{-}}\frac{\arccos(x^2)}{\sqrt{1-x}}$
+
+  \item Compute $\displaystyle\int \frac{x+1}{\sqrt{1-(x+2)^2}}\, dx$.
+\end{enumerate}
+
+
+
+\end{document}

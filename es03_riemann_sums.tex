@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: Riemann sums}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Sigma notation] Given real numbers $a_1, a_2, \dots, a_n$ the notation
+  \[
+  \sum_{i=1}^{n}a_i
+  \]
+denotes their sum: i.e.,
+\[
+\sum_{i=1}^{n}a_i=a_1+a_2+\cdots +a_n.
+\]
+More generally given any sequence of real numbers $a_{m}, a_{m+1},\dots$, we define
+\[
+\sum_{k=m}^na_k=a_m+a_{m+1}+\cdots +a_{n}.
+\]
+If the terms in the sequence are given by a formula of the form $a_k=f(k)$, then we also write
+\[
+\sum_{k=m}^nf(k)
+\]
+for $\ds\sum_{k=m}^na_k$.
+
+\end{namedtheorem}
+\begin{namedtheorem}[Riemann sums] Let $f$ be a function defined on the interval $[a,b]$, and let $n$ be a positive integer. A {\bf partition} of $[a,b]$ into $n$ subintervals is a choice of points $x_0, x_1,\dots, x_n$ satisfying
+  \[
+  a=x_0<x_1<x_2<\cdots <x_n=b.
+  \]
+Such a partition gives rise to $n$ subintervals of $[a,b]$:
+\[
+I_1=[x_0, x_1], I_2=[x_1, x_2], \dots , I_n=[x_{n-1}, x_n].
+\]
+The $k$-th subinterval has length
+\[
+\Delta x_k=x_{k}-x_{k-1}.
+\]
+Given a choice of sample points $c_k\in I_k$ for each subinterval, the corresponding {\bf Riemann sum} is
+\[
+\sum_{k=1}^n f(c_k)\Delta x_k=f(c_1)(x_1-x_0)+f(c_2)(x_2-x_1)+\cdots +f(c_n)(x_n-x_{n-1}).
+\]
+As with our estimates, we call the Riemann sum a left/right/midpoint/upper/lower sum if the sample points $c_k$ are picked using the corresponding rule. Thus the left Riemann sum corresponding to the partition above is
+\[
+\sum_{k=1}^nf(x_{k-1})\Delta x_k
+\]
+and the right Riemann sum is
+\[
+\sum_{k=1}^nf(x_k)\Delta x_{k}.
+\]
+
+
+\end{namedtheorem}
+%***************************************
+
+% \subsection*{Procedures}
+
+%***********************************************
+ \subsection*{Theory}
+ \begin{namedtheorem}[Summation formulas] Let $n$ be a positive integer. The following summation equalities hold:
+   \begin{enumerate}[topsep=0pt, itemsep=0pt]
+     \item $\ds\sum_{k=1}^n 1=n$
+     \item $\ds \sum_{k=1}^nk=\frac{n(n+1)}{2}$
+     \item $\ds\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}{6}$
+     \item $\ds \sum_{k=1}^nk^3=\left(\frac{n(n+1)}{2}\right)^2$.
+   \end{enumerate}
+
+ \end{namedtheorem}
+\begin{namedtheorem}[Summation rules]
+Given any sequences $a_m, a_{m+1}, \dots$ and $b_m, b_{m+1}, \dots$, and any $c\in \R$, the following equalities hold:
+\begin{enumerate}
+  \item $\ds\sum_{k=m}^na_k+\sum_{k=m}^nb_k=\sum_{k=m}^n(a_k+b_k)$
+  \item $\ds\sum_{k=m}^na_k-\sum_{k=m}^nb_k=\sum_{k=m}^n(a_k-b_k)$
+  \item $\ds\sum_{k=m}^nca_k=c\sum_{k=m}^na_k$.
+\end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Let $p_1, p_2,p_3, \dots, $ be the sequence of prime numbers in increasing order: i.e., $p_1=2$, $p_2=3$, $p_3=5$, etc. Compute
+  $
+  \ds\sum_{k=3}^{6}p_k
+  $.
+  \item Compute
+  $
+  \ds \sum_{k=1}^{21}\sin(\pi k/2)
+  $
+  \item Compute $\ds \sum_{k=1}^{5} 5k^3-10k+2$ using appropriate summation rules and formulas.
+  \item Let $n$ be a positive integer and define $R_n$ to be the right Riemann sum of $f(x)=1-x^3$ corresponding to the partition of $[0,1]$ into $n$ equal subintervals.
+  \begin{enumerate}
+    \item Derive a closed formula for $R_n$. Your answer will be expressed in terms of $n$.
+    \item Compute $\lim_{n\to \infty}R_n$. Look familiar?
+    \item Now do the same thing with $L_n$, the left Riemann sum of $f(x)$ corresponding to the partion of $[0,1]$ into $n$ equal subintervals.
+
+    {\bf Hint}. For the closed formula of $L_n$ use an ``index-shift" technique to simplify the summation.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+\end{document}

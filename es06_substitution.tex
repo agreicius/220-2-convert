@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: substitution}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+
+
+
+%***********************************************
+ \subsection*{Theory}
+
+\begin{namedtheorem}[Chain rule (antiderivative version)] Let $u$ be a differentiable function on its domain, and suppose $f$ is continuous on the range of $u$. Suppose $F(x)$ is an antiderivative of $f(x)$. Then $F(u(x))$ is an antiderivative of $f(u(x))u'(x)$: i.e.,
+  \[
+  \int f(u(x))u'(x)\, dx=F(u(x))+C.
+  \]
+  Alternatively, letting $u=u(x)$ we have
+  \[
+  \int f(u(x))u'(x)\, dx=\int f(u)\, du.
+  \]
+\end{namedtheorem}
+\begin{comment}
+Before seeing how to correctly use the chain rule (antiderivative version) to compute indefinite integrals, it is worthwhile noting a tempting, but {\em incorrect} method: namely, if $F(x)$ is an antiderivative of $f(x)$ it is not in general true that $F(u(x))$ is an antiderivative of $f(u(x))$. Indeed, the chain rule tells us that $F(u(x))$ is an antiderivative of $f(u(x))u'(x)$.
+
+\end{comment}
+
+
+%***************************************
+\subsection*{Procedures}
+\begin{namedtheorem}[Substitution technique (indefinite integrals)] We wish to compute
+$
+\displaystyle\int f(x)\, dx.
+$
+\begin{enumerate}[itemsep=0pt, topsep=0pt]
+  \item Pick a differentiable substitution function $u=u(x)$. Set
+  \begin{align}
+    u&=u(x)\\
+    du&=u'(x)\, dx
+  \end{align}
+  \item Algebraically manipulate equations (1) and (2) to find a function $g$ such that
+  \[
+  f(x)\, dx=g(u)\, du.
+  \]
+  By the chain rule (antiderivative form) we have
+  \[
+  \int f(x)\, dx=\int g(u)\, du.
+  \]
+  \item If possible, find an antiderivative $G$ of $g$. Then $F(x)=G(u(x))$ is an antiderivative of $f(x)$: i.e.,
+  \[
+  \int f(x)\, dx=G(u(x))+C
+  \]
+\end{enumerate}
+
+\end{namedtheorem}
+\begin{comment}
+There is no such thing as a {\em correct} or {\em incorrect} substitution, and you are encouraged to be creative with your choice of substitution $u(x)$. Instead think of a substitution as either {\em helpful} or {\em not helpful} (or possibly {\em somewhat helpful}). The success of a particular choice of $u(x)$ depends on two factors:
+\begin{enumerate}[itemsep=0pt, topsep=0pt]
+  \item Can you algebraically find a function $g$ such that $f(x)=g(u(x))u'(x)$?
+  \item Having found a suitable $g$, can you find an antiderivative $G$ of $g$?
+\end{enumerate}
+\end{comment}
+\newpage
+\begin{namedtheorem}[Substitution technique (definite integrals)]
+We wish to compute the definite integral $\displaystyle\int_a^b f(x)\, dx$ using a substitution $u=u(x)$. We can proceed in two different ways.
+\begin{enumerate}[itemsep=0pt]
+  \item {\bf Two-step method}. {\em First} find an antiderivative $F(x)$ of $f(x)$ using the substitution method for indefinite integrals, then use the FTC to compute $\displaystyle\int_a^bf(x)\, dx=F(b)-F(a)$.
+  \item {\bf Streamlined method}. Find the $g$ such that $f(x)\, dx=g(u)\, du$ (as with indefinite integral substitution) then convert the original definite integral into a new definite integral with respect to $u$ by also {\em changing the limits of integration}:
+  \[
+  \int_{x=a}^{x=b}f(x)\, dx=\int_{u=u(a)}^{u=u(b)}g(u)\, du.
+  \]
+\end{enumerate}
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item {\bf More or less obvious substitutions}. Use the substitution technique to compute the following indefinite integrals.
+  \begin{enumerate}
+    \item $\displaystyle\int x^2\sqrt{x^3+1}\, dx$
+    \item $\displaystyle\int -\sin t\, \sqrt{\cos t}\, dt$
+    \item $\displaystyle\int \frac{\sin(\sqrt{u})}{\sqrt{u}}\, du$
+
+  \end{enumerate}
+  \item {\bf Less obvious substitutions}. Use the substitution technique to compute the following indefinite integrals.
+  \begin{enumerate}
+    \item $\displaystyle\int\frac{x}{\sqrt{x+1}}\, dx$
+    \item $\displaystyle\int (1+\sqrt{t})^{100}\, dt$
+  \end{enumerate}
+\item {\bf Substitution with definite integrals}. Use the substitution technique to compute the following definite integrals. You may use either the two-step or streamlined method.
+\begin{enumerate}
+  \item $\displaystyle\int_{\pi}^{2\pi}\cos^2(x)\sin x\, dx$
+  \item $\displaystyle\int_{1}^{2} \sqrt{s^8+s^6}\, ds$
+\end{enumerate}
+\end{enumerate}
+
+
+
+\end{document}

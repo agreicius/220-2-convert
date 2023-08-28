@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: integration by parts}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+
+
+%***********************************************
+ \subsection*{Theory}
+
+\begin{namedtheorem}[Integration by parts rule]
+Let $u$ and $v$ be continuously differentiable functions on an interval $I$ containing the interval $[a,b]$.
+\begin{enumerate}
+  \item {\em Indefinite integral form}. We have
+  \[
+  \int u(x)v'(x)\, dx= u(x)v(x)-\int u'(x)v(x)\, dx.
+  \]
+  \item {\em Definite integral form}. We have
+  \[
+  \int_a^b u(x)v'(x)\, dx= u(x)v(x)\Bigr]_a^b-\int_a^b u'(x)v(x)\, dx.
+  \]
+\end{enumerate}
+\end{namedtheorem}
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[The art of by parts]
+To use the integration by parts technique on an integral of the form $\displaystyle\int f(x)g(x)\, dx$ proceed as follows:
+\begin{enumerate}
+  \item {\em Who is $u$, and who $v'$}? Declare one of $f$ and $g$ to be $u$ and the other to be $v'$. The mnemonic device LIPET ((L)og, (I)nverse trig, (P)olynomial/radical, (E)xponent, (T)rig) often leads to a useful choice of $u$.
+  \item {\em Assemble ingredients}. Suppose without loss of generality that we have chosen $u=f$ and $v'=g$. Then compute the derivative $f'$ of $f$ and compute an {\em antiderivative} $G$ of $g$:
+  \[
+  \begin{tikzcd}
+    u(x)=f(x) \ar[d,bend right=80,"\text{compute derivative}"'] & v'(x)=g(x) \ar[d,bend left=80,"\text{compute antiderivative}"]\\
+    u'(x)=f'(x) & v(x)=G(x)
+  \end{tikzcd}
+  \]
+  \item Apply the integration by parts rule with ingredients assembled in (2):
+  \begin{align*}
+    \int \underset{u}{f(x)}\underset{v'}{g(x)}\, dx&= \underset{u}{f(x)}\underset{v}{G(x)}-\int \underset{u'}{f'(x)}\underset{v}{G(x)}\, dx.
+  \end{align*}
+  \end{enumerate}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Integration workflow]
+For many integral computations it will be clear whether to use a formula, substitution, or integration by parts. When it is not clear how to proceed, the following {\em rough} workflow might be helpful.
+\begin{enumerate}[itemsep=0pt, topsep=0pt]
+  \item {\em Formula}. If possible, use an integration formula, perhaps after some simple algebraic preparation. Otherwise, move to (2).
+  \item {\em Substitution}. Evaluate whether a substitution could transform the integral into one where (1) applies. If not promising, move to (3).
+  \item {\em By parts}. Evaluate whether the integral is amenable to a by parts approach. You may want to mentally run through a couple of choices of ``who is $u$, and who $v'$". If not promising, move to (4).
+  \item {\em Algebraic techniques}. Consider more creative algebraic techniques, including trigonometric identities. If applicable, return to (1).
+\end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+Compute the following integrals using integration by parts. (You might explore whether the integral could also be computed using substitution.)
+\begin{enumerate}
+  \item Compute $\ds\int_0^1 xe^{-x}\, dx$
+  \item Compute $\ds\int x^2e^x\, dx$
+  \item Compute $\ds\int \ln \vert x\vert\, dx$
+  \item Compute $\ds\int \frac{x^3}{x^2+1}\, dx$
+  \item Compute $\ds\int \arctan x\, dx$
+  \item Compute $\int e^x\cos x\, dx$
+\end{enumerate}
+
+
+
+
+\end{document}

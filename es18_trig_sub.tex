@@ -1,0 +1,192 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: trigonometric substitution}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+%\subsection*{Definitions}
+
+
+%***********************************************
+%  \subsection*{Theory}
+% \begin{namedtheorem}[Reverse substitution] Let $g$ be a one-to-one, differentiable function from the interval $J$ to the interval $I$ satisfying $g'(t)\ne 0$ for all $t$, and suppose $f$ is continuous on $I$.
+% \\
+% If $F(t)$ is an antiderivative of $f(g(t))g'(t)$ on $J$, then $F(g^{-1}(x))$ is an antiderivative of $f(x)$ on $I$. In other words, setting $x=g(t)$ and $t=g^{-1}(x)$, we have
+%   \[
+%   \int f(x)\, dx =F(t)+C=F(g^{-1}(x))+C
+%   \]
+% \end{namedtheorem}
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Reverse substitution technique (indefinite integral)] To compute $\displaystyle\int f(x)\, dx$ using reverse substitution, proceed as follows:
+\begin{enumerate}[topsep=0pt, itemsep=0pt]
+  \item Choose a 1-1, differentiable substitution function $g$ with differentiable inverse and assemble the two equations
+  \begin{align*}
+    x&=g(t)\\
+    dx&=g'(t)\, dt
+  \end{align*}
+  \item Compute
+  \[
+  \int f(g(t))g'(t)\, dt=F(t)+C.
+  \]
+  \item We conclude that
+  \[
+  \int f(x)\, dx=F(g^{-1}(x))+C.
+  \]
+  Alternatively, we compute an antiderivative for $f(x)$ by expressing the function $F(t)$ from (2) as a function of $x$ using $x=g(t)$ and $g^{-1}(x)=t$.
+\end{enumerate}
+
+\end{namedtheorem}
+\begin{samepage}
+\begin{namedtheorem}[Reverse substitution technique (definite integral)] To compute $\displaystyle\int_a^b f(x)\, dx$ using reverse substitution substitution, proceed as follows:
+\begin{enumerate}[topsep=0pt, itemsep=0pt]
+  \item Choose a 1-1, differentiable substitution function $g$ with differentiable inverse and assemble the two equations
+  \begin{align*}
+    x&=g(t)\\
+    dx&=g'(t)\, dt
+  \end{align*}
+  \item
+  Then we have
+  \[
+  \displaystyle\int_{x=a}^{x=b} f(x)\, dx=\int_{t=g^{-1}(a)}^{t=g^{-1}(b)}f(g(t))g'(t)\, dt.
+  \]
+\end{enumerate}
+
+\end{namedtheorem}
+\end{samepage}
+\begin{comment}
+What is the difference between our original (forward) substitution and reverse subsitution?
+\begin{itemize}
+  \item Forward substitution allows us to find an antiderivative of $f(u(x))u'(x)$ from an antiderivative of $f(x)$: namely,
+  \[
+  F(x) \text{ is an antiderivative of } f(x)\implies F(u(x)) \text{ is an antiderivative  of } f(u(x))u'(x).
+  \]
+  \item Reverse substitution allows us to find an antiderivative of $f(x)$ from an antiderivative of $f(g(t))g'(t)$: namely,
+  \[
+  F(t) \text{ is an antiderivative of } f(g(t))g'(t)\implies F(g^{-1}(x)) \text{ is an antiderivative  of } f(x).
+  \]
+\end{itemize}
+\end{comment}
+\begin{namedtheorem}[Trigonometric substitution]
+The table below indicates potentially helpful (reverse) substitutions for functions $f$ containing particular forms of expressions.
+\begin{align*}
+  f(x) \text{ contains } \sqrt{a^2-x^2}&\implies \text{try } \begin{array}{c}
+    x=a\sin\theta\\
+    dx=a\cos\theta\, d\theta
+  \end{array}, -\pi/2\leq\theta\leq\pi/2\\
+  f(x) \text{ contains } x^2+a^2 &\implies \text{try } \begin{array}{c}
+    x=a\tan\theta\\
+    dx=a\sec^2\theta\, d\theta
+  \end{array}, -\pi/2<\theta< \pi/2\\
+  f(x) \text{ contains } \sqrt{x^2-a^2} &\implies \text{try } \begin{array}{c}
+    x=a\sec\theta\\
+    dx=a\sec\theta\tan\theta\, d\theta
+  \end{array}, 0<\theta< \pi/2 \text{ or } \pi/2<\theta<\pi
+\end{align*}
+
+\end{namedtheorem}
+%*********************************************************
+\subsection*{Examples}
+
+\begin{enumerate}
+  \item Derive the area formula for a circle of radius $r$ using calculus.
+  \item Find an antiderivative of $\sqrt{1-x^2}$.
+  \item Compute the following integrals.
+  \begin{enumerate}
+    \item $\displaystyle\int_{-\sqrt{2}}^{-2/\sqrt{3}}\frac{\sqrt{x^2-1}}{x}\, dx$
+    \item $\displaystyle\int \frac{1}{x^2\sqrt{x^2+4}}$
+    \item $\displaystyle\int \frac{\sqrt{x^2-1}}{x}\, dx$, $x\leq -1$.
+
+    {\bf Note}. This is the indefinite integral version of (a). To finish the computation you need to use the $\operatorname{arcsec}$ function, which is defined as the inverse of $\sec$ with restricted domain $[-1,\pi/2)\cup (\pi/2,1]$. We don't officially cover $\operatorname{arcsec}$ in this course, but this exercise is good practice nonetheless.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+\end{document}

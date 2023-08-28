@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: estimating area}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Area estimates] Let $f$ be a nonnegative function defined on the interval $[a,b]$, and let $\mathcal{C}$ be the graph of $f$ from $x=a$ to $x=b$. To estimate the area between $\mathcal{C}$ and the $x$-axis proceed as follows:
+  \begin{enumerate}[(i),itemsep=0pt,topsep=0pt]
+    \item Divide $[a,b]$ into $n$ equal subintervals, each of width $\Delta x=(b-a)/n$.
+    \item For each subinterval pick a {\bf sample} input $x^*$ in that interval and build the rectangle whose base is the subinterval and whose height is given by $h=f(x^*)$. The area of this block is
+    \[
+    A=\underset{\text{height}}{\underbrace{f(x^*)}}\,\underset{\text{width}}{\underbrace{\Delta x}}.
+    \]
+    \item Sum together the areas of the $n$ blocks constructed in (ii).
+  \end{enumerate}
+Depending on how the sample inputs $x^*$ are chosen in each subinterval, we get a different estimate. Below you find a number of  common methods.
+\begin{itemize}[itemsep=0pt, topsep=0pt]
+  \item If $x^*$ is chosen as the left (resp. right) endpoint of each subinterval, the estimate is called a {\bf left sum estimate} (resp. {\bf right sum estimate}).
+  \item If $x^*$ is chosen as the midpoint of each subinterval, the estimate is called a {\bf midpoint sum estimate}.
+  \item If $x^*$ is chosen so that $f(x^*)$ is the minimum value of $f$ on each subinterval, the estimate is called a {\bf lower sum estimate}.
+  \item If $x^*$ is chosen so that $f(x^*)$ is the maximum value of $f$ on each subinterval, the estimate is called an {\bf upper sum estimate}.
+
+\end{itemize}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Estimating net change from rate of change] Suppose physical quantity $Q$ is a function of an input $x$, and that $f(x)$ is the {\em instantaneous rate of change} of $Q$ with respect to $x$. The same method used to estimate area under the graph of a function now provides an estimate of the {\em net change of $Q$} as $x$ varies from $a$ to $b$.
+
+\noindent
+In this context we think of $r^*=f(x^*)$ as a {\em fixed rate of change} over the given subinterval, in which case an individual term
+\[
+f(x^*)\, \Delta x
+\]
+in our sum is understood as an estimate of the net change of $Q$ over the given subinterval under the simplifying assumption that $Q$ changes with {\em fixed rate of change} $r^*=f(x^*)$ over the interval.
+
+\end{namedtheorem}
+% %***********************************************
+%  \subsection*{Theory}
+
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Below you find the graph of the velocity $v(t)$ (in mph) of a driver heading due east $t$ minutes after setting off. Compute an estimate of the area under the graph of $v(t)$ between $t=0$ and $t=20$, and explain what this estimate means physically speaking. Include units!
+  \[
+  \includegraphics[width=3in]{../Images/EstDistance}
+  \]
+  \item Let $f(x)=1-x^3$, and let $\mathcal{C}$ be the graph of $f$.
+  Compute the upper and lower area estimates of the region between $\mathcal{C}$ and the $x$-axis from $x=0$ to $x=1$ by dividing the interval $[0,1]$ into 4 equal subintervals.
+
+  Draw block pictures of your estimates on the provided graphs.
+
+  Explain why the lower estimate is equal to the right estimate, and why the the upper estimate is equal to the left estimate.
+  \[
+  \includegraphics[width=2in]{../Images/AreaEstSmallDomain}\  \includegraphics[width=2in]{../Images/AreaEstSmallDomain}
+  \]
+
+\item Let $f(x)=1-\val{x}^3$, and let $\mathcal{C}$ be the graph of $f$.
+
+Compute the upper and lower area estimates of the region between $\mathcal{C}$ and the $x$-axis from $x=0$ to $x=1$ by dividing the interval $[-1/2,1]$ into 4 equal subintervals.
+
+Draw block pictures of your estimates on the provided graphs.
+\[
+\includegraphics[width=3in]{../Images/AreaEstLargeDomain}\  \includegraphics[width=3in]{../Images/AreaEstLargeDomain}
+\]
+\end{enumerate}
+
+
+
+
+\end{document}

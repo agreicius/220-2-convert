@@ -1,0 +1,208 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: separable differential equations}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[First-order differential equation] A {\bf first-order differential equation in the unknown $f(x)$} is an equation that can be written in the form
+  \[
+  f'(x)=F(x,f(x)) \tag{$*$}
+  \]
+  where $F(x,f(x))$ denotes an arbitrary expression involving $x$ and $f(x)$. Equivalently, a first-order differential equation is an equation that can be written in the form
+  \[
+  G(x, f'(x), f(x))=0,
+  \]
+  where $G(x,f(x), f'(x))$ denotes an arbitrary expression involving $x, f(x)$, and $f'(x)$.
+\vspace{.1in}
+\\
+A {\bf solution} to a differential equation is any function $f(x)$ that satisfies this equation. The {\bf general solution} to a differential equation is a formula, possibly containing undetermined constants, describing all solutions to the differential equation.
+\end{namedtheorem}
+\begin{namedtheorem}[Separable first-order differential equation]A {\bf separable differential equation in the unknown $f(x)$} is a differential equation that can be written in the form
+  \[
+  f'(x)=g(x)h(f(x)), \text{ or equivalently,  } \frac{dy}{dx}=g(x)h(y),
+  \]
+  where $y=f(x)$.
+
+\end{namedtheorem}
+\begin{namedtheorem}[Exponential growth and decay] Suppose the function $f(x)$ satisfies the equation
+  \[
+ f'(x)=k f(x),
+  \]
+  where $k$ is a fixed constant.
+  \vspace{.1in}
+  \\
+  If $k>0$ then $f(x)$ is said to undergo {\bf exponential growth}.
+  \vspace{.1in}
+  \\
+  If $k<0$ then $f(x)$ is said to undergo {\bf exponential decay}.
+
+\end{namedtheorem}
+%***********************************************
+ % \subsection*{Theory}
+
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Separation of variables (prime form)] To solve a separable differential equation of the form
+  \[
+  f'(x)=g(x)h(f(x))
+  \]
+  proceed as follows:
+  \begin{enumerate}
+    \item {\em Separation}. Write the equation as
+    \[
+    \frac{f'(x)}{h(f(x))}=g(x).
+    \]
+    and take take the indefinite integral of both sides.
+    \[
+    \int \frac{f'(x)}{h(f(x))}\, dx=\int g(x)\, dx.
+    \]
+    \item {\em Substitution}. Use the substitution $u=f(x)$ to rewrite this equality as
+    \[
+    \int \frac{1}{h(u)}\, du=\int g(x)\, dx,
+    \]
+    and attempt to find an antiderivative $F(u)$ of $1/h(u)$ and an antiderivative $G(x)$ for $g(x)$.
+    \item {\em Algebra}. Attempt to solve the resulting general equation
+    \[
+    F(u)=G(x)+C
+    \]
+    for $u=f(x)$.
+
+
+  \end{enumerate}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Separation of variables (algebraic form)] To solve a separable differential equation of the form
+  \[
+  \frac{dy}{dx}=g(x)h(y)
+  \]
+  proceed as follows:
+  \begin{enumerate}
+    \item {\em Separation}. Write the equation as
+    \[
+    \frac{1}{h(y)}\, dy=g(x)\, dx
+    \]
+    and take take the indefinite integral of both sides.
+    \[
+    \int \frac{1}{h(y)}\, dy=\int g(x)\, dx.
+    \]
+    \item {\em Integration}. Attempt to find an antiderivative $F(y)$ of $1/h(y)$ and an antiderivative $G(x)$ for $g(x)$.
+    \item {\em Algebra}. Attempt to solve the resulting general equation
+    \[
+    F(y)=G(x)+C
+    \]
+    for $y$ in terms of $x$.
+
+
+  \end{enumerate}
+
+\end{namedtheorem}
+
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Suppose a hot object cools in a room kept at constant temperature of $T_0$ (in celcius). Newton's law of cooling states that the rate at which the object cools (with respect to time) is proportional to the {\em difference} between its current temperature and the room temperature $T_0$.
+  \begin{enumerate}
+    \item Write a differential equation that describes Newton's law of cooling in this setting.
+    \item Find the general solution to this differential equation.
+    \item Find a the particular solution to the situation where $T_0=15$$^\circ$C, the object's initial temperature is $100$$^\circ$C, and after $5$ minutes the object's temperature is $80$$^\circ$C.
+  \end{enumerate}
+  \item Solve the following differential equations using separation of variables. If an initial condition is given, provide the corresponding particular solution. Otherwise, give the general solution.
+  \begin{enumerate}
+    \item $\displaystyle f'(x)=xf(x)+x$
+    \item $\displaystyle\frac{dy}{dx}=\frac{x^3}{y^2}$
+    \item $\cot x\, f'(x)+f(x)=2$, $f(0)=0$.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}

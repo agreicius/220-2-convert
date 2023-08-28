@@ -1,0 +1,198 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: definite integral}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Integrable function] Let $f$ be a function defined on the interval $[a,b]$. \\
+  We say the {\bf definite integral of $f$ over $[a,b]$ exists} if there is a real number $J$ such that for {\em any} sequence of partitions $P_n$ of $[a,b]$ and {\em any} choice of Riemann sums $S_n$ corresponding to the partitions $P_n$, if the maximum width of a subinterval in $P_n$ approaches 0, then
+  \[
+  \lim_{n\to\infty} S_n=J.
+  \]
+In plain English, the definite integral of $f$ exists if any sequence of Riemann sums corresponding to a finer and finer partition of $[a,b]$ approaches the same value $J$ in the limit.
+
+In this case we say {\bf $f$ is integrable over $[a,b]$} and call $J$ the {\bf definite integral of $f$ over $[a,b]$}, denoted
+\[
+\int_a^bf(x)\, dx=J.
+\]
+\end{namedtheorem}
+\begin{namedtheorem}[Area and signed area of regions defined by functions] Let $f$ be integrable over the interval $[a,b]$, let $\mathcal{C}$ be the graph of $f$, and let $\mathcal{R}$ be the region between $\mathcal{C}$ and the $x$-axis from $x=a$ to $x=b$.
+\begin{itemize}
+  \item We define the {\bf area} (or {\bf total area}) of $\mathcal{R}$ to be the integral of $\lvert f\rvert$ over $[a,b]$: i.e.,
+  \[
+  \text{area of $\mathcal{R}$}=\int_a^b\lvert f(x)\rvert\, dx.
+  \]
+  \item We define the {\bf signed area} of $\mathcal{R}$ to be the integral of $f$ over $[a,b]$: i.e.,
+  \[
+  \text{signed area of $\mathcal{R}$}=\int_a^b f(x)\, dx.
+  \]
+\end{itemize}
+
+
+\end{namedtheorem}
+\begin{comment}
+  Let $f$ be integrable over the interval $[a,b]$, let $\mathcal{C}$ be the graph of $f$, and let $\mathcal{R}$ be the region between $\mathcal{C}$ and the $x$-axis from $x=a$ to $x=b$.
+\begin{enumerate}
+  \item The area of $\mathcal{R}$ is always nonnegative, since $\lvert f(x)\rvert\geq 0$ for all $x\in [a,b]$.
+  \item If $f(x)\geq 0$ for all $x\in [a,b]$, then $f=\lvert f\rvert$ over $[a,b]$, and hence
+  \[
+  \text{area of $\mathcal{R}$}=\int_a^b f(x)\, dx
+  \]
+  in this case.
+  \item Suppose $[a,b]$ can be partitioned into finitely many intervals over which $f$ is either always nonnegative ($\geq 0$) or always nonpositive ($\leq 0$). Then
+  \[
+  \text{signed area of $\mathcal{R}$}=\int_a^b f(x)\, dx=(\text{area of regions where $f\geq 0$})-(\text{area of regions where $f\leq 0$}).
+  \]
+\end{enumerate}
+\end{comment}
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Direct computation of definite integral] Suppose $f$ is integrable on the interval $[a,b]$. \\
+  Since $\displaystyle\int_a^bf(x)\, dx$ can be computed using any sequence of Riemann sums, we may compute it as a limit of right Riemann sums $R_n$ corresponding to partitions of $[a,b]$ into $n$ equal subintervals. For such partitions the length of each subinterval is $\Delta x=(b-a)/n$, and the right endpoint of the $k$-th subinterval is $x_k=a+k(b-a)/n$. We conclude:
+  \[
+  \int_a^b f(x)\, dx=\lim_{n\to\infty} R_n=\lim_{n\to\infty}\sum_{k=1}^n f\left(a+\frac{k(b-a)}{n}\right)\frac{(b-a)}{n}.
+  \]
+
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Integrable functions theorem] Let $f$ be defined on the interval $[a,b]$.
+If $f$ is continuous everywhere on $[a,b]$, or if $f$ has at most finitely many jump discontinuities on $[a,b]$, then $f$ is integrable over $[a,b]$.
+\end{namedtheorem}
+
+\begin{namedtheorem}[Properties of definite integrals]
+  Let $f$ and $g$ be integrable over $[a,b]$.
+  \begin{enumerate}
+    \item $\ds\int_a^a f(x)\, dx=0$. (By definition)
+    \item $\ds\int_b^af(x)\, dx=-\int_a^b f(x)\, dx$. (By definition)
+    \item {\bf Sum and difference}. $\ds\int_a^b f(x)\pm g(x)\, dx=\int_a^bf(x)\, dx\pm \int_a^bg(x)\, dx$
+    \item {\bf Constant multiple}. $\ds\int_a^bcf(x)\, dx=c\int_a^bf(x)\, dx$ for any $c\in \R$.
+    \item {\bf Additive}. For any $c\in \R$ we have
+    \[
+    \int_a^bf(x)\, dx=\int_a^cf(x)\, dx+\int_c^b f(x)\, dx,
+    \]
+    as long as all of the integrals involved are defined.
+    \item {\bf Max-min inequality}. If $f$ has a minumum value $\min f$ on $[a,b]$ and a maximum value $\max f$ on $[a,b]$, then
+    \[
+    (\min f)(b-a)\leq \int_a^b f(x)\, dx\leq (\max f)(b-a)
+    \]
+    \item {\bf Domination}. If $f(x)\leq g(x)$ for all $x\in [a,b]$, then
+    \[
+    \int_a^bf(x)\, dx\leq \int_a^bg(x)\, dx.
+    \]
+
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+    \item Fix positive constants $m$ and $b$, and define $f(x)=mx+b$.
+    \begin{enumerate}
+      \item Fix a positive constant $a$. Compute $\int_0^a f(x)\, dx$ directly as a limit of right Riemann sums.
+      \item Graph $f(x)$ on $[0,a]$ and explain how your answer in (a) is consistent with known area formulas.
+    \end{enumerate}
+    \item Fix a positive constant $b$. Compute $\ds\int_0^b f(x)\, dx$ directly as a limit of right Riemann sums.
+
+  \item Let $f(x)=1-x^3$. Fix constants $a$ and $b$ with $0<a<b$. Use your result in Example 2 and various integral properties (including the  additivite property) to derive a formula for $\ds\int_a^bf(x)\, dx$ in terms of $a$ and $b$.
+
+  \item Let $f(x)=1-x^3$. Fix a constant $b$ with $b>1$, let $f(x)=1-x^3$, and let $\mathcal{R}$ be the region between the graph of $f$ and the $x$-axis from $x=0$ to $x=b$.
+  \begin{enumerate}
+    \item Graph $f(x)$ on $[0,b]$. Your graph should reflect the assumption that $b>1$.
+    \item Describe precisely how the signed area of $\mathcal{R}$ is a difference of areas of two distinct regions.
+    \item Compute the area of $\mathcal{R}$.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}

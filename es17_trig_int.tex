@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: trigonometric integrals}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+\bigskip\noindent%         create a vertical offset to previous material
+\refstepcounter{myalgctr}% increment the environment's counter
+\textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+\newline%
+}{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+
+
+%***********************************************
+\subsection*{Theory}
+\begin{namedtheorem}[Trigonometric identities] The following identities hold for all $\theta, \phi\in\mathbb{R}$.
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item $\displaystyle\cos\theta\cos\phi=\frac{\cos(\theta-\phi)+\cos(\theta+\phi)}{2}$
+      \item $\displaystyle\sin\theta\sin\phi=\frac{\cos(\theta-\phi)-\cos(\theta+\phi)}{2}$
+      \item $\displaystyle\sin\theta\cos\phi= \frac{\sin(\theta-\phi)+\sin(\theta+\phi)}{2}$
+      \item $\displaystyle\cos^2\theta=\frac{1+\cos2\theta}{2}$
+      \item $\displaystyle\sin^2\theta=\frac{1-\cos2\theta}{2}$
+    \end{enumerate}
+  \end{multicols}
+
+\end{namedtheorem}
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{comment}
+The basic strategy for computing integrals of functions of the form $\sin^m x\cos^n x$ or $\tan^m x\sec^n x$ is to use one of the four substitutions
+\begin{align*}
+  u&=\sin x & u&=\cos x & u&=\tan x & u&=\sec x \\
+  du&=\cos x\, dx & du&=-\sin x\, dx & du&=\sec^2 x\, dx & du&=\sec x\tan x\, dx,
+\end{align*}
+``peel off" what is necessary for $du$, and express the rest of the integrand as a polynomial in $u$ using the trigonometric identities.
+\begin{align*}
+\sin^2 x+\cos^2 x&=1 & \sec^2 x&=\tan^2+1.
+\end{align*}
+\end{comment}
+\begin{namedtheorem}[Integrating $\sin^m x\cos^n x$] Let $m$ and $n$ be nonnegative integers. When computing
+  \[
+  \int \sin^m x\cos^n x\, dx
+  \]
+  the following strategies often help.
+  \begin{enumerate}
+    \item If $m=2k+1$ is odd, write
+    \[
+    \int \sin^m x\cos^n x\, dx=\int (1-\cos^2x)^k\cos^n x\sin x\, dx
+    \]
+    and use the substitution $u=\sin x, du=\cos x\, dx$.
+    \item If $n=2k+1$ is odd, write
+    \[
+    \int \sin^m x\cos^n x\, dx=\int \sin^m x(1-\sin^2x)^k\cos x \, dx
+    \]
+    and use the substitution $u=\cos x, du=-\sin x\, dx$.
+    \item If $m$ and $n$ are both even use $\displaystyle\sin^2 x=\frac{1-\cos 2x}{2}$ and $\displaystyle\cos^2 x=\frac{1+\cos 2x}{2}$ to reduce to a lower power of $\cos 2x$.
+  \end{enumerate}
+
+\end{namedtheorem}
+\newpage
+\begin{namedtheorem}[Integrating $\tan^m x\sec^n x$] Let $m$ and $n$ be nonnegative integers. When computing
+  \[
+  \int \tan^m x\sec^n x \, dx
+  \]
+  the following strategies often help.
+  \begin{enumerate}
+    \item If $m=2k+1$ is odd and $n\geq 1$, write
+    \[
+    \int \tan^m x\sec^n x \, dx=\int (\sec^2 x-1)^k\sec^{n-1} x\sec x\tan x \, dx
+    \]
+    and use the substitution $u=\sec x, du=\sec x\tan x\, dx$.
+    \item If $n=2k$ is even, write
+    \[
+    \int \tan^m x\sec^n x \, dx=\int (\tan^2 x+1)^{k-1}\tan^m x\sec^2 x\, dx
+    \]
+    and use the substitution $u=\tan x, du=\sec^2 x\, dx$.
+
+    \item If $m$ is even and $n$ is odd, express everything in terms of $\sec x$ and possibly use integration by parts.
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+Compute the following indefinite integrals.
+\begin{enumerate}
+  \item $\displaystyle \int \sin^3x \cos^2 x\, dx$
+  \item $\displaystyle \int \sin^2 x\cos^4 x\, dx$
+  \item $\displaystyle \int \sec^4 x\, dx$
+  \item $\displaystyle \int \tan^5 x\sec^7 x\, dx$
+  \item $\displaystyle \int \sec^3 x\, dx$
+  \item $\displaystyle \int \tan^5 x \, dx$
+
+\end{enumerate}
+
+
+
+
+\end{document}

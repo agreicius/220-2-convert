@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: l'H\^opital's rule}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+\bigskip\noindent%         create a vertical offset to previous material
+\refstepcounter{myalgctr}% increment the environment's counter
+\textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+\newline%
+}{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Indeterminate forms]Consider a limit expression of the form
+  \[
+  \lim_{x\to a}\frac{f(x)}{g(x)},
+  \]
+  where $a$ is either a finite number or $\pm\infty$.
+  \vspace{.1in}
+  \\
+  The expression is an {\bf indeterminate form of type $0/0$} if
+  \[
+  \lim_{x\to a}f(x)=\lim_{x\to a}g(x)=0.
+  \]
+  The expression is an {\bf indeterminate form of type $\infty/\infty$} if
+  \[
+  \lim_{x\to a}f(x)=\pm\infty \text{ and } \lim_{x\to a}g(x)=\pm\infty.
+  \]
+
+\end{namedtheorem}
+\begin{comment}
+  A limit expression having an indeterminate form does {\em not} mean that the limit does not exist. You should interpret this conclusion as saying simply that our current analysis is not detailed enough to determine whether the limit exists and/or what that limit is.
+  \vspace{.1in}
+  \\
+  In this spirit, we will be careful {\em not} to write
+  \[
+  \lim_{x\to a}\frac{f(x)}{g(x)}=\frac{0}{0} \text{ or } \lim_{x\to a}\frac{f(x)}{g(x)}=\frac{\infty}{\infty},
+  \]
+  as this suggests we are asserting something more definitive about the limit.
+
+\end{comment}
+\begin{namedtheorem}[Further indeterminate forms] Assume $a$ is either a finite number or $\pm\infty$.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}g(x)=\infty$, then
+  $\displaystyle\lim_{x\to a}f(x)-g(x)$ is an {\bf indeterminate form of type $\infty-\infty$}.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=0$ and $\lim_{x\to a}g(x)=\pm\infty$, then
+  $\displaystyle\lim_{x\to a}f(x)g(x)$ is an {\bf indeterminate \\ form of type $0\cdot\infty$}.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}g(x)=0$, then
+  $\displaystyle\lim_{x\to a}f(x)^{g(x)}$ is an {\bf indeterminate form of type $0^0$}.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=\infty$ and $\lim_{x\to a}g(x)=0$, then
+  $\displaystyle\lim_{x\to a}f(x)^{g(x)}$ is an {\bf indeterminate form  of type $\infty^0$}.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=1$ and $\lim_{x\to a}g(x)=\infty$, then
+  $\displaystyle\lim_{x\to a}f(x)^{g(x)}$ is an {\bf indeterminate form of type $1^\infty$}.
+
+\end{namedtheorem}
+
+%***********************************************
+\subsection*{Theory}
+\begin{namedtheorem}[L'H\^opital's rule] Let $f$ and $g$ be differentiable on an open interval $I$ containing $a$, where $a$ is either a finite number or $\pm\infty$, and suppose $g'(x)\ne 0$ for all $x\ne a$ in the interval.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}\frac{f(x)}{g(x)}$ is an indeterminate form of type $0/0$ or $\infty/\infty$, then
+  \[
+  \lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)},
+  \]
+  provided the limit on the right exists or is equal to $\pm\infty$. \\
+  The same result holds if we replace the limit with a one-sided limit.
+
+\end{namedtheorem}
+\begin{comment}
+Students tend to fall madly in love with l'H\^opital's rule after seeing it for the first time. Some comments to temper your passion:
+\begin{enumerate}
+  \item Make sure the necessary conditions hold: (a) $f,g$ differentiable on an interval about $a$, $g(x)\ne 0$ on for $x\ne a$, and the limit expression is indeterminate of type $0/0$ or $\infty/\infty$.
+  \item As magic as the rule appears, there are many examples where either the application of this rule does not help, and/or it is easier to use a different technique. Consider the following limits, for example:
+  \[
+  \lim_{x\to\infty}\frac{e^x+e^{-x}}{e^x-e^{-x}}, \hspace{10pt} \lim_{x\rightarrow \infty}\frac{x^4-x^2+5x+7}{2x^4+x^3+x^2+x+1}
+  \]
+\end{enumerate}
+\end{comment}
+
+%***************************************
+
+\subsection*{Procedures}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Decide whether the following limit expressions have determinate or indeterminate forms. If determinate, compute the limit.
+  \begin{enumerate}
+    \item $\displaystyle\lim_{x\to 0+}\frac{\sin x}{\ln x}$
+    \item $\displaystyle\lim_{x\to (\pi/2)^-}\frac{\tan x}{\cos x}$
+    \item $\displaystyle\lim_{x\to\infty}\frac{e^x}{2^x+3^x}$
+  \end{enumerate}
+  \item Compute the following limits.
+  \begin{enumerate}
+    \item $\displaystyle\lim_{x\to\infty}\frac{\ln x}{x^{1000}}$
+    \item $\displaystyle\lim_{x\to 0}\frac{2^x-3^{-x}}{4^x-5^{-x}}$
+    \item $\displaystyle\lim_{x\to 1}\frac{\cos(\pi x/2)}{\log_2(x)}$
+    \item $\displaystyle\lim_{x\to 0}\frac{x-\sin x}{x\sin x}$
+  \end{enumerate}
+  \item Compute the following limits.
+  \begin{enumerate}
+    \item $\displaystyle\lim_{x\to 0^+}\frac{1}{\sin x}-\frac{1}{x}$
+    \item $\displaystyle\lim_{x\to \infty}2x-\sqrt{4x^2-13x}$
+    \item $\displaystyle\lim_{x\to -\infty}x^22^{x}$
+    \item $\displaystyle\lim_{x\to 0^+}(1+x)^{1/x}$
+    \item $\displaystyle\lim_{x\to \infty}(1+x^2)^{2/x}$
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}

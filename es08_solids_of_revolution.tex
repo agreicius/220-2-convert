@@ -1,0 +1,159 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: computing volume}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Volume of solid via cross sections] Let $\mathcal{S}\subseteq \R^3$ be a solid region in $3$-space.
+\vspace{.1in}
+\\
+For each $x_0\in \R$ let $\mathcal{S}_{x_0}$ be the {\bf cross section}  of $\mathcal{S}$ consisting of all points of $\mathcal{S}$ whose $x$-coordinate is equal to $x_0$, and let $A(x_0)$ be the area of $S_{x_0}$.
+\vspace{.1in}
+\\
+Assume $A(x)$ is integrable on the interval $[a,b]$. We define the {\bf volume} $V$ of $\mathcal{S}$ between $x=a$ and $x=b$ as the integral of $A(x)$ from $x=a$ to $x=b$: i.e.,
+\[
+V=\int_a^b A(x)\, dx.
+\]
+The volume of $\mathcal{S}$ between $y=c$ and $y=d$, or $z=e$ and $z=f$ is defined similarly.
+ \end{namedtheorem}
+
+\begin{namedtheorem}[Solid of revolution] Given a planar region $\mathcal{R}$ and a line $L$ in that plane, the {\bf solid of revolution} with {\bf axis of revolution $L$} is the solid region $\mathcal{S}$ obtained by rotating $\mathcal{R}$ about $L$.
+\end{namedtheorem}
+
+
+%***********************************************
+ \subsection*{Theory}
+
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Volume via cross sections] To compute the volume of a solid region $\mathcal{S}$ via $x$-cross sections, proceed as follows:
+\begin{enumerate}
+  \item Sketch $\mathcal{S}$ along with a typical cross section $\mathcal{S}_x$.
+  \item Derive a formula for $A(x)$ in terms of $x$.
+  \item Determine the appropriate limits of integration: $x=a$ and $x=b$.
+  \item Compute $\ds \int_a^b A(x)\, dx$.
+\end{enumerate}
+
+\end{namedtheorem}
+
+\begin{namedtheorem}[Volumes of solids of revolution] The cross section method can be applied to the {\em special case} of solids of revolution. The two cases below are typical, and the given procedures can be modified appropriately if a vertical axis is replaced with a horizontal one.
+\vspace{.1in}
+\\
+{\em Cylinder (or disk) method}. Suppose $f(x)$ is integrable on $[a,b]$ and that $f(x)\geq c$ for all $x\in [a,b]$. Let $\mathcal{R}$ be the region between the graph of $f(x)$ and the line $y=c$ from $x=a$ to $x=b$, and let $\mathcal{S}$ be the solid obtained by revolving $\mathcal{R}$ about the horizontal axis $y=c$.
+\begin{itemize}
+  \item For each $x\in [a,b]$, $S_x$ is a disc of radius $f(x)-c$ and area $A(x)=\pi(f(x)-c)^2$.
+  \item The volume of $\mathcal{S}$ from $x=a$ to $x=b$ is thus
+  \[
+  V=\int_a^b \pi(f(x)-c)^2\, dx.
+  \]
+\end{itemize}
+{\em Annulus (or washer) method}. Suppose $p(y)$ and $q(y)$ are integrable on $[a,b]$ and that $p(y)\geq q(y)> c$ for all $y\in [a,b]$. Let $\mathcal{R}$ be the region between the graph of $p(y)$ and $q(y)$ over the interval $[a,b]$ in the $y$-axis, and let $\mathcal{S}$ be the solid obtained by revolving $\mathcal{R}$ about the vertical axis $x=c$.
+\begin{itemize}
+  \item For each $y\in [a,b]$, $S_y$ is an {\bf annulus} of inner radius $q(y)-c$ and outer radius $p(y)-c$. The area of this annulus is $\pi((p(y)-c)^2-(q(y)-c)^2)$.
+  \item The volume of $\mathcal{S}$ from $y=a$ to $y=b$ is thus
+  \[
+  V=\int_a^b \pi((p(y)-c)^2-(q(y)-c)^2)\, dy.
+  \]
+\end{itemize}
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Use the volume via cross sections method to compute the volume of a sphere of radius $r$.
+  \item Use the volume via cross sections method to compute the volume of a right circular cone of height $h$ and base of radius $r$.
+  \item Let $\mathcal{R}$ be the region between the graph of $y=-\frac{3}{25}x^2+5$ and the $x$-axis from $x=0$ to $x=5$, and let $\mathcal{S}$ be the solid obtained by revolving $\mathcal{R}$ about the $x$-axis. Sketch $\mathcal{S}$ and compute its volume.
+  \item Let $\mathcal{R}$ be the region enclosed by the line $y+2x=2$ and the parabola $y^2+x=4$, and let $\mathcal{S}$ be the solid obtained revolving $\mathcal{R}$ about the $y$-axis. Sketch $\mathcal{R}$ and compute the volume of $\mathcal{S}$. Can you sketch, or at least describe $\mathcal{S}$?
+\end{enumerate}
+
+
+
+
+\end{document}

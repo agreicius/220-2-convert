@@ -1,0 +1,184 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Antiderivatives}
+\rhead{Math 240}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+\def\bpause{
+\vspace{.1in}
+\\
+}
+\def\pause{}
+\newcommand{\alert}[1]{
+\emph{#1}
+}
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Antiderivative] Let $f$ be a real-valued function defined on an interval $I$. A function $F$ is called an antiderivative of $f$ if $F'(x)=f(x)$ for all $x\in I$.
+\end{namedtheorem}
+
+\begin{namedtheorem}[Indefinite integral] Let $f$ be a real-valued function defined on an interval $I$ and suppose $f$ has an antiderivative. The {\bf indefinite integral} of $f$ with respect to $x$ is the notation
+  \[
+  \int f \ dx
+  \]
+and is used to denote the general antiderivative of $f$. Thus if $F$ is a particular antiderivative, then we write
+\[
+\int f \ dx=F(x)+C
+\]
+to express the fact that the general antiderivative of $f$ is of the form $F(x)+C$ for some $C\in \mathbb{R}$. The symbol $\int$ is called the {\bf integral symbol}, the function $f$ is called the {\bf integrand} of the integral, and $x$ is called the {\bf variable of integration}.
+\end{namedtheorem}
+%********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[General antiderivative theorem] Let $f$ be a real-valued function defined on an interval $I$ and suppose $F$ is an antiderivative of $f$.
+  \begin{enumerate}[itemsep=0pt, topsep=0pt]
+    \item Given any $C\in \mathbb{R}$, the function $F(x)+C$ is an antiderivative of $f$.
+    \item If $G$ is an antiderivative of $f$, then there is a $C\in \mathbb{R}$ such that
+    \[
+    G(x)=F(x)+C
+    \]
+    for all $x\in I$.
+    \item Thus (1) and (2) imply that the {\bf general antiderivative} of $f$ on $I$ can be expressed as $F(x)+C$, where $C$ is any real number.
+  \end{enumerate}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Antiderivative formulas] The following antiderivative (or indefinite integral) formulas follow directly from a corresponding derivative formula.
+  \begin{align*}
+    \int 0\, dx&=C & \int x^r\, dx&=\frac{x^{r+1}}{r+1}+C, r\ne -1\\
+    \int \cos kx\, dx&=\frac{1}{k}\sin kx+C & \int \sin kx\, dx &=-\frac{1}{k}\cos kx+C \\
+    \int\sec^2kx\, dx&=\frac{1}{k}\tan kx+C & \int \csc^2 kx \, dx&=-\frac{1}{k}\cot kx+C\\
+    \int \sec kx\tan kx\, dx&=\frac{1}{k}\sec kx+C & \int \csc x\cot x\, dx&=-\frac{1}{k}\csc kx+C
+  \end{align*}
+\end{namedtheorem}
+\begin{namedtheorem}[Antiderivative rules] Let $f$ and $g$ be real-valued functions defined on an interval $I$. Suppose $F$ is an antiderivative of $f$ and $G$ is an antiderivative of $g$.
+  \begin{enumerate}[itemsep=0pt, topsep=0pt]
+    \item Given any constant $a\in \mathbb{R}$, the function $aF$ is an antiderivative of $af$, and hence
+    \[
+    \int af\, dx=aF(x)+C.
+    \]
+    \item The function $F(x)\pm G(x)$ is an antiderivative of $f(x)\pm g(x)$, and hence
+    \[
+    \int f\pm g\, dx=F(x)\pm G(x)+C.
+    \]
+  \end{enumerate}
+
+\end{namedtheorem}
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Find an antiderivative for the given function.
+  \begin{enumerate}
+    \item $\ds f(x)=x^7$
+    \item $\ds f(x)=\frac{1}{\sqrt{x}}$
+    \item $\ds f(x)=2\sin x-x^{2/3}$
+  \end{enumerate}
+  \item Find an antiderivative for the given function.
+  \begin{enumerate}
+    \item $f(x)=\sec^25x$
+    \item $f(x)=2x\cos(x^2)$
+    \item $f(x)=\cos(x^2)$
+  \end{enumerate}
+  \item At time $t=0$ minutes a tank containing 100 gallons of water begins leaking. After $t$ minutes the rate at which the water leaves the tank is given by
+  \[
+  r(t)=\frac{1}{\sqrt{2t+1}}.
+  \]
+  Let $f(t)$ be the amount of water in the tank after $t$ minutes. Find a formula for $f(t)$.
+
+    \item Consider the differential equation
+    \[
+    f''(x)=-\frac{2}{3}\cos(2x)+x \tag{$*$}.
+    \]
+    \begin{enumerate}
+      \item Find the general formula for a function $f(x)$ satisfying $(*)$.
+      \item Find the unique function $f(x)$ satisfying $(*)$ and the initial conditions
+      \[
+      f(0)=0, f'(0)=-1.
+      \]
+
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}

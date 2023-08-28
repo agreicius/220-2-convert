@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: antiderivatives}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[One-to-one] A function $f$ is one-to-one on the set $X$ if $f(x_1)\ne f(x_2)$ for all $x_1, x_2\in X$ with $x_1\ne x_2$. We express this with logical notation as
+  \[
+  x_1\ne x_2\implies f(x_1)\ne f(x_2),
+\]
+or equivalently, using the contrapositive,
+\[
+f(x_1)=f(x_2)\implies x_1=x_2.
+\]
+\end{namedtheorem}
+
+
+
+\begin{namedtheorem}[Monotonic functions] Let $f$ be a a real-valued function defined on the set $X$.
+  \begin{itemize}
+    \item The function $f$ is {\bf increasing on $X$} if $f(x_1)<f(x_2)$ for all $x_1, x_2\in X$ with $x_1<x_2$. Using logical notation:
+    \[
+    x_1<x_2\implies f(x_1)<f(x_2).
+    \]
+    \item The function $f$ is {\bf decreasing on $X$} if $f(x_1)>f(x_2)$ for all $x_1, x_2\in X$ with $x_1<x_2$. Using logical notation:
+    \[
+    x_1<x_2\implies f(x_1)>f(x_2).
+    \]
+    \item The function $f$ is {\bf monotonic on $X$} if $f$ is increasing on $X$ or $f$ is decreasing on $X$.
+  \end{itemize}
+
+\end{namedtheorem}
+
+\begin{namedtheorem}[Inverse function] Suppose $f$ is one-to-one on the set $X$, and let $Y$ be the range of $f$. The {\bf inverse function of $f$} is the function $f^{-1}$ with domain $Y$ defined by the following rule:
+  \begin{itemize}
+    \item Given $b\in Y$ there is a unique element $a\in X$ such that $f(a)=b$.
+    \item We define $f^{-1}(b)=a$.
+  \end{itemize}
+
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Horizontal line test] Let $f$ be a real-valued function defined on $X$, and let $\mathcal{C}$ be the graph of $f$ over $X$. The function $f$ is one-to-one on $X$ if and only if for all $c\in\R$ the horizontal line $y=c$ intersects $\mathcal{C}$ in {\em at most} one point.
+
+\end{namedtheorem}
+\begin{namedtheorem}[Monotonic functions are one-to-one] If $f$ is monotonic on $X$ then $f$ is invertible on $X$.
+\end{namedtheorem}
+\begin{namedtheorem}[Inverse function compendium] Let $f$ be one-to-one on its domain $X$, and let $Y$ be the range of $f$. Let $f^{-1}$ be the inverse of $f$.
+  \begin{enumerate}[itemsep=0pt]
+    \item $f(a)=b$ if and only if $f^{-1}(b)=a$.
+    \item The domain of $f^{-1}$ is $Y$, the range of $f$; the range of $f^{-1}$ is $X$, the domain of $f$.
+    \item We have
+    \begin{align*}
+      f^{-1}(f(a))&=a \text{ for all } a\in X\\
+      f(f^{-1}(b))&=b \text{ for all } b\in Y.
+    \end{align*}
+    \item The point $P=(x,y)$ is on the graph of $f$ if and only if the point $Q=(y,x)$ is on the graph of $f^{-1}$.
+    \item The graph of $f^{-1}$ is the reflection of the graph of $f$ through the line $y=x$.
+  \end{enumerate}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Derivative formula for inverses] Assume $f$ is one-to-one and differentiable on the interval $I$, and that $f'(x)\ne 0$ for all $x\in I$. Let $J$ be the range of $f$. Then:
+  \begin{enumerate}
+    \item The inverse function $f^{-1}$ is differentiable on $J$.
+    \item We have
+    \[
+    (f^{-1})'(b)=\frac{1}{f'(f^{-1}(b))}
+    \]
+    for all $b\in J$. Alternatively, letting $a$ be the unique element of $D$ such that $f(a)=b$, we have
+    \[
+    (f^{-1})'(b)=\frac{1}{f'(a)}.
+    \]
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Let $f(x)=x^2+1$.
+  \begin{enumerate}
+    \item Show that $f$ is not one-to-one on $(-\infty, \infty)$.
+    \item Show that $f$ is one-to-one on $(-\infty, 0]$.
+    \item Compute a formula for the inverse of $f$ on the domain $(-\infty, 0]$. 
+  \end{enumerate}
+  \item Let $f(x)=x^5+x^3+3x-5$.
+  \begin{enumerate}
+    \item Show that $f$ is one-to-one.
+    \item Plot three points on the graph of $f^{-1}$.
+    \item Compute $(f^{-1})'(-5)$ and $(f^{-1})'(-8)$.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}

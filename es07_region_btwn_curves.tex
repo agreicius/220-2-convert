@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: regions between curves}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Area of region between curves] Suppose $f(x)\geq g(x)$ for all $x\in [a,b]$. Let $\mathcal{C}_1$ be the graph of $f$, let $\mathcal{C}_2$ be the graph of $g$, and let $\mathcal{R}$ be the region between $\mathcal{C}_1$ and $\mathcal{C}_2$ lying over the interval $[a,b]$ on the $x$-axis. We define the area of $\mathcal{R}$ to be the integral of $f-g$ over $[a,b]$: i.e.,
+  \[
+  \text{area}(\mathcal{R})=\int_a^b f(x)-g(x)\, dx.
+  \]
+Similarly, suppose $x=p(y)$ and $x=p(q)$ are two functions of $y$ satisfying $p(y)\geq q(y)$ for all $y\in [c,d]$. Let $\mathcal{C}_1$ be the graph of $p$, let $\mathcal{C}_2$ be the graph of $q$, and let $\mathcal{R}$ be the region between $\mathcal{C}_1$ and $\mathcal{C}_2$ lying over the interval $[c,d]$ on the $y$-axis. We define the area of $\mathcal{R}$ to be the integral of $p-q$ over $[c,d]$: i.e.,
+  \[
+  \text{area}(\mathcal{R})=\int_c^d p(y)-q(y)\, dy.
+  \]
+\end{namedtheorem}
+\begin{comment}
+Observe that the definition only applies when $f(x)\geq g(x)$ for all $x$ in the given interval. This ensures that the area of $\mathcal{R}$, as defined, is at least nonnegative.
+\end{comment}
+%***********************************************
+ \subsection*{Theory}
+
+\begin{namedtheorem}[Graphical argument in support of area definition] Suppose $f(x)\geq g(x)$ for all $x\in [a,b]$. Let $\mathcal{C}_1$ be the graph of $f$, let $\mathcal{C}_2$ be the graph of $g$, and $\mathcal{R}$ be the region between $\mathcal{C}_1$ and $\mathcal{C}_2$ over the interval $[a,b]$ on the $x$-axis.
+  \begin{enumerate}
+    \item Suppose we also have $f(x)\geq g(x)\geq 0$ for all $x\in [a,b]$. Then we have
+    \begin{align*}
+      \text{area}(\mathcal{R})&=\int_a^b f(x)-g(x)\, dx \\
+      &=\int_a^b f(x)\, dx -\int_a^bg(x)\, dx\\
+      &=\text{area}(\mathcal{R}_1)-\text{area}(\mathcal{R}_2),
+    \end{align*}
+    where $\mathcal{R}_i$ is the region lying between $\mathcal{C}_i$ and the $x$-axis over the interval $[a,b]$. Intuitively, this difference of areas should indeed be the area between the two curves.
+    \item To reduce the general case $f(x)\geq g(x)$ to the case above, simply shift both functions (and hence also $\mathcal{R}$) up by a large enough constant $C$ so that $f(x)\geq g(x)\geq 0$.  This operation does not affect the area of $\mathcal{R}$, and the $C$ gets canceled in the integral computation thanks to the difference operator!
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%***************************************
+\subsection*{Procedures}
+\begin{namedtheorem}[Regions between intertwined curves] Suppose $f$ and $g$ are continuous on the interval $[a,b]$ and intersect one another finitely many times. Let $\mathcal{R}$ be the region between the graphs of $f$ and $g$ lying over the interval $[a,b]$. To compute the area of $\mathcal{R}$, proceed as follows:
+  \begin{enumerate}
+    \item Parition $[a,b]$ into subintervals for which one of the functions is always greater than or equal to the other.
+    \item On each such subinterval compute the area of the corresponding region by integrating the appropriate difference.
+    \item Sum up the areas you compute in (2).
+  \end{enumerate}
+
+
+\end{namedtheorem}
+
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Let $\mathcal{R}$ be the region between the parabola $x+y^2=4$ and the line $2x+y=2$ lying in the first quadrant. Compute the are of $\mathcal{R}$.
+
+  You may do this either by thinking of the curves as graphs of functions of $x$, or graphs of functions of $y$. Which approach is easier?
+  \item Compute the area of the region between the parabolas $y=-x^2-2x$ and $y=x^2-4$ lying within the lines $x=-3$ and $x=2$. 
+\end{enumerate}
+
+
+
+\end{document}

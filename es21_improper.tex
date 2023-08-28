@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: improper integrals}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Improper integral of type I: infinite intervals] Below we define definite integrals over infinite intervals. These are called {\bf improper integrals of type I}, or {\bf integrals over infinite intervals}.
+\begin{description}[topsep=0pt, itemsep=0pt]
+  \item[Half-infinite intervals]\ \\ Definite integrals over intervals of the form $[a,\infty)$ or $(-\infty, a]$ are defined via the limit expressions below. When the relevant limit exists, we say the improper integral {\bf converges} (or {\bf exists}); otherwise we say the improper integral {\bf diverges}.
+  \begin{itemize}[topsep=0pt, itemsep=0pt]
+    \item Let $f$ be continuous on the interval $I=[a,\infty)$. We define the integral of $f$ over $I$, denoted $\displaystyle\int_a^\infty f(x)\, dx$, as the following limit, assuming it exists:
+    \[
+    \int_a^\infty f(x)\, dx=\lim_{R\to\infty}\int_a^R f(x)\, dx.
+    \]
+    \item Let $f$ be continuous on the interval $I=(-\infty,a]$. We define the integral of $f$ over $I$, denoted $\displaystyle\int_{-\infty}^a f(x)\, dx$, as the following limit, assuming it exists:
+    \[
+    \int_{-\infty}^af(x)\, dx=\lim_{R\to-\infty}\int_R^{a} f(x)\, dx.
+    \]
+  \end{itemize}
+  \item[Real line]\ \\ Let $f$ be continuous on the interval $I=(-\infty,\infty)$, and let $a$ be an element of $I$. We say the integral of $f$ over $I$ {\bf converges} (or {\bf exists}) if {\em both} of the half-infinite integrals $\displaystyle\int_{-\infty}^a f(x)\, dx$ and $\displaystyle\int_a^{\infty}f(x)\, dx$ converge, and define
+  \[
+  \int_{-\infty}^\infty f(x)\, dx=\int_{-\infty}^a f(x)\, dx+\int_a^{\infty}f(x)\, dx
+  \]
+  in this case. If {\em either} (or both) of the half-infinite integrals diverge, we say that the integral of $f$ over $(-\infty, \infty)$ {\bf diverges}.
+\end{description}
+\end{namedtheorem}
+\begin{samepage}
+\begin{namedtheorem}[Improper integrals of type II: discontinuities] Assume $f$ is continuous on the interval $I=[a,b]$, except possibly at one point.
+  \begin{itemize}
+    \item Assume $f$ is not continuous at $x=a$. We define the integral of $f$ over $[a,b]$ as
+    \[
+    \int_a^bf(x)\, dx=\lim_{c\to a^+}\int_c^b f(x)\, dx,
+    \]
+    assuming this limit exists.
+    \item Assume $f$ is not continuous at $x=b$. We define the integral of $f$ over $[a,b]$ as
+    \[
+    \int_a^bf(x)\, dx=\lim_{c\to b^-}\int_a^c f(x)\, dx,
+    \]
+    assuming this limit exists.
+    \item Assume $f$ is not continuous at $c\in (a,b)$. We define the integral of $f$ over $[a,b]$ as
+    \[
+    \int_a^bf(x)\, dx=\int_a^c f(x)\, dx+ \int_c^b f(x)\, dx, \tag{$*$}
+    \]
+    assuming both improper integrals on the right side of $(*)$ exist.
+  \end{itemize}
+
+\end{namedtheorem}
+\end{samepage}
+\begin{namedtheorem}[Area interpretation of improper integrals] Let $f$ be defined on an interval $I$ for which the corresponding integral is improper, and let $\mathcal{R}$ be the (potentially unbounded) region between the graph of $f$ and the $x$-axis over the interval $I$.
+  \begin{itemize}
+  \item We define the {\bf area} (or {\bf total area}) of $\mathcal{R}$ to be the integral of $\lvert f\rvert$ over $I$, assuming this integral converges.
+  \item We define the {\bf signed area} of $\mathcal{R}$ to be the integral of $f$ over $I$, assuming this interval converges.
+\end{itemize}
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Direct comparison test] Let $f$ and $g$ be {\em nonnegative} functions on an interval $I$, and suppose $f(x)\leq g(x)$ for all $x$ in $I$. If the integral of $g$ over $I$ converges, then the integral of $f$ over $I$ converges. Using logical notation:
+  \[
+  \text{integral of $g$ over $I$ converges }\implies \text{ integral of $f$ over $I$ converges}.
+  \]
+  Equivalently,
+  \[
+  \text{integral of $f$ over $I$ diverges }\implies \text{ integral of $g$ over $I$ diverges}.
+  \]
+\end{namedtheorem}
+
+\begin{namedtheorem}[Limit comparison test] Let $f$ and $g$ be continuous and {\em positive} on the interval $I$.
+  \begin{itemize}
+    \item If $I=[a,\infty)$ and $\displaystyle\lim_{x\to\infty}\frac{f(x)}{g(x)}=L$ with $0< L <\infty$, then
+    \[
+    \int_a^\infty f(x)\, dx \text{ converges }\iff \int_a^\infty g(x)\, dx \text{ converges}.
+    \]
+    \item If $I=(-\infty,a]$ and $\displaystyle\lim_{x\to-\infty}\frac{f(x)}{g(x)}=L$ with $0< L <\infty$, then
+    \[
+    \int_{-\infty}^a f(x)\, dx \text{ converges }\iff \int_{-\infty}^a g(x)\, dx \text{ converges}.
+    \]
+    \item If $I=(a,b]$ and $\displaystyle\lim_{x\to a^+}\frac{f(x)}{g(x)}=L$ with $0< L <\infty$, then
+    \[
+    \int_{a}^b f(x)\, dx \text{ converges }\iff \int_a^b g(x)\, dx \text{ converges}.
+    \]
+    \item If $I=[a,b)$ and $\displaystyle\lim_{x\to b^-}\frac{f(x)}{g(x)}=L$ with $0< L <\infty$, then
+    \[
+    \int_{a}^b f(x)\, dx \text{ converges }\iff \int_a^b g(x)\, dx \text{ converges}.
+    \]
+  \end{itemize}
+\end{namedtheorem}
+
+
+%***************************************
+
+%\subsection*{Procedures}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Evaluate $\displaystyle\int_{-2}^{\infty}e^{-x}\, dx$.
+  \item Evaluate $\displaystyle\int_{0}^\infty xe^{-x}\, dx$.
+  \item Evaluate $\displaystyle\int_{1}^\infty x^{r}\, dx$ for $r\ne 0$.
+  \item Evaluate $\displaystyle\int_{-\infty}^{\infty}\frac{1}{x^2+1}\, dx$.
+  \item Decide whether $\displaystyle\int_2^\infty \frac{1}{x^5+\sqrt{x+3}}\, dx$ converges.
+  \item Decide whether $\displaystyle\int_1^\infty \frac{2+\sin x}{x}\, dx$ converges.
+  \item Let $f(x)=ax^2+bx+c$ be any fixed irreducible quadratic polynomial with $a>0$. Decide whether $\displaystyle\int_{-\infty}^\infty \frac{1}{f(x)}\, dx$ exists.
+  \item Evaluate $\displaystyle\int_{0}^2\frac{1}{x-1}\, dx$.
+  \item Evaluate $\displaystyle\int_0^{1}\ln x\, dx$.
+  \item Evaluate $\displaystyle\int_1^{4}\frac{x}{\sqrt[3]{x^2-4}}\, dx$.
+  \item Decide whether $\displaystyle\int_0^\infty\frac{1}{\sqrt{x}+3x^5}\, dx$ converges.
+\end{enumerate}
+
+
+
+
+\end{document}

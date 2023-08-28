@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: fundamental theorem of calculus}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Average value of a function] Let $f$ be integrable on $[a,b]$. The {\bf average value of $f$ over $[a,b]$} is defined as
+  \[
+  \frac{1}{b-a}\int_a^bf(x)\, dx.
+  \]
+\end{namedtheorem}
+\begin{namedtheorem}[Difference-evaluation notation] Let $g$ be a real-valued function, and let $a,b$ be elements of the domain of $g$. The notation $\Bigl[g(x)\Bigr]_a^b$  is defined as follows:
+  \[
+  \Bigl[ g(x)\Bigr ]_a^b=g(b)-g(a).
+  \]
+  It is worthwile recording some simple identities involving this notation:
+  \begin{align*}
+    \Bigl[ f(x)\pm g(x)\Bigr ]_a^b&=\Bigl[f(x)\Bigr ]_a^b\pm \Bigl[ g(x)\Bigr ]_a^b\\
+    \Bigl[ cg(x)\Bigr]_a^b&=c\Bigl[g(x)\Bigr]_a^b
+  \end{align*}
+  We will often abbreviate the notation $\Bigl[g(x)\Bigr]_a^b$ to $g(x)\Bigr]_a^b$.
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Fundamental theorem of calculus (I)] Let $f$ be continuous on an open interval $I$ containing $a$. Let $F(x)$ be the function defined on $I$ as
+  \[
+  F(x)=\int_a^x f(t)\, dt.
+  \]
+Then $F(x)$ is differentiable on $I$ and
+\[
+F'(x)=\frac{d}{dx}\int_a^xf(t)\, dt=f(x)
+\]
+for all $x\in I$.
+\end{namedtheorem}
+\begin{corollary}
+  If $f$ is continuous on the open interval $I$, then $f$ has an antiderivative on $I$.
+\end{corollary}
+\begin{namedtheorem}[Fundamental theorem of calculus (II)] Let $f$ be continuous on the interval $[a,b]$. If $F(x)$ is an antiderivative of $f(x)$ on $[a,b]$, then
+  \[
+  \int_a^b f(x)\, dx=F(b)-F(a).
+  \]
+
+\end{namedtheorem}
+\begin{namedtheorem}[FTC II: rate of change version] Suppose $g$ is differentiable on $[a,b]$. The derivative function $g'$ computes the (instantaneous) rate of change of $g$ with respect to $x$. By FTC II, we have:
+  \[
+  \int_a^b g'(x)\, dx=g(b)-g(a).
+  \]
+  In other words, the integral of the {\em rate of change} of a function over $[a,b]$ is the {\em net change} of that function from $a$ to $b$.
+
+\end{namedtheorem}
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Antiderivative method of computing integrals] Suppose $f(x)$ is continuous on $[a,b]$. The antiderivative method for computing $\int_a^b f(x)\, dx$ proceeds as follows:
+  \begin{enumerate}
+    \item Find an antiderivative of $f$: i.e., find $F$ such that $F'(x)=f(x)$ for all $x\in [a,b]$.
+    \item By the fundamental theorem of calculus (II) we have
+    \[
+      \int_a^bf(x)\, dx=F(b)-F(a).
+    \]
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Use the fundamental theorem of calculus to compute the following definite integrals.
+  \begin{enumerate}
+    \item $\ds\int_a^b 1-x^3\, dx$
+    \item $\ds\int_0^{10} \frac{1}{\sqrt{2t+1}}\, dt$
+    \item $\ds\int_{3\pi/4}^{\pi}\sec^2 u\, du$.
+  \end{enumerate}
+  \item Let $f(x)=\sin(x/3)$, and let $\mathcal{C}$ be the graph of $f$.
+
+  For each region $\mathcal{R}$ compute the area of $\mathcal{R}$ and the signed area of $\mathcal{R}$.
+
+  Include a diagram of $\mathcal{C}$ and $\mathcal{R}$. Make sure your answer is consistent with your graph. If your answer happens to be 0, use the diagram to explain why.
+  \begin{enumerate}
+    \item $\mathcal{R}$ is the region between $\mathcal{C}$ and the $x$-axis, from $x=-\pi$ to $x=\pi$.
+    \item $\mathcal{R}$ is the region between $\mathcal{C}$ and the $x$-axis, from $x=-\pi$ to $x=\pi/2$.
+    \item $\mathcal{R}$ is the region between $\mathcal{C}$ and the $x$-axis, from $x=0$ to $x=6\pi$.
+  \end{enumerate}
+  \item Let $F(x)=\int_1^x \frac{1}{t^2}\, dt$. Make a table of values of $F(x)$ for $x=1, 2, 3, 4, 5$. Explain graphically what $F(b)$ is for any $b\geq 1$.
+  \item For each $F(x)$ defined below, use the fundamental theorem of calculus (along with some other useful pieces of theory) to compute $\ds F'(x)=\frac{d}{dx}F(x)$.
+  \begin{enumerate}
+    \item $\ds F(x)=\int_{x}^5 \sqrt{t+1}\, dt $
+    \item $\ds F(x)=\int_{-2}^{\sin x}\cos(u^2) \, du$
+    \item $\ds F(x)=\int_{4x}^{\sqrt{x^2+1}}\sin(s^2)\, ds$
+
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}

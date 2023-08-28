@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: exponential functions}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Exponential function] The {\bf exponential function}, denoted $\exp$, is defined as the inverse of the natural logarithm function. In other words, letting $f(x)=\ln x$, we have $f^{-1}(x)=\exp(x)$. We also write $e^x$ for $\exp(x)$.
+\end{namedtheorem}
+% \begin{comment}
+% By definition $e^x=\exp(x)$ is the inverse function of $f(x)=\ln x$. You might wonder how this is consistent with our usual notion of $e^x$ as ``raising $e$ to the $x$-th power". Let's examine this question in stages, letting $x$ be an increasiningly complicated type of input.
+% \\
+% Case: $x=n$ is a postive integer. Then by definition
+% \[
+%  \exp(n)=\exp(n\ln e)=\exp(\ln(e^n) )=e^n=\underset{\text{$n$ times}}{\underbrace{e\cdot e\cdots e}}.
+% \]
+% Case: $x=-n$ is a negative integer. Then by definition
+% \[
+%  \exp(-n)=\exp(-n\ln e)=\exp(\ln(e^{-n}) )=e^{-n}=\frac{1}{e^n}.
+% \]
+% Case: $x=m/n$ is a rational number. Then by definition
+% \[
+%  \exp(m/n)=\exp((m/n)\ln e)=\exp(\ln(e^{m/n}) )=e^{m/n}=\sqrt[n]{e^m}.
+% \]
+% Case: $x$ is irrational (i.e., not a rational number). Previously, we had no way of defining ``$e$ to the power $x$", but now we do: namely, $e^x=\exp(x)$ is the positive number $y$ satisfying $\ln y=x$.
+% \end{comment}
+\begin{namedtheorem}[Exponential function with base $a$] Let $a$ be a fixed positive number. The {\bf exponential function with base $a$}, denoted $f(x)=a^x$, is the function with domain all real numbers defined as
+  \[
+  a^x=e^{x\ln a}.
+  \]
+
+\end{namedtheorem}
+\begin{namedtheorem}[Logarithmic function with base $a$] Let $a$ be a fixed positive number. The {\bf logarathmic function with base $a$}, denoted $f(x)=\log_a(x)$ is defined as the inverse function of $g(x)=a^x$.
+
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Properties of the exponential function]
+  The following properties hold:
+  \begin{enumerate}[itemsep=0pt,topsep=0pt]
+    \item The exponential function is differentiable (hence also continuous) on all of $\mathbb{R}$ and satisfies
+    \[
+    \frac{d}{dx}e^x=e^x.
+    \]
+    Equivalently, we have
+    \[
+    \int e^x\, dx=e^x+C.
+    \]
+    \item The exponential function is increasing and hence one-to-one. Its graph is always concave up.
+    \item We have
+    \begin{align*}
+      \lim_{x\to\infty}e^x&=\infty\\
+      \lim_{x\to -\infty}e^x&=0
+    \end{align*}
+    \item The domain of $\exp$ is $\mathbb{R}=(-\infty, \infty)$; the range of $\exp$ is $(0,\infty)$.
+    \item $e^0=1$.
+    \item We have
+    \begin{align*}
+      e^{x+y}&=e^xe^y &
+      e^{x-y}&=e^x/e^y &
+      e^{xy}&=(e^x)^y
+    \end{align*}
+    for all $x,y\in\mathbb{R}$.
+    \item We have
+    \begin{align*}
+      \ln(e^x)&=x, \text{ for all $x$}; &
+      e^{\ln x}&=x, \text{ for all $x\in (0,\infty)$.}
+    \end{align*}
+  \end{enumerate}
+\end{namedtheorem}
+\begin{namedtheorem}[Logarithmic and exponential compendium] The table below summarizes the important properties of our various families of logarithmic and exponential functions.
+\[
+\begin{array}{c|c|c|c||c|c|c|}
+  f(x) & \ln x& \log_a x,\, a>1& \log_a x,\, 0<a<1&  e^x & a^x,\, a>1 & a^x,\, 0<a<1 \\
+  \hline
+  \text{Domain} &\multicolumn{3}{|c||}{(0,\infty)}&\multicolumn{3}{c|}{(-\infty, \infty)}\\
+  \hline
+  \text{Range} &\multicolumn{3}{|c||}{(-\infty,\infty)}&\multicolumn{3}{c|}{(0, \infty)}\\
+  \hline
+  \text{Monotonicity}&\multicolumn{2}{|c|}{\text{Increasing}}&\text{Decreasing}&\multicolumn{2}{|c|}{\text{Increasing}}&\text{Decreasing}\\
+  \hline
+  \text{Limit as }x\to\infty& \multicolumn{2}{|c|}{\infty}&-\infty &  \multicolumn{2}{|c|}{\infty}& 0\\
+  \hline
+  \text{Limit as }x\to 0^+ & \multicolumn{2}{|c|}{-\infty}& \infty & \multicolumn{3}{|c|}{*}\\
+  \hline
+  \text{Limit as }x\to-\infty & \multicolumn{3}{|c||}{*}&  \multicolumn{2}{|c|}{0}& \infty\\
+  \hline
+  \text{Inverse}&e^x&\multicolumn{2}{|c||}{a^x}& \ln x& \multicolumn{2}{|c|}{\log_a x}\\
+  \hline
+  \text{Relation to base-$e$}&\ln x=\log_e x&\multicolumn{2}{|c||}{\log_a x=\frac{\ln x}{\ln a}} &* &\multicolumn{2}{|c|}{a^x=e^{x\ln a}}\\
+  \hline
+  \text{Algebra}&\multicolumn{3}{|c||}{\begin{array}{c}
+    \log_a(xy)=\log_ax+\log_ay\\
+    \log_a(x^y)=y\log_a x\\
+    \log_a(a^x)=x
+  \end{array}
+  }
+  &
+  \multicolumn{3}{|c||}{\begin{array}{c}
+    a^{x+y}=a^xa^y\\
+    a^{xy}=(a^x)^y\\
+    a^{\log_a x}=x
+  \end{array}
+  }\\
+  \hline
+\end{array}
+\]
+
+
+\end{namedtheorem}
+
+\begin{namedtheorem}[Derivative/antiderivative compendium] We collect here the new derivative formulas obtained via logarithms and exponential functions, along with their equivalent antiderivative formulas.
+\begin{align*}
+  \frac{d}{dx}\ln\vert x\vert=\frac{1}{x} & \iff \int\frac{1}{x} \, dx=\ln\vert x\vert+C \\
+  \frac{d}{dx}\ln\vert \cos x \vert=-\tan x & \iff \int\tan x \, dx=-\ln\vert \cos x \vert+C=\ln\vert\sec x\vert+C \\
+  \frac{d}{dx}\ln\vert \sin x\vert=\cot x & \iff \int\cot x \, dx=\ln\vert \sin x\vert+C \\
+  \frac{d}{dx}\ln\vert \sec x+\tan x\vert=\sec x & \iff \int\sec x \, dx=\ln\vert \sec x+\tan x\vert+C \\
+  \frac{d}{dx}\ln\vert \csc x+\cot x\vert=-\csc x & \iff \int\csc x \, dx=-\ln\vert \csc x+\cot x\vert+C\\
+  \frac{d}{dx}e^x=e^x & \iff \int e^x \, dx=e^x+C\\
+  \frac{d}{dx}a^x=(\ln a)a^x & \iff \int a^x \, dx=\frac{1}{\ln a}a^x+C\\
+  \frac{d}{dx}\log_a \vert x\vert =\frac{1}{(\ln a)\, x} & \iff \int \frac{1}{(\ln a)\, x} \, dx=\log_a\vert x\vert+C
+\end{align*}
+
+\end{namedtheorem}
+
+
+%***************************************
+
+% \subsection*{Procedures}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Find all $t$ satisfying $\displaystyle 2^{-t^2}=\frac{1}{16}$. Simplify your answer as much as possible.  
+  \item Compute $f'(x)$ for each of the following functions.
+  \begin{enumerate}
+    \item $f(x)=\ln(\sin x)e^{\cos x}$
+    \item $f(x)=\log_3(2^x+3^{x^2})$
+  \end{enumerate}
+  \item Compute the following definite indefinite integrals.
+  \begin{enumerate}
+    \item $\displaystyle\int (e^t)^2\sin(e^{2t})\, dt$
+    \item $\displaystyle\int_0^\pi \sin(2^x)2^{\cos(2^x)+x}\, dx$
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\end{document}

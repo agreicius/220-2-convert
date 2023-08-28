@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: partial fraction decomposition}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+% \subsection*{Definitions}
+
+
+%***********************************************
+ \subsection*{Theory}
+ \begin{namedtheorem}[Polynomial facts]\
+   \begin{enumerate}
+     \item Suppose $f(x)=\anpoly$ with $a_n\ne 0$. We call $n$ the {\bf degree} of $f$, denoted $\deg f$.
+     \item A polynomial of degree $n$ has at most $n$ distinct roots.
+     \item {\em Equating coefficients}. Given polynomials $f(x)=\anpoly$ and $g(x)=\varpoly{b}{n}$ we have
+     \[
+     f(x)=g(x) \iff n=m \text{ and } a_i=b_i \text{ for all $i$.}
+     \]
+     \item A nonzero polynomial is {\bf irreducible} if it cannot be factored into two polynomials of smaller degree. If $f(x)$ is an irreducible polynomial with real coefficients, then $\deg f=1$ or $\deg f=2$.
+   \end{enumerate}
+
+ \end{namedtheorem}
+\begin{namedtheorem}[Partial fraction decomposition] Let $f(x)/g(x)$ be a rational function (i.e, $f(x)$ and $g(x)$ are both polynomials), and suppose that $\boxed{\deg f<\deg g}$.
+\begin{itemize}
+  \item If $g(x)$ factors into non-repeated linear factors as
+  \[
+  g(x)=D(x-a_1)(x-a_2)\cdots (x-a_r),
+  \]
+  then there is a unique choice of constants $A_1, A_2,\dots, A_r$ such that
+  \[
+  \frac{f(x)}{g(x)}=\frac{A_1}{x-a_1}+\frac{A_2}{x-a_2}+\cdots +\frac{A_r}{x-a_r}.
+  \]
+  \item If $g(x)$ factors into non-repeated irreducible linear and quadratic factors as
+  \[
+  g(x)=D(x-a_1)(x-a_2)\cdots (x-a_r)(x^2+b_1x+c_1)(x^2+b_2x+c_2)\cdots (x^2+b_sx+c_s),
+  \]
+  there there is a unique choice of constants $A_1,A_2,\dots, A_r, B_1,B_2,\dots, B_s, C_1, C_2,\dots, C_s$ such that
+  \[
+  \frac{f(x)}{g(x)}=\frac{A_1}{x-a_1}+\frac{A_2}{x-a_2}+\cdots +\frac{A_r}{x-a_r}+\frac{B_1x+C_1}{x^2+b_1x+c_1}+\frac{B_2x+C_2}{x^2+b_2x+c_2}+\cdots +\frac{B_sx+C_s}{x^2+b_sx+c_s}.
+  \]
+\end{itemize}
+\end{namedtheorem}
+\begin{comment}
+\
+\begin{enumerate}
+  \item If $\deg f\geq \deg g$, then we can perform long polynomial division to write
+  \[
+  f(x)=h(x)+\frac{r(x)}{g(x)},
+  \]
+  where $h(x)$ is a polynomial and $\deg r(x)<\deg g(x)$, and then apply partial fraction decomposition to $r(x)/g(x)$.
+  \item There is a more general statement of partial fraction decomposition covering the case where $g(x)$ has repeated irreducible linear and quadratic factors, but we will not use it. See the text if you are interested.
+\end{enumerate}
+\end{comment}
+
+
+
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Partial fraction decomposition]
+  Let $f(x)/g(x)$ be a quotient of polynomials, and suppose $\deg f<\deg g$. To compute the partial fraction decomposition of $f(x)/g(x)$ proceed as follows.
+  \begin{enumerate}
+    \item Factor $g(x)$ into powers of distinct irreducible polynomials.
+
+    {\bf Factoring trick}. If $g(x)$ has integer coefficients and a leading coefficient equal to 1, then any integer roots of $g(x)$ will be factors of the constant term.
+    \item Set up the partial fraction decomposition equation with as yet unknown constants ($A_i$, $B_i$, etc.). Clear the denominators of both sides of the equation, resulting in an identity between two polynomials. The polynomial on the right will be expressed in terms of the unknowns ($A_i$, $B_i$, etc.).
+    \item To solve for the undetermined constants ($A_i$, $B_i$, etc.) set up and solve a linear system of equations using one of the following techniques.
+    \begin{enumerate}
+      \item {\em Equate coefficients}. Express the polynomial on right in ``standard form" by collecting like terms. For the left and right polynomials to be equal, their corresponding coefficients must all be equal. This yields a system of equations in the unknowns ($A_i$, $B_i$, etc.) that you must now solve.
+      \item {\em Evaluate equality at choices of $x$}. Evaluate the polynomial equation at various explicit choices of $x$. Each evaluation at a specific $x=c$ yields a new linear equation in the unknowns ($A_i$, $B_i$, etc.). Do this enough times so that your system of equations determines the unknowns uniquely. As far as possible, make judicious choices for $x$ to make your algebra easier.
+    \end{enumerate}
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Compute $\displaystyle\int \frac{x+2}{x^2-1}\, dx$
+  \item Compute $\displaystyle\int\frac{1}{x^4+3x^2+2}$
+  \item Compute $\displaystyle\int\frac{x^2+1}{x^3+2x^2-x-2}\, dx$
+  \item Compute $\displaystyle\int \frac{x^2}{x^2+2x-1}\, dx$
+  % \item Compute $\displaystyle\int\frac{1}{x^4-5x^2+4}\, dx$
+\end{enumerate}
+
+
+
+
+\end{document}

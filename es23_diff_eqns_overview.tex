@@ -1,0 +1,131 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: overview of first-order differential equations}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Modeling with differential equations] Many applications present information about a quantity in a form that can be modeled by a differential equation. Here is an outline of the steps to take in these settings.
+  \begin{enumerate}
+    \item Explicitly identify the quantity $Q$ under consideration as a function of some other quantity $x$, and give a name to this function: $Q=f(x)$.
+    \item Translate the given information about $Q$ into a (in our case) first-order differential equation:
+    \[
+    f'(x)=F(x, f(x)) \tag{$*$}
+    \]
+    This is often the trickiest step! Look for phrases that indicate rate of change. When there is a combination of components to the rate of change, a diagram may be useful. Translate phrases like ``blah is proportional to blah" as ``\text{blah}=k(\text{blah})", where $k$ is the (possibly undetermined) constant of proportionality.
+    \item Decide whether your differential equation $(*)$ is {\em linear} or {\em separable} and use the appropriate technique to solve $(*)$ in as general a form as you can. If the differential equation is linear, make sure to bring it into standard form before using the integrating factor method. At this point you will have a formula for $Q=f(x)$ that includes some undetermined constants.
+    \item Use any additional information given about $Q$ to solve for any undetermined constants in your formula for $f(x)$.
+  \end{enumerate}
+
+\end{namedtheorem}
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item A large tank in a pickle factory initially contains 50 liters of brine in which 20 kg of salt is dissolved. The mixture is kept uniform by stirring. Brine containing 0.2 kg of dissolved salt per liter enters the tank at a rate of 10 liters per minute. At the same time the mixture from the tank leaves at a rate of 6 liters per minute. How much salt is in the tank after 30 minutes.
+  \item Dudley is dropped out of a plane and falls vertically toward the earth. Dudley's acceleration is the sum of two components:
+  \begin{itemize}[itemsep=0pt, topsep=0pt]
+    \item a downward acceleration due to gravity equal to $g\approx 9.8\text{ kg}\cdot \text{m}/\text{s}^2$;
+    \item an acceleration in the opposite direction to Dudley's current velocity, and proportional to {\em the square} of this velocity.
+  \end{itemize}
+  \begin{enumerate}
+    \item Write a differential equation describing Dudley's velocity, and find the general solution to this equation. Your expression will contain two undetermined constants.
+    \item Find an explicit formula for Dudley's velocity, assuming that his initial vertical velocity is 0 m/s, and he approaches a terminal velocity of 55 m/s.
+  \end{enumerate}
+  \item The logistic growth differential equation is a model of population growth that serves as an alternative to exponential growth. If $P=f(t)$ is the population at time $t$, then the logistic growth model posits that $P$ satisfies the differential equation
+  \[
+  \frac{dP}{dt}=k\, P(M-P), \tag{$*$}
+  \]
+  where $k, M$ are fixed positive constants.
+
+  Find the general solution to $(*)$ and interpret the constant $M$ in terms of population growth.
+\end{enumerate}
+
+
+
+
+
+\end{document}

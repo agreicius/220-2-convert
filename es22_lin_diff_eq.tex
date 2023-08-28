@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: first-order linear differential equations}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+   \bigskip\noindent%         create a vertical offset to previous material
+   \refstepcounter{myalgctr}% increment the environment's counter
+   \textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+   \newline%
+   }{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[First-order linear equation]A {\bf first-order linear differential equation} in the unknown $f(x)$ is a differential equation that can be written in the form
+  \[
+  f'(x)+p(x)f(x)=q(x) \tag{$*$}
+  \]
+Equation $(*)$ is called the {\bf standard form} of the equation.
+\end{namedtheorem}
+\begin{namedtheorem}[Integrating factor] Consider a first-order linear equation in the unknown $f(x)$ with standard form
+  \[
+  f'(x)+p(x)f(x)=q(x).
+  \]
+  An {\bf integrating factor} for this equation is any function of the form
+  \[
+  v(x)=e^{P(x)},
+  \]
+  where $P(x)$ is an antiderivative of $p(x)$. Using indefinite integral notation, we have
+  \[
+  v(x)=e^{\int p(x)\, dx}.
+  \]
+\end{namedtheorem}
+
+%***********************************************
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Solving first-order linear equations] Suppose $p, q$ are continuous on the interval $I$. To solve the differential equation with standard form
+  \[
+  f'(x)+p(x)f(x)=q(x), \ x\in I, \tag{$*$}
+  \]
+ proceed as follows:
+ \begin{enumerate}
+   \item Compute an antiderivative $P(x)$ of $p(x)$.
+   \item Set $v(x)=e^{P(x)}$: i.e., $v(x)=e^{\int p(x)\, dx}$.
+   \item The function $f(x)$ is a solution of $(*)$ if and only if it is a solution of
+   \[
+   (v(x)f(x))'=v(x)q(x).
+   \]
+   \item Find an antiderivative $G(x)$ of $v(x)q(x)$. Then the general solution of $(*)$ is
+   \[
+   f(x)=\frac{G(x)}{v(x)}+\frac{C}{v(x)},
+   \]
+   where $C$ is any constant. Using indefinite integral notation:
+   \[
+   f(x)=\frac{1}{v(x)}\int v(x)q(x)\, dx.
+   \]
+ \end{enumerate}
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Use the integrating factor method to find the general solution to $y'=k y$, where $k$ is any fixed constant.
+  \item Consider the differential equation
+  \[
+  (x-2)f'=e^{-x}-3f, \ x\in (-\infty, 2).
+  \]
+  \begin{enumerate}
+    \item Find the general solution to the differential equation.
+    \item Find the solution satisfying $f(1)=-1$.
+  \end{enumerate}
+  \item Find the general solution to the differential equation
+  \[
+  (x^2+1)f'(x)-x=x^3-xf(x), \  x\in (-\infty, \infty).
+  \]
+\end{enumerate}
+
+
+
+
+\end{document}

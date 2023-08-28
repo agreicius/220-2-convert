@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+%%%%%%%%%%PACKAGES%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{latexsym}
+\usepackage{amssymb, amsmath, amsthm, amsfonts}
+\usepackage{stmaryrd} %For \mapsfrom
+%\usepackage[fleqn]{amsmath}  % fleqn option makes aligned equations flushed left!
+%\usepackage[english]{babel}
+%\usepackage{pgf}
+\usepackage{mathtools}
+\usepackage[mathscr]{eucal}
+\usepackage{fancyhdr}
+\usepackage{multicol,parcolumns}
+\usepackage{enumerate}
+%\usepackage{enumitem}
+\usepackage[shortlabels]{enumitem}
+\usepackage{graphicx}
+\usepackage{extarrows}
+\usepackage{cancel}
+%\usepackage{tikz}
+%\usepackage[all,cmtip]{xy} %\SelectTips{cm}{10}
+\usepackage[all]{xy} \SelectTips{cm}{10}
+%\usepackage{listings} %For code blocks
+
+\input{LatexPreamble}
+%%%%%%%%FANCY HEADER%%%%%%%%%
+\pagestyle{plain}
+\setlength{\headheight}{13.6pt}
+\fancyhfoffset[L]{.5in}
+%\lhead{\Large \bf{Name:}}
+\chead{Executive summary: the natural logarithm function}
+\rhead{Math 220-2}
+%\lfoot{TURN OVER!}
+%\rfoot{TURN OVER!}
+
+%%%%%%%PAGE LAYOUT%%%%%%%%%%%%%
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9in}
+
+%\setlength{\topmargin}{-.8in}
+%\setlength{\columnsep}{1.5in}
+\addtolength{\hoffset}{-1 in}
+\addtolength{\voffset}{-.5 in}
+
+
+%%%%%%%THEOREM ENVIRONMENTS%%%%%%%%
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\newtheorem*{definitions}{Definitions}
+\newtheorem*{notation}{Notation}
+\newtheorem*{example}{Example}
+\newtheorem*{comment}{Comment}
+\newtheorem*{comments}{Comments}
+\newtheorem*{examples}{Examples}
+\newtheorem*{warning}{Warning}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{corollary}{Corollary}
+\newtheorem*{proposition}{Proposition}
+\newtheorem*{lemma}{Lemma}
+
+\newtheoremstyle{named}{}{}{}{}{\bfseries}{.}{.5em}{\thmnote{#3}}
+\theoremstyle{named}
+\newtheorem*{namedtheorem}{Theorem}
+
+\newcounter{myalgctr}
+\newenvironment{myalg}{%      define a custom environment
+\bigskip\noindent%         create a vertical offset to previous material
+\refstepcounter{myalgctr}% increment the environment's counter
+\textbf{Algorithm \themyalgctr}% or \textbf, \textit, ...
+\newline%
+}{\par\bigskip}  %
+\numberwithin{myalgctr}{section}
+
+
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+
+%%%%%%%%%%HYPERREFS PACKAGE%%%%%%%%%%%%%%%%%
+\usepackage[colorlinks]{hyperref}
+%\definecolor{webcolor}{rgb}{0.8,0,0.2}
+%\definecolor{webbrown}{rgb}{.6,0,0}
+%\usepackage[
+%        colorlinks,
+%       linkcolor=webbrown,  filecolor=webcolor,  citecolor=webbrown,
+%        backref
+%]{hyperref}
+\usepackage[alphabetic, lite]{amsrefs} % for bibliography
+\begin{document}
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Natural logarithm] The {\bf natural logarithm function}  is defined as
+  \[
+  \ln x=\int_1^x\frac{1}{t}\, dt
+  \]
+  where $x$ is an element of $(0,\infty)$.
+
+\end{namedtheorem}
+\begin{namedtheorem}[Euler's number] {\bf Euler's number}, denoted $e$, is the unique number satisfying $\ln e=1$. In other words, $e$ is the number satisfying
+  \[
+  1=\int_1^e\frac{1}{t}\, dt.
+  \]
+
+\end{namedtheorem}
+%***********************************************
+\subsection*{Theory}
+\begin{namedtheorem}[Properties of the natural logarithm]
+  The following properties hold:
+  \begin{enumerate}
+    \item The natural logarithm is differentiable (hence also continuous) on $(0,\infty)$ and satisfies
+    \[
+    \frac{d}{dx}\ln x=\frac{1}{x}.
+    \]
+    for all $x$ in $(0,\infty)$.
+    \item The natural logarithm is increasing on $(0,\infty)$ and hence one-to-one. The graph of $\ln$ is always concave down.
+    \item We have
+    \begin{align*}
+      \lim_{x\to\infty}\ln x&=\infty\\
+      \lim_{x\to 0^+}\ln x&=-\infty
+    \end{align*}
+    \item The domain of $\ln$ is $(0,\infty)$; the range of $\ln$ is $(-\infty, \infty)$.
+    \item $\ln 1=0$.
+    \item We have
+    \begin{align*}
+      \ln(ab)&=\ln a+\ln b,  \text{ for all $a,b\in (0,\infty)$.}\\
+      \ln(a/b)&=\ln a-\ln b,  \text{ for all $a,b\in (0,\infty)$, $b\ne 0$.}\\
+      \ln a^r&=r\ln a,  \text{ for all $a\in (0,\infty)$ and $r$ rational.}
+    \end{align*}
+  \end{enumerate}
+\end{namedtheorem}
+
+\begin{corollary}
+  The function $f(x)=\ln\lvert x\rvert$ is an antiderivative of $1/x$ on its entire domain $D=(-\infty, 0)\cup (0,\infty)$: i.e., we have
+  \[
+  \int\frac{1}{x}\, dx=\ln \vert x\rvert\, dx+C.
+  \]
+\end{corollary}
+\begin{namedtheorem}[Further trigonometric antiderivative formulas]
+  The following antiderivative formulas hold:
+  \begin{enumerate}
+    \item $\displaystyle\int \tan x\, dx=-\ln\lvert \cos x\rvert+C=\ln\lvert\sec x\rvert+C$
+    \item $\displaystyle\int \cot x\, dx=\ln\vert \sin x\vert+C$
+    \item $\displaystyle\int \sec x\, dx=\ln\vert \sec x+\tan x\vert+C$
+    \item $\displaystyle\int \csc x\, dx=-\ln\vert \csc x+\cot x\vert+C$
+  \end{enumerate}
+
+\end{namedtheorem}
+
+
+%***************************************
+
+% \subsection*{Procedures}
+%
+% %*********************************************************
+% \subsection*{Examples}
+
+
+
+
+
+\end{document}
