@@ -1,0 +1,2182 @@
+\input{LatexPreambleTemplate}
+%\def\bpause{\vspace{.1in}\\}
+%\def\pause{}\newcommand{\alert}[1]{\emph{#1}}
+\title{Math 220-2: collected executive summaries}
+\author{Aaron Greicius}
+\begin{document}
+\maketitle
+\tableofcontents\newpage
+%%%%%%%%%%
+%Exercises from ./es01_antiderivatives.tex
+%%%%%%%%%%
+
+\section{Executive summary: antiderivatives}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Antiderivative] Let $f$ be a real-valued function defined on an interval $I$. A function $F$ is called an antiderivative of $f$ if $F'(x)=f(x)$ for all $x\in I$.
+\end{namedtheorem}
+
+\begin{namedtheorem}[Indefinite integral] Let $f$ be a real-valued function defined on an interval $I$ and suppose $f$ has an antiderivative. The {\bf indefinite integral} of $f$ with respect to $x$ is the notation
+  \[
+  \int f \ dx
+  \]
+and is used to denote the general antiderivative of $f$. Thus if $F$ is a particular antiderivative, then we write
+\[
+\int f \ dx=F(x)+C
+\]
+to express the fact that the general antiderivative of $f$ is of the form $F(x)+C$ for some $C\in \mathbb{R}$. The symbol $\int$ is called the {\bf integral symbol}, the function $f$ is called the {\bf integrand} of the integral, and $x$ is called the {\bf variable of integration}.
+\end{namedtheorem}
+%********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[General antiderivative theorem] Let $f$ be a real-valued function defined on an interval $I$ and suppose $F$ is an antiderivative of $f$.
+  \begin{enumerate}[itemsep=0pt, topsep=0pt]
+    \item Given any $C\in \mathbb{R}$, the function $F(x)+C$ is an antiderivative of $f$.
+    \item If $G$ is an antiderivative of $f$, then there is a $C\in \mathbb{R}$ such that
+    \[
+    G(x)=F(x)+C
+    \]
+    for all $x\in I$.
+    \item Thus (1) and (2) imply that the {\bf general antiderivative} of $f$ on $I$ can be expressed as $F(x)+C$, where $C$ is any real number.
+  \end{enumerate}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Antiderivative formulas] The following antiderivative (or indefinite integral) formulas follow directly from a corresponding derivative formula.
+  \begin{align*}
+    \int 0\, dx&=C & \int x^r\, dx&=\frac{x^{r+1}}{r+1}+C, r\ne -1\\
+    \int \cos kx\, dx&=\frac{1}{k}\sin kx+C & \int \sin kx\, dx &=-\frac{1}{k}\cos kx+C \\
+    \int\sec^2kx\, dx&=\frac{1}{k}\tan kx+C & \int \csc^2 kx \, dx&=-\frac{1}{k}\cot kx+C\\
+    \int \sec kx\tan kx\, dx&=\frac{1}{k}\sec kx+C & \int \csc x\cot x\, dx&=-\frac{1}{k}\csc kx+C
+  \end{align*}
+\end{namedtheorem}
+\begin{namedtheorem}[Antiderivative rules] Let $f$ and $g$ be real-valued functions defined on an interval $I$. Suppose $F$ is an antiderivative of $f$ and $G$ is an antiderivative of $g$.
+  \begin{enumerate}[itemsep=0pt, topsep=0pt]
+    \item Given any constant $a\in \mathbb{R}$, the function $aF$ is an antiderivative of $af$, and hence
+    \[
+    \int af\, dx=aF(x)+C.
+    \]
+    \item The function $F(x)\pm G(x)$ is an antiderivative of $f(x)\pm g(x)$, and hence
+    \[
+    \int f\pm g\, dx=F(x)\pm G(x)+C.
+    \]
+  \end{enumerate}
+
+\end{namedtheorem}
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Find an antiderivative for the given function.
+  \begin{enumerate}
+    \item $\ds f(x)=x^7$
+    \item $\ds f(x)=\frac{1}{\sqrt{x}}$
+    \item $\ds f(x)=2\sin x-x^{2/3}$
+  \end{enumerate}
+  \item Find an antiderivative for the given function.
+  \begin{enumerate}
+    \item $f(x)=\sec^25x$
+    \item $f(x)=2x\cos(x^2)$
+    \item $f(x)=\cos(x^2)$
+  \end{enumerate}
+  \item At time $t=0$ minutes a tank containing 100 gallons of water begins leaking. After $t$ minutes the rate at which the water leaves the tank is given by
+  \[
+  r(t)=\frac{1}{\sqrt{2t+1}}.
+  \]
+  Let $f(t)$ be the amount of water in the tank after $t$ minutes. Find a formula for $f(t)$.
+
+    \item Consider the differential equation
+    \[
+    f''(x)=-\frac{2}{3}\cos(2x)+x \tag{$*$}.
+    \]
+    \begin{enumerate}
+      \item Find the general formula for a function $f(x)$ satisfying $(*)$.
+      \item Find the unique function $f(x)$ satisfying $(*)$ and the initial conditions
+      \[
+      f(0)=0, f'(0)=-1.
+      \]
+
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es02_estimating_area.tex
+%%%%%%%%%%
+
+\section{Executive summary: estimating area}
+
+\thispagestyle{fancy}
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Area estimates] Let $f$ be a nonnegative function defined on the interval $[a,b]$, and let $\mathcal{C}$ be the graph of $f$ from $x=a$ to $x=b$. To estimate the area between $\mathcal{C}$ and the $x$-axis proceed as follows:
+  \begin{enumerate}[(i),itemsep=0pt,topsep=0pt]
+    \item Divide $[a,b]$ into $n$ equal subintervals, each of width $\Delta x=(b-a)/n$.
+    \item For each subinterval pick a {\bf sample} input $x^*$ in that interval and build the rectangle whose base is the subinterval and whose height is given by $h=f(x^*)$. The area of this block is
+    \[
+    A=\underset{\text{height}}{\underbrace{f(x^*)}}\,\underset{\text{width}}{\underbrace{\Delta x}}.
+    \]
+    \item Sum together the areas of the $n$ blocks constructed in (ii).
+  \end{enumerate}
+Depending on how the sample inputs $x^*$ are chosen in each subinterval, we get a different estimate. Below you find a number of  common methods.
+\begin{itemize}[itemsep=0pt, topsep=0pt]
+  \item If $x^*$ is chosen as the left (resp. right) endpoint of each subinterval, the estimate is called a {\bf left sum estimate} (resp. {\bf right sum estimate}).
+  \item If $x^*$ is chosen as the midpoint of each subinterval, the estimate is called a {\bf midpoint sum estimate}.
+  \item If $x^*$ is chosen so that $f(x^*)$ is the minimum value of $f$ on each subinterval, the estimate is called a {\bf lower sum estimate}.
+  \item If $x^*$ is chosen so that $f(x^*)$ is the maximum value of $f$ on each subinterval, the estimate is called an {\bf upper sum estimate}.
+
+\end{itemize}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Estimating net change from rate of change] Suppose physical quantity $Q$ is a function of an input $x$, and that $f(x)$ is the {\em instantaneous rate of change} of $Q$ with respect to $x$. The same method used to estimate area under the graph of a function now provides an estimate of the {\em net change of $Q$} as $x$ varies from $a$ to $b$.
+
+\noindent
+In this context we think of $r^*=f(x^*)$ as a {\em fixed rate of change} over the given subinterval, in which case an individual term
+\[
+f(x^*)\, \Delta x
+\]
+in our sum is understood as an estimate of the net change of $Q$ over the given subinterval under the simplifying assumption that $Q$ changes with {\em fixed rate of change} $r^*=f(x^*)$ over the interval.
+
+\end{namedtheorem}
+% %***********************************************
+%  \subsection*{Theory}
+
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Below you find the graph of the velocity $v(t)$ (in mph) of a driver heading due east $t$ minutes after setting off. Compute an estimate of the area under the graph of $v(t)$ between $t=0$ and $t=20$, and explain what this estimate means physically speaking. Include units!
+  \[
+  \includegraphics[width=3in]{CollectedES/EstDistance}
+  \]
+  \item Let $f(x)=1-x^3$, and let $\mathcal{C}$ be the graph of $f$.
+  Compute the upper and lower area estimates of the region between $\mathcal{C}$ and the $x$-axis from $x=0$ to $x=1$ by dividing the interval $[0,1]$ into 4 equal subintervals.
+
+  Draw block pictures of your estimates on the provided graphs.
+
+  Explain why the lower estimate is equal to the right estimate, and why the the upper estimate is equal to the left estimate.
+  \[
+  \includegraphics[width=2in]{CollectedES/AreaEstSmallDomain}\  \includegraphics[width=2in]{CollectedES/AreaEstSmallDomain}
+  \]
+
+\item Let $f(x)=1-\val{x}^3$, and let $\mathcal{C}$ be the graph of $f$.
+
+Compute the upper and lower area estimates of the region between $\mathcal{C}$ and the $x$-axis from $x=0$ to $x=1$ by dividing the interval $[-1/2,1]$ into 4 equal subintervals.
+
+Draw block pictures of your estimates on the provided graphs.
+\[
+\includegraphics[width=3in]{CollectedES/AreaEstLargeDomain}\  \includegraphics[width=3in]{CollectedES/AreaEstLargeDomain}
+\]
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es03_riemann_sums.tex
+%%%%%%%%%%
+
+\section{Executive summary: Riemann sums}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Sigma notation] Given real numbers $a_1, a_2, \dots, a_n$ the notation
+  \[
+  \sum_{i=1}^{n}a_i
+  \]
+denotes their sum: i.e.,
+\[
+\sum_{i=1}^{n}a_i=a_1+a_2+\cdots +a_n.
+\]
+More generally given any sequence of real numbers $a_{m}, a_{m+1},\dots$, we define
+\[
+\sum_{k=m}^na_k=a_m+a_{m+1}+\cdots +a_{n}.
+\]
+If the terms in the sequence are given by a formula of the form $a_k=f(k)$, then we also write
+\[
+\sum_{k=m}^nf(k)
+\]
+for $\ds\sum_{k=m}^na_k$.
+
+\end{namedtheorem}
+\begin{namedtheorem}[Riemann sums] Let $f$ be a function defined on the interval $[a,b]$, and let $n$ be a positive integer. A {\bf partition} of $[a,b]$ into $n$ subintervals is a choice of points $x_0, x_1,\dots, x_n$ satisfying
+  \[
+  a=x_0<x_1<x_2<\cdots <x_n=b.
+  \]
+Such a partition gives rise to $n$ subintervals of $[a,b]$:
+\[
+I_1=[x_0, x_1], I_2=[x_1, x_2], \dots , I_n=[x_{n-1}, x_n].
+\]
+The $k$-th subinterval has length
+\[
+\Delta x_k=x_{k}-x_{k-1}.
+\]
+Given a choice of sample points $c_k\in I_k$ for each subinterval, the corresponding {\bf Riemann sum} is
+\[
+\sum_{k=1}^n f(c_k)\Delta x_k=f(c_1)(x_1-x_0)+f(c_2)(x_2-x_1)+\cdots +f(c_n)(x_n-x_{n-1}).
+\]
+As with our estimates, we call the Riemann sum a left/right/midpoint/upper/lower sum if the sample points $c_k$ are picked using the corresponding rule. Thus the left Riemann sum corresponding to the partition above is
+\[
+\sum_{k=1}^nf(x_{k-1})\Delta x_k
+\]
+and the right Riemann sum is
+\[
+\sum_{k=1}^nf(x_k)\Delta x_{k}.
+\]
+
+
+\end{namedtheorem}
+%***************************************
+
+% \subsection*{Procedures}
+
+%***********************************************
+ \subsection*{Theory}
+ \begin{namedtheorem}[Summation formulas] Let $n$ be a positive integer. The following summation equalities hold:
+   \begin{enumerate}[topsep=0pt, itemsep=0pt]
+     \item $\ds\sum_{k=1}^n 1=n$
+     \item $\ds \sum_{k=1}^nk=\frac{n(n+1)}{2}$
+     \item $\ds\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}{6}$
+     \item $\ds \sum_{k=1}^nk^3=\left(\frac{n(n+1)}{2}\right)^2$.
+   \end{enumerate}
+
+ \end{namedtheorem}
+\begin{namedtheorem}[Summation rules]
+Given any sequences $a_m, a_{m+1}, \dots$ and $b_m, b_{m+1}, \dots$, and any $c\in \R$, the following equalities hold:
+\begin{enumerate}
+  \item $\ds\sum_{k=m}^na_k+\sum_{k=m}^nb_k=\sum_{k=m}^n(a_k+b_k)$
+  \item $\ds\sum_{k=m}^na_k-\sum_{k=m}^nb_k=\sum_{k=m}^n(a_k-b_k)$
+  \item $\ds\sum_{k=m}^nca_k=c\sum_{k=m}^na_k$.
+\end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Let $p_1, p_2,p_3, \dots, $ be the sequence of prime numbers in increasing order: i.e., $p_1=2$, $p_2=3$, $p_3=5$, etc. Compute
+  $
+  \ds\sum_{k=3}^{6}p_k
+  $.
+  \item Compute
+  $
+  \ds \sum_{k=1}^{21}\sin(\pi k/2)
+  $
+  \item Compute $\ds \sum_{k=1}^{5} 5k^3-10k+2$ using appropriate summation rules and formulas.
+  \item Let $n$ be a positive integer and define $R_n$ to be the right Riemann sum of $f(x)=1-x^3$ corresponding to the partition of $[0,1]$ into $n$ equal subintervals.
+  \begin{enumerate}
+    \item Derive a closed formula for $R_n$. Your answer will be expressed in terms of $n$.
+    \item Compute $\lim_{n\to \infty}R_n$. Look familiar?
+    \item Now do the same thing with $L_n$, the left Riemann sum of $f(x)$ corresponding to the partion of $[0,1]$ into $n$ equal subintervals.
+
+    {\bf Hint}. For the closed formula of $L_n$ use an ``index-shift" technique to simplify the summation.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es04_definite_integral.tex
+%%%%%%%%%%
+
+\section{Executive summary: definite integral}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Integrable function] Let $f$ be a function defined on the interval $[a,b]$. \\
+  We say the {\bf definite integral of $f$ over $[a,b]$ exists} if there is a real number $J$ such that for {\em any} sequence of partitions $P_n$ of $[a,b]$ and {\em any} choice of Riemann sums $S_n$ corresponding to the partitions $P_n$, if the maximum width of a subinterval in $P_n$ approaches 0, then
+  \[
+  \lim_{n\to\infty} S_n=J.
+  \]
+In plain English, the definite integral of $f$ exists if any sequence of Riemann sums corresponding to a finer and finer partition of $[a,b]$ approaches the same value $J$ in the limit.
+
+In this case we say {\bf $f$ is integrable over $[a,b]$} and call $J$ the {\bf definite integral of $f$ over $[a,b]$}, denoted
+\[
+\int_a^bf(x)\, dx=J.
+\]
+\end{namedtheorem}
+\begin{namedtheorem}[Area and signed area of regions defined by functions] Let $f$ be integrable over the interval $[a,b]$, let $\mathcal{C}$ be the graph of $f$, and let $\mathcal{R}$ be the region between $\mathcal{C}$ and the $x$-axis from $x=a$ to $x=b$.
+\begin{itemize}
+  \item We define the {\bf area} (or {\bf total area}) of $\mathcal{R}$ to be the integral of $\lvert f\rvert$ over $[a,b]$: i.e.,
+  \[
+  \text{area of $\mathcal{R}$}=\int_a^b\lvert f(x)\rvert\, dx.
+  \]
+  \item We define the {\bf signed area} of $\mathcal{R}$ to be the integral of $f$ over $[a,b]$: i.e.,
+  \[
+  \text{signed area of $\mathcal{R}$}=\int_a^b f(x)\, dx.
+  \]
+\end{itemize}
+
+
+\end{namedtheorem}
+\begin{comment}
+  Let $f$ be integrable over the interval $[a,b]$, let $\mathcal{C}$ be the graph of $f$, and let $\mathcal{R}$ be the region between $\mathcal{C}$ and the $x$-axis from $x=a$ to $x=b$.
+\begin{enumerate}
+  \item The area of $\mathcal{R}$ is always nonnegative, since $\lvert f(x)\rvert\geq 0$ for all $x\in [a,b]$.
+  \item If $f(x)\geq 0$ for all $x\in [a,b]$, then $f=\lvert f\rvert$ over $[a,b]$, and hence
+  \[
+  \text{area of $\mathcal{R}$}=\int_a^b f(x)\, dx
+  \]
+  in this case.
+  \item Suppose $[a,b]$ can be partitioned into finitely many intervals over which $f$ is either always nonnegative ($\geq 0$) or always nonpositive ($\leq 0$). Then
+  \[
+  \text{signed area of $\mathcal{R}$}=\int_a^b f(x)\, dx=(\text{area of regions where $f\geq 0$})-(\text{area of regions where $f\leq 0$}).
+  \]
+\end{enumerate}
+\end{comment}
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Direct computation of definite integral] Suppose $f$ is integrable on the interval $[a,b]$. \\
+  Since $\displaystyle\int_a^bf(x)\, dx$ can be computed using any sequence of Riemann sums, we may compute it as a limit of right Riemann sums $R_n$ corresponding to partitions of $[a,b]$ into $n$ equal subintervals. For such partitions the length of each subinterval is $\Delta x=(b-a)/n$, and the right endpoint of the $k$-th subinterval is $x_k=a+k(b-a)/n$. We conclude:
+  \[
+  \int_a^b f(x)\, dx=\lim_{n\to\infty} R_n=\lim_{n\to\infty}\sum_{k=1}^n f\left(a+\frac{k(b-a)}{n}\right)\frac{(b-a)}{n}.
+  \]
+
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Integrable functions theorem] Let $f$ be defined on the interval $[a,b]$.
+If $f$ is continuous everywhere on $[a,b]$, or if $f$ has at most finitely many jump discontinuities on $[a,b]$, then $f$ is integrable over $[a,b]$.
+\end{namedtheorem}
+
+\begin{namedtheorem}[Properties of definite integrals]
+  Let $f$ and $g$ be integrable over $[a,b]$.
+  \begin{enumerate}
+    \item $\ds\int_a^a f(x)\, dx=0$. (By definition)
+    \item $\ds\int_b^af(x)\, dx=-\int_a^b f(x)\, dx$. (By definition)
+    \item {\bf Sum and difference}. $\ds\int_a^b f(x)\pm g(x)\, dx=\int_a^bf(x)\, dx\pm \int_a^bg(x)\, dx$
+    \item {\bf Constant multiple}. $\ds\int_a^bcf(x)\, dx=c\int_a^bf(x)\, dx$ for any $c\in \R$.
+    \item {\bf Additive}. For any $c\in \R$ we have
+    \[
+    \int_a^bf(x)\, dx=\int_a^cf(x)\, dx+\int_c^b f(x)\, dx,
+    \]
+    as long as all of the integrals involved are defined.
+    \item {\bf Max-min inequality}. If $f$ has a minumum value $\min f$ on $[a,b]$ and a maximum value $\max f$ on $[a,b]$, then
+    \[
+    (\min f)(b-a)\leq \int_a^b f(x)\, dx\leq (\max f)(b-a)
+    \]
+    \item {\bf Domination}. If $f(x)\leq g(x)$ for all $x\in [a,b]$, then
+    \[
+    \int_a^bf(x)\, dx\leq \int_a^bg(x)\, dx.
+    \]
+
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+    \item Fix positive constants $m$ and $b$, and define $f(x)=mx+b$.
+    \begin{enumerate}
+      \item Fix a positive constant $a$. Compute $\int_0^a f(x)\, dx$ directly as a limit of right Riemann sums.
+      \item Graph $f(x)$ on $[0,a]$ and explain how your answer in (a) is consistent with known area formulas.
+    \end{enumerate}
+    \item Fix a positive constant $b$. Compute $\ds\int_0^b f(x)\, dx$ directly as a limit of right Riemann sums.
+
+  \item Let $f(x)=1-x^3$. Fix constants $a$ and $b$ with $0<a<b$. Use your result in Example 2 and various integral properties (including the  additivite property) to derive a formula for $\ds\int_a^bf(x)\, dx$ in terms of $a$ and $b$.
+
+  \item Let $f(x)=1-x^3$. Fix a constant $b$ with $b>1$, let $f(x)=1-x^3$, and let $\mathcal{R}$ be the region between the graph of $f$ and the $x$-axis from $x=0$ to $x=b$.
+  \begin{enumerate}
+    \item Graph $f(x)$ on $[0,b]$. Your graph should reflect the assumption that $b>1$.
+    \item Describe precisely how the signed area of $\mathcal{R}$ is a difference of areas of two distinct regions.
+    \item Compute the area of $\mathcal{R}$.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es05_ftc.tex
+%%%%%%%%%%
+
+\section{Executive summary: fundamental theorem of calculus}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Average value of a function] Let $f$ be integrable on $[a,b]$. The {\bf average value of $f$ over $[a,b]$} is defined as
+  \[
+  \frac{1}{b-a}\int_a^bf(x)\, dx.
+  \]
+\end{namedtheorem}
+\begin{namedtheorem}[Difference-evaluation notation] Let $g$ be a real-valued function, and let $a,b$ be elements of the domain of $g$. The notation $\Bigl[g(x)\Bigr]_a^b$  is defined as follows:
+  \[
+  \Bigl[ g(x)\Bigr ]_a^b=g(b)-g(a).
+  \]
+  It is worthwile recording some simple identities involving this notation:
+  \begin{align*}
+    \Bigl[ f(x)\pm g(x)\Bigr ]_a^b&=\Bigl[f(x)\Bigr ]_a^b\pm \Bigl[ g(x)\Bigr ]_a^b\\
+    \Bigl[ cg(x)\Bigr]_a^b&=c\Bigl[g(x)\Bigr]_a^b
+  \end{align*}
+  We will often abbreviate the notation $\Bigl[g(x)\Bigr]_a^b$ to $g(x)\Bigr]_a^b$.
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Fundamental theorem of calculus (I)] Let $f$ be continuous on an open interval $I$ containing $a$. Let $F(x)$ be the function defined on $I$ as
+  \[
+  F(x)=\int_a^x f(t)\, dt.
+  \]
+Then $F(x)$ is differentiable on $I$ and
+\[
+F'(x)=\frac{d}{dx}\int_a^xf(t)\, dt=f(x)
+\]
+for all $x\in I$.
+\end{namedtheorem}
+\begin{corollary}
+  If $f$ is continuous on the open interval $I$, then $f$ has an antiderivative on $I$.
+\end{corollary}
+\begin{namedtheorem}[Fundamental theorem of calculus (II)] Let $f$ be continuous on the interval $[a,b]$. If $F(x)$ is an antiderivative of $f(x)$ on $[a,b]$, then
+  \[
+  \int_a^b f(x)\, dx=F(b)-F(a).
+  \]
+
+\end{namedtheorem}
+\begin{namedtheorem}[FTC II: rate of change version] Suppose $g$ is differentiable on $[a,b]$. The derivative function $g'$ computes the (instantaneous) rate of change of $g$ with respect to $x$. By FTC II, we have:
+  \[
+  \int_a^b g'(x)\, dx=g(b)-g(a).
+  \]
+  In other words, the integral of the {\em rate of change} of a function over $[a,b]$ is the {\em net change} of that function from $a$ to $b$.
+
+\end{namedtheorem}
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Antiderivative method of computing integrals] Suppose $f(x)$ is continuous on $[a,b]$. The antiderivative method for computing $\int_a^b f(x)\, dx$ proceeds as follows:
+  \begin{enumerate}
+    \item Find an antiderivative of $f$: i.e., find $F$ such that $F'(x)=f(x)$ for all $x\in [a,b]$.
+    \item By the fundamental theorem of calculus (II) we have
+    \[
+      \int_a^bf(x)\, dx=F(b)-F(a).
+    \]
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Use the fundamental theorem of calculus to compute the following definite integrals.
+  \begin{enumerate}
+    \item $\ds\int_a^b 1-x^3\, dx$
+    \item $\ds\int_0^{10} \frac{1}{\sqrt{2t+1}}\, dt$
+    \item $\ds\int_{3\pi/4}^{\pi}\sec^2 u\, du$.
+  \end{enumerate}
+  \item Let $f(x)=\sin(x/3)$, and let $\mathcal{C}$ be the graph of $f$.
+
+  For each region $\mathcal{R}$ compute the area of $\mathcal{R}$ and the signed area of $\mathcal{R}$.
+
+  Include a diagram of $\mathcal{C}$ and $\mathcal{R}$. Make sure your answer is consistent with your graph. If your answer happens to be 0, use the diagram to explain why.
+  \begin{enumerate}
+    \item $\mathcal{R}$ is the region between $\mathcal{C}$ and the $x$-axis, from $x=-\pi$ to $x=\pi$.
+    \item $\mathcal{R}$ is the region between $\mathcal{C}$ and the $x$-axis, from $x=-\pi$ to $x=\pi/2$.
+    \item $\mathcal{R}$ is the region between $\mathcal{C}$ and the $x$-axis, from $x=0$ to $x=6\pi$.
+  \end{enumerate}
+  \item Let $F(x)=\int_1^x \frac{1}{t^2}\, dt$. Make a table of values of $F(x)$ for $x=1, 2, 3, 4, 5$. Explain graphically what $F(b)$ is for any $b\geq 1$.
+  \item For each $F(x)$ defined below, use the fundamental theorem of calculus (along with some other useful pieces of theory) to compute $\ds F'(x)=\frac{d}{dx}F(x)$.
+  \begin{enumerate}
+    \item $\ds F(x)=\int_{x}^5 \sqrt{t+1}\, dt $
+    \item $\ds F(x)=\int_{-2}^{\sin x}\cos(u^2) \, du$
+    \item $\ds F(x)=\int_{4x}^{\sqrt{x^2+1}}\sin(s^2)\, ds$
+
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es06_substitution.tex
+%%%%%%%%%%
+
+\section{Executive summary: substitution}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+
+
+
+%***********************************************
+ \subsection*{Theory}
+
+\begin{namedtheorem}[Chain rule (antiderivative version)] Let $u$ be a differentiable function on its domain, and suppose $f$ is continuous on the range of $u$. Suppose $F(x)$ is an antiderivative of $f(x)$. Then $F(u(x))$ is an antiderivative of $f(u(x))u'(x)$: i.e.,
+  \[
+  \int f(u(x))u'(x)\, dx=F(u(x))+C.
+  \]
+  Alternatively, letting $u=u(x)$ we have
+  \[
+  \int f(u(x))u'(x)\, dx=\int f(u)\, du.
+  \]
+\end{namedtheorem}
+\begin{comment}
+Before seeing how to correctly use the chain rule (antiderivative version) to compute indefinite integrals, it is worthwhile noting a tempting, but {\em incorrect} method: namely, if $F(x)$ is an antiderivative of $f(x)$ it is not in general true that $F(u(x))$ is an antiderivative of $f(u(x))$. Indeed, the chain rule tells us that $F(u(x))$ is an antiderivative of $f(u(x))u'(x)$.
+
+\end{comment}
+
+
+%***************************************
+\subsection*{Procedures}
+\begin{namedtheorem}[Substitution technique (indefinite integrals)] We wish to compute
+$
+\displaystyle\int f(x)\, dx.
+$
+\begin{enumerate}[itemsep=0pt, topsep=0pt]
+  \item Pick a differentiable substitution function $u=u(x)$. Set
+  \begin{align}
+    u&=u(x)\\
+    du&=u'(x)\, dx
+  \end{align}
+  \item Algebraically manipulate equations (1) and (2) to find a function $g$ such that
+  \[
+  f(x)\, dx=g(u)\, du.
+  \]
+  By the chain rule (antiderivative form) we have
+  \[
+  \int f(x)\, dx=\int g(u)\, du.
+  \]
+  \item If possible, find an antiderivative $G$ of $g$. Then $F(x)=G(u(x))$ is an antiderivative of $f(x)$: i.e.,
+  \[
+  \int f(x)\, dx=G(u(x))+C
+  \]
+\end{enumerate}
+
+\end{namedtheorem}
+\begin{comment}
+There is no such thing as a {\em correct} or {\em incorrect} substitution, and you are encouraged to be creative with your choice of substitution $u(x)$. Instead think of a substitution as either {\em helpful} or {\em not helpful} (or possibly {\em somewhat helpful}). The success of a particular choice of $u(x)$ depends on two factors:
+\begin{enumerate}[itemsep=0pt, topsep=0pt]
+  \item Can you algebraically find a function $g$ such that $f(x)=g(u(x))u'(x)$?
+  \item Having found a suitable $g$, can you find an antiderivative $G$ of $g$?
+\end{enumerate}
+\end{comment}
+\newpage
+\begin{namedtheorem}[Substitution technique (definite integrals)]
+We wish to compute the definite integral $\displaystyle\int_a^b f(x)\, dx$ using a substitution $u=u(x)$. We can proceed in two different ways.
+\begin{enumerate}[itemsep=0pt]
+  \item {\bf Two-step method}. {\em First} find an antiderivative $F(x)$ of $f(x)$ using the substitution method for indefinite integrals, then use the FTC to compute $\displaystyle\int_a^bf(x)\, dx=F(b)-F(a)$.
+  \item {\bf Streamlined method}. Find the $g$ such that $f(x)\, dx=g(u)\, du$ (as with indefinite integral substitution) then convert the original definite integral into a new definite integral with respect to $u$ by also {\em changing the limits of integration}:
+  \[
+  \int_{x=a}^{x=b}f(x)\, dx=\int_{u=u(a)}^{u=u(b)}g(u)\, du.
+  \]
+\end{enumerate}
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item {\bf More or less obvious substitutions}. Use the substitution technique to compute the following indefinite integrals.
+  \begin{enumerate}
+    \item $\displaystyle\int x^2\sqrt{x^3+1}\, dx$
+    \item $\displaystyle\int -\sin t\, \sqrt{\cos t}\, dt$
+    \item $\displaystyle\int \frac{\sin(\sqrt{u})}{\sqrt{u}}\, du$
+
+  \end{enumerate}
+  \item {\bf Less obvious substitutions}. Use the substitution technique to compute the following indefinite integrals.
+  \begin{enumerate}
+    \item $\displaystyle\int\frac{x}{\sqrt{x+1}}\, dx$
+    \item $\displaystyle\int (1+\sqrt{t})^{100}\, dt$
+  \end{enumerate}
+\item {\bf Substitution with definite integrals}. Use the substitution technique to compute the following definite integrals. You may use either the two-step or streamlined method.
+\begin{enumerate}
+  \item $\displaystyle\int_{\pi}^{2\pi}\cos^2(x)\sin x\, dx$
+  \item $\displaystyle\int_{1}^{2} \sqrt{s^8+s^6}\, ds$
+\end{enumerate}
+\end{enumerate}
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es07_region_btwn_curves.tex
+%%%%%%%%%%
+
+\section{Executive summary: regions between curves}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Area of region between curves] Suppose $f(x)\geq g(x)$ for all $x\in [a,b]$. Let $\mathcal{C}_1$ be the graph of $f$, let $\mathcal{C}_2$ be the graph of $g$, and let $\mathcal{R}$ be the region between $\mathcal{C}_1$ and $\mathcal{C}_2$ lying over the interval $[a,b]$ on the $x$-axis. We define the area of $\mathcal{R}$ to be the integral of $f-g$ over $[a,b]$: i.e.,
+  \[
+  \text{area}(\mathcal{R})=\int_a^b f(x)-g(x)\, dx.
+  \]
+Similarly, suppose $x=p(y)$ and $x=p(q)$ are two functions of $y$ satisfying $p(y)\geq q(y)$ for all $y\in [c,d]$. Let $\mathcal{C}_1$ be the graph of $p$, let $\mathcal{C}_2$ be the graph of $q$, and let $\mathcal{R}$ be the region between $\mathcal{C}_1$ and $\mathcal{C}_2$ lying over the interval $[c,d]$ on the $y$-axis. We define the area of $\mathcal{R}$ to be the integral of $p-q$ over $[c,d]$: i.e.,
+  \[
+  \text{area}(\mathcal{R})=\int_c^d p(y)-q(y)\, dy.
+  \]
+\end{namedtheorem}
+\begin{comment}
+Observe that the definition only applies when $f(x)\geq g(x)$ for all $x$ in the given interval. This ensures that the area of $\mathcal{R}$, as defined, is at least nonnegative.
+\end{comment}
+%***********************************************
+ \subsection*{Theory}
+
+\begin{namedtheorem}[Graphical argument in support of area definition] Suppose $f(x)\geq g(x)$ for all $x\in [a,b]$. Let $\mathcal{C}_1$ be the graph of $f$, let $\mathcal{C}_2$ be the graph of $g$, and $\mathcal{R}$ be the region between $\mathcal{C}_1$ and $\mathcal{C}_2$ over the interval $[a,b]$ on the $x$-axis.
+  \begin{enumerate}
+    \item Suppose we also have $f(x)\geq g(x)\geq 0$ for all $x\in [a,b]$. Then we have
+    \begin{align*}
+      \text{area}(\mathcal{R})&=\int_a^b f(x)-g(x)\, dx \\
+      &=\int_a^b f(x)\, dx -\int_a^bg(x)\, dx\\
+      &=\text{area}(\mathcal{R}_1)-\text{area}(\mathcal{R}_2),
+    \end{align*}
+    where $\mathcal{R}_i$ is the region lying between $\mathcal{C}_i$ and the $x$-axis over the interval $[a,b]$. Intuitively, this difference of areas should indeed be the area between the two curves.
+    \item To reduce the general case $f(x)\geq g(x)$ to the case above, simply shift both functions (and hence also $\mathcal{R}$) up by a large enough constant $C$ so that $f(x)\geq g(x)\geq 0$.  This operation does not affect the area of $\mathcal{R}$, and the $C$ gets canceled in the integral computation thanks to the difference operator!
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%***************************************
+\subsection*{Procedures}
+\begin{namedtheorem}[Regions between intertwined curves] Suppose $f$ and $g$ are continuous on the interval $[a,b]$ and intersect one another finitely many times. Let $\mathcal{R}$ be the region between the graphs of $f$ and $g$ lying over the interval $[a,b]$. To compute the area of $\mathcal{R}$, proceed as follows:
+  \begin{enumerate}
+    \item Parition $[a,b]$ into subintervals for which one of the functions is always greater than or equal to the other.
+    \item On each such subinterval compute the area of the corresponding region by integrating the appropriate difference.
+    \item Sum up the areas you compute in (2).
+  \end{enumerate}
+
+
+\end{namedtheorem}
+
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Let $\mathcal{R}$ be the region between the parabola $x+y^2=4$ and the line $2x+y=2$ lying in the first quadrant. Compute the are of $\mathcal{R}$.
+
+  You may do this either by thinking of the curves as graphs of functions of $x$, or graphs of functions of $y$. Which approach is easier?
+  \item Compute the area of the region between the parabolas $y=-x^2-2x$ and $y=x^2-4$ lying within the lines $x=-3$ and $x=2$. 
+\end{enumerate}
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es08_solids_of_revolution.tex
+%%%%%%%%%%
+
+\section{Executive summary: computing volume}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Volume of solid via cross sections] Let $\mathcal{S}\subseteq \R^3$ be a solid region in $3$-space.
+\vspace{.1in}
+\\
+For each $x_0\in \R$ let $\mathcal{S}_{x_0}$ be the {\bf cross section}  of $\mathcal{S}$ consisting of all points of $\mathcal{S}$ whose $x$-coordinate is equal to $x_0$, and let $A(x_0)$ be the area of $S_{x_0}$.
+\vspace{.1in}
+\\
+Assume $A(x)$ is integrable on the interval $[a,b]$. We define the {\bf volume} $V$ of $\mathcal{S}$ between $x=a$ and $x=b$ as the integral of $A(x)$ from $x=a$ to $x=b$: i.e.,
+\[
+V=\int_a^b A(x)\, dx.
+\]
+The volume of $\mathcal{S}$ between $y=c$ and $y=d$, or $z=e$ and $z=f$ is defined similarly.
+ \end{namedtheorem}
+
+\begin{namedtheorem}[Solid of revolution] Given a planar region $\mathcal{R}$ and a line $L$ in that plane, the {\bf solid of revolution} with {\bf axis of revolution $L$} is the solid region $\mathcal{S}$ obtained by rotating $\mathcal{R}$ about $L$.
+\end{namedtheorem}
+
+
+%***********************************************
+ \subsection*{Theory}
+
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Volume via cross sections] To compute the volume of a solid region $\mathcal{S}$ via $x$-cross sections, proceed as follows:
+\begin{enumerate}
+  \item Sketch $\mathcal{S}$ along with a typical cross section $\mathcal{S}_x$.
+  \item Derive a formula for $A(x)$ in terms of $x$.
+  \item Determine the appropriate limits of integration: $x=a$ and $x=b$.
+  \item Compute $\ds \int_a^b A(x)\, dx$.
+\end{enumerate}
+
+\end{namedtheorem}
+
+\begin{namedtheorem}[Volumes of solids of revolution] The cross section method can be applied to the {\em special case} of solids of revolution. The two cases below are typical, and the given procedures can be modified appropriately if a vertical axis is replaced with a horizontal one.
+\vspace{.1in}
+\\
+{\em Cylinder (or disk) method}. Suppose $f(x)$ is integrable on $[a,b]$ and that $f(x)\geq c$ for all $x\in [a,b]$. Let $\mathcal{R}$ be the region between the graph of $f(x)$ and the line $y=c$ from $x=a$ to $x=b$, and let $\mathcal{S}$ be the solid obtained by revolving $\mathcal{R}$ about the horizontal axis $y=c$.
+\begin{itemize}
+  \item For each $x\in [a,b]$, $S_x$ is a disc of radius $f(x)-c$ and area $A(x)=\pi(f(x)-c)^2$.
+  \item The volume of $\mathcal{S}$ from $x=a$ to $x=b$ is thus
+  \[
+  V=\int_a^b \pi(f(x)-c)^2\, dx.
+  \]
+\end{itemize}
+{\em Annulus (or washer) method}. Suppose $p(y)$ and $q(y)$ are integrable on $[a,b]$ and that $p(y)\geq q(y)> c$ for all $y\in [a,b]$. Let $\mathcal{R}$ be the region between the graph of $p(y)$ and $q(y)$ over the interval $[a,b]$ in the $y$-axis, and let $\mathcal{S}$ be the solid obtained by revolving $\mathcal{R}$ about the vertical axis $x=c$.
+\begin{itemize}
+  \item For each $y\in [a,b]$, $S_y$ is an {\bf annulus} of inner radius $q(y)-c$ and outer radius $p(y)-c$. The area of this annulus is $\pi((p(y)-c)^2-(q(y)-c)^2)$.
+  \item The volume of $\mathcal{S}$ from $y=a$ to $y=b$ is thus
+  \[
+  V=\int_a^b \pi((p(y)-c)^2-(q(y)-c)^2)\, dy.
+  \]
+\end{itemize}
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Use the volume via cross sections method to compute the volume of a sphere of radius $r$.
+  \item Use the volume via cross sections method to compute the volume of a right circular cone of height $h$ and base of radius $r$.
+  \item Let $\mathcal{R}$ be the region between the graph of $y=-\frac{3}{25}x^2+5$ and the $x$-axis from $x=0$ to $x=5$, and let $\mathcal{S}$ be the solid obtained by revolving $\mathcal{R}$ about the $x$-axis. Sketch $\mathcal{S}$ and compute its volume.
+  \item Let $\mathcal{R}$ be the region enclosed by the line $y+2x=2$ and the parabola $y^2+x=4$, and let $\mathcal{S}$ be the solid obtained revolving $\mathcal{R}$ about the $y$-axis. Sketch $\mathcal{R}$ and compute the volume of $\mathcal{S}$. Can you sketch, or at least describe $\mathcal{S}$?
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es09_invertible_functions.tex
+%%%%%%%%%%
+
+\section{Executive summary: antiderivatives}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[One-to-one] A function $f$ is one-to-one on the set $X$ if $f(x_1)\ne f(x_2)$ for all $x_1, x_2\in X$ with $x_1\ne x_2$. We express this with logical notation as
+  \[
+  x_1\ne x_2\implies f(x_1)\ne f(x_2),
+\]
+or equivalently, using the contrapositive,
+\[
+f(x_1)=f(x_2)\implies x_1=x_2.
+\]
+\end{namedtheorem}
+
+
+
+\begin{namedtheorem}[Monotonic functions] Let $f$ be a a real-valued function defined on the set $X$.
+  \begin{itemize}
+    \item The function $f$ is {\bf increasing on $X$} if $f(x_1)<f(x_2)$ for all $x_1, x_2\in X$ with $x_1<x_2$. Using logical notation:
+    \[
+    x_1<x_2\implies f(x_1)<f(x_2).
+    \]
+    \item The function $f$ is {\bf decreasing on $X$} if $f(x_1)>f(x_2)$ for all $x_1, x_2\in X$ with $x_1<x_2$. Using logical notation:
+    \[
+    x_1<x_2\implies f(x_1)>f(x_2).
+    \]
+    \item The function $f$ is {\bf monotonic on $X$} if $f$ is increasing on $X$ or $f$ is decreasing on $X$.
+  \end{itemize}
+
+\end{namedtheorem}
+
+\begin{namedtheorem}[Inverse function] Suppose $f$ is one-to-one on the set $X$, and let $Y$ be the range of $f$. The {\bf inverse function of $f$} is the function $f^{-1}$ with domain $Y$ defined by the following rule:
+  \begin{itemize}
+    \item Given $b\in Y$ there is a unique element $a\in X$ such that $f(a)=b$.
+    \item We define $f^{-1}(b)=a$.
+  \end{itemize}
+
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Horizontal line test] Let $f$ be a real-valued function defined on $X$, and let $\mathcal{C}$ be the graph of $f$ over $X$. The function $f$ is one-to-one on $X$ if and only if for all $c\in\R$ the horizontal line $y=c$ intersects $\mathcal{C}$ in {\em at most} one point.
+
+\end{namedtheorem}
+\begin{namedtheorem}[Monotonic functions are one-to-one] If $f$ is monotonic on $X$ then $f$ is invertible on $X$.
+\end{namedtheorem}
+\begin{namedtheorem}[Inverse function compendium] Let $f$ be one-to-one on its domain $X$, and let $Y$ be the range of $f$. Let $f^{-1}$ be the inverse of $f$.
+  \begin{enumerate}[itemsep=0pt]
+    \item $f(a)=b$ if and only if $f^{-1}(b)=a$.
+    \item The domain of $f^{-1}$ is $Y$, the range of $f$; the range of $f^{-1}$ is $X$, the domain of $f$.
+    \item We have
+    \begin{align*}
+      f^{-1}(f(a))&=a \text{ for all } a\in X\\
+      f(f^{-1}(b))&=b \text{ for all } b\in Y.
+    \end{align*}
+    \item The point $P=(x,y)$ is on the graph of $f$ if and only if the point $Q=(y,x)$ is on the graph of $f^{-1}$.
+    \item The graph of $f^{-1}$ is the reflection of the graph of $f$ through the line $y=x$.
+  \end{enumerate}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Derivative formula for inverses] Assume $f$ is one-to-one and differentiable on the interval $I$, and that $f'(x)\ne 0$ for all $x\in I$. Let $J$ be the range of $f$. Then:
+  \begin{enumerate}
+    \item The inverse function $f^{-1}$ is differentiable on $J$.
+    \item We have
+    \[
+    (f^{-1})'(b)=\frac{1}{f'(f^{-1}(b))}
+    \]
+    for all $b\in J$. Alternatively, letting $a$ be the unique element of $D$ such that $f(a)=b$, we have
+    \[
+    (f^{-1})'(b)=\frac{1}{f'(a)}.
+    \]
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Let $f(x)=x^2+1$.
+  \begin{enumerate}
+    \item Show that $f$ is not one-to-one on $(-\infty, \infty)$.
+    \item Show that $f$ is one-to-one on $(-\infty, 0]$.
+    \item Compute a formula for the inverse of $f$ on the domain $(-\infty, 0]$. 
+  \end{enumerate}
+  \item Let $f(x)=x^5+x^3+3x-5$.
+  \begin{enumerate}
+    \item Show that $f$ is one-to-one.
+    \item Plot three points on the graph of $f^{-1}$.
+    \item Compute $(f^{-1})'(-5)$ and $(f^{-1})'(-8)$.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es10_natural_log.tex
+%%%%%%%%%%
+
+\section{Executive summary: the natural logarithm function}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Natural logarithm] The {\bf natural logarithm function}  is defined as
+  \[
+  \ln x=\int_1^x\frac{1}{t}\, dt
+  \]
+  where $x$ is an element of $(0,\infty)$.
+
+\end{namedtheorem}
+\begin{namedtheorem}[Euler's number] {\bf Euler's number}, denoted $e$, is the unique number satisfying $\ln e=1$. In other words, $e$ is the number satisfying
+  \[
+  1=\int_1^e\frac{1}{t}\, dt.
+  \]
+
+\end{namedtheorem}
+%***********************************************
+\subsection*{Theory}
+\begin{namedtheorem}[Properties of the natural logarithm]
+  The following properties hold:
+  \begin{enumerate}
+    \item The natural logarithm is differentiable (hence also continuous) on $(0,\infty)$ and satisfies
+    \[
+    \frac{d}{dx}\ln x=\frac{1}{x}.
+    \]
+    for all $x$ in $(0,\infty)$.
+    \item The natural logarithm is increasing on $(0,\infty)$ and hence one-to-one. The graph of $\ln$ is always concave down.
+    \item We have
+    \begin{align*}
+      \lim_{x\to\infty}\ln x&=\infty\\
+      \lim_{x\to 0^+}\ln x&=-\infty
+    \end{align*}
+    \item The domain of $\ln$ is $(0,\infty)$; the range of $\ln$ is $(-\infty, \infty)$.
+    \item $\ln 1=0$.
+    \item We have
+    \begin{align*}
+      \ln(ab)&=\ln a+\ln b,  \text{ for all $a,b\in (0,\infty)$.}\\
+      \ln(a/b)&=\ln a-\ln b,  \text{ for all $a,b\in (0,\infty)$, $b\ne 0$.}\\
+      \ln a^r&=r\ln a,  \text{ for all $a\in (0,\infty)$ and $r$ rational.}
+    \end{align*}
+  \end{enumerate}
+\end{namedtheorem}
+
+\begin{corollary}
+  The function $f(x)=\ln\lvert x\rvert$ is an antiderivative of $1/x$ on its entire domain $D=(-\infty, 0)\cup (0,\infty)$: i.e., we have
+  \[
+  \int\frac{1}{x}\, dx=\ln \vert x\rvert\, dx+C.
+  \]
+\end{corollary}
+\begin{namedtheorem}[Further trigonometric antiderivative formulas]
+  The following antiderivative formulas hold:
+  \begin{enumerate}
+    \item $\displaystyle\int \tan x\, dx=-\ln\lvert \cos x\rvert+C=\ln\lvert\sec x\rvert+C$
+    \item $\displaystyle\int \cot x\, dx=\ln\vert \sin x\vert+C$
+    \item $\displaystyle\int \sec x\, dx=\ln\vert \sec x+\tan x\vert+C$
+    \item $\displaystyle\int \csc x\, dx=-\ln\vert \csc x+\cot x\vert+C$
+  \end{enumerate}
+
+\end{namedtheorem}
+
+
+%***************************************
+
+% \subsection*{Procedures}
+%
+% %*********************************************************
+% \subsection*{Examples}
+
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es11_exponential_functions.tex
+%%%%%%%%%%
+
+\section{Executive summary: exponential functions}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Exponential function] The {\bf exponential function}, denoted $\exp$, is defined as the inverse of the natural logarithm function. In other words, letting $f(x)=\ln x$, we have $f^{-1}(x)=\exp(x)$. We also write $e^x$ for $\exp(x)$.
+\end{namedtheorem}
+% \begin{comment}
+% By definition $e^x=\exp(x)$ is the inverse function of $f(x)=\ln x$. You might wonder how this is consistent with our usual notion of $e^x$ as ``raising $e$ to the $x$-th power". Let's examine this question in stages, letting $x$ be an increasiningly complicated type of input.
+% \\
+% Case: $x=n$ is a postive integer. Then by definition
+% \[
+%  \exp(n)=\exp(n\ln e)=\exp(\ln(e^n) )=e^n=\underset{\text{$n$ times}}{\underbrace{e\cdot e\cdots e}}.
+% \]
+% Case: $x=-n$ is a negative integer. Then by definition
+% \[
+%  \exp(-n)=\exp(-n\ln e)=\exp(\ln(e^{-n}) )=e^{-n}=\frac{1}{e^n}.
+% \]
+% Case: $x=m/n$ is a rational number. Then by definition
+% \[
+%  \exp(m/n)=\exp((m/n)\ln e)=\exp(\ln(e^{m/n}) )=e^{m/n}=\sqrt[n]{e^m}.
+% \]
+% Case: $x$ is irrational (i.e., not a rational number). Previously, we had no way of defining ``$e$ to the power $x$", but now we do: namely, $e^x=\exp(x)$ is the positive number $y$ satisfying $\ln y=x$.
+% \end{comment}
+\begin{namedtheorem}[Exponential function with base $a$] Let $a$ be a fixed positive number. The {\bf exponential function with base $a$}, denoted $f(x)=a^x$, is the function with domain all real numbers defined as
+  \[
+  a^x=e^{x\ln a}.
+  \]
+
+\end{namedtheorem}
+\begin{namedtheorem}[Logarithmic function with base $a$] Let $a$ be a fixed positive number. The {\bf logarathmic function with base $a$}, denoted $f(x)=\log_a(x)$ is defined as the inverse function of $g(x)=a^x$.
+
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Properties of the exponential function]
+  The following properties hold:
+  \begin{enumerate}[itemsep=0pt,topsep=0pt]
+    \item The exponential function is differentiable (hence also continuous) on all of $\mathbb{R}$ and satisfies
+    \[
+    \frac{d}{dx}e^x=e^x.
+    \]
+    Equivalently, we have
+    \[
+    \int e^x\, dx=e^x+C.
+    \]
+    \item The exponential function is increasing and hence one-to-one. Its graph is always concave up.
+    \item We have
+    \begin{align*}
+      \lim_{x\to\infty}e^x&=\infty\\
+      \lim_{x\to -\infty}e^x&=0
+    \end{align*}
+    \item The domain of $\exp$ is $\mathbb{R}=(-\infty, \infty)$; the range of $\exp$ is $(0,\infty)$.
+    \item $e^0=1$.
+    \item We have
+    \begin{align*}
+      e^{x+y}&=e^xe^y &
+      e^{x-y}&=e^x/e^y &
+      e^{xy}&=(e^x)^y
+    \end{align*}
+    for all $x,y\in\mathbb{R}$.
+    \item We have
+    \begin{align*}
+      \ln(e^x)&=x, \text{ for all $x$}; &
+      e^{\ln x}&=x, \text{ for all $x\in (0,\infty)$.}
+    \end{align*}
+  \end{enumerate}
+\end{namedtheorem}
+\begin{namedtheorem}[Logarithmic and exponential compendium] The table below summarizes the important properties of our various families of logarithmic and exponential functions.
+\[
+\begin{array}{c|c|c|c||c|c|c|}
+  f(x) & \ln x& \log_a x,\, a>1& \log_a x,\, 0<a<1&  e^x & a^x,\, a>1 & a^x,\, 0<a<1 \\
+  \hline
+  \text{Domain} &\multicolumn{3}{|c||}{(0,\infty)}&\multicolumn{3}{c|}{(-\infty, \infty)}\\
+  \hline
+  \text{Range} &\multicolumn{3}{|c||}{(-\infty,\infty)}&\multicolumn{3}{c|}{(0, \infty)}\\
+  \hline
+  \text{Monotonicity}&\multicolumn{2}{|c|}{\text{Increasing}}&\text{Decreasing}&\multicolumn{2}{|c|}{\text{Increasing}}&\text{Decreasing}\\
+  \hline
+  \text{Limit as }x\to\infty& \multicolumn{2}{|c|}{\infty}&-\infty &  \multicolumn{2}{|c|}{\infty}& 0\\
+  \hline
+  \text{Limit as }x\to 0^+ & \multicolumn{2}{|c|}{-\infty}& \infty & \multicolumn{3}{|c|}{*}\\
+  \hline
+  \text{Limit as }x\to-\infty & \multicolumn{3}{|c||}{*}&  \multicolumn{2}{|c|}{0}& \infty\\
+  \hline
+  \text{Inverse}&e^x&\multicolumn{2}{|c||}{a^x}& \ln x& \multicolumn{2}{|c|}{\log_a x}\\
+  \hline
+  \text{Relation to base-$e$}&\ln x=\log_e x&\multicolumn{2}{|c||}{\log_a x=\frac{\ln x}{\ln a}} &* &\multicolumn{2}{|c|}{a^x=e^{x\ln a}}\\
+  \hline
+  \text{Algebra}&\multicolumn{3}{|c||}{\begin{array}{c}
+    \log_a(xy)=\log_ax+\log_ay\\
+    \log_a(x^y)=y\log_a x\\
+    \log_a(a^x)=x
+  \end{array}
+  }
+  &
+  \multicolumn{3}{|c||}{\begin{array}{c}
+    a^{x+y}=a^xa^y\\
+    a^{xy}=(a^x)^y\\
+    a^{\log_a x}=x
+  \end{array}
+  }\\
+  \hline
+\end{array}
+\]
+
+
+\end{namedtheorem}
+
+\begin{namedtheorem}[Derivative/antiderivative compendium] We collect here the new derivative formulas obtained via logarithms and exponential functions, along with their equivalent antiderivative formulas.
+\begin{align*}
+  \frac{d}{dx}\ln\vert x\vert=\frac{1}{x} & \iff \int\frac{1}{x} \, dx=\ln\vert x\vert+C \\
+  \frac{d}{dx}\ln\vert \cos x \vert=-\tan x & \iff \int\tan x \, dx=-\ln\vert \cos x \vert+C=\ln\vert\sec x\vert+C \\
+  \frac{d}{dx}\ln\vert \sin x\vert=\cot x & \iff \int\cot x \, dx=\ln\vert \sin x\vert+C \\
+  \frac{d}{dx}\ln\vert \sec x+\tan x\vert=\sec x & \iff \int\sec x \, dx=\ln\vert \sec x+\tan x\vert+C \\
+  \frac{d}{dx}\ln\vert \csc x+\cot x\vert=-\csc x & \iff \int\csc x \, dx=-\ln\vert \csc x+\cot x\vert+C\\
+  \frac{d}{dx}e^x=e^x & \iff \int e^x \, dx=e^x+C\\
+  \frac{d}{dx}a^x=(\ln a)a^x & \iff \int a^x \, dx=\frac{1}{\ln a}a^x+C\\
+  \frac{d}{dx}\log_a \vert x\vert =\frac{1}{(\ln a)\, x} & \iff \int \frac{1}{(\ln a)\, x} \, dx=\log_a\vert x\vert+C
+\end{align*}
+
+\end{namedtheorem}
+
+
+%***************************************
+
+% \subsection*{Procedures}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Find all $t$ satisfying $\displaystyle 2^{-t^2}=\frac{1}{16}$. Simplify your answer as much as possible.  
+  \item Compute $f'(x)$ for each of the following functions.
+  \begin{enumerate}
+    \item $f(x)=\ln(\sin x)e^{\cos x}$
+    \item $f(x)=\log_3(2^x+3^{x^2})$
+  \end{enumerate}
+  \item Compute the following definite indefinite integrals.
+  \begin{enumerate}
+    \item $\displaystyle\int (e^t)^2\sin(e^{2t})\, dt$
+    \item $\displaystyle\int_0^\pi \sin(2^x)2^{\cos(2^x)+x}\, dx$
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es12_differential_equations.tex
+%%%%%%%%%%
+
+\section{Executive summary: separable differential equations}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[First-order differential equation] A {\bf first-order differential equation in the unknown $f(x)$} is an equation that can be written in the form
+  \[
+  f'(x)=F(x,f(x)) \tag{$*$}
+  \]
+  where $F(x,f(x))$ denotes an arbitrary expression involving $x$ and $f(x)$. Equivalently, a first-order differential equation is an equation that can be written in the form
+  \[
+  G(x, f'(x), f(x))=0,
+  \]
+  where $G(x,f(x), f'(x))$ denotes an arbitrary expression involving $x, f(x)$, and $f'(x)$.
+\vspace{.1in}
+\\
+A {\bf solution} to a differential equation is any function $f(x)$ that satisfies this equation. The {\bf general solution} to a differential equation is a formula, possibly containing undetermined constants, describing all solutions to the differential equation.
+\end{namedtheorem}
+\begin{namedtheorem}[Separable first-order differential equation]A {\bf separable differential equation in the unknown $f(x)$} is a differential equation that can be written in the form
+  \[
+  f'(x)=g(x)h(f(x)), \text{ or equivalently,  } \frac{dy}{dx}=g(x)h(y),
+  \]
+  where $y=f(x)$.
+
+\end{namedtheorem}
+\begin{namedtheorem}[Exponential growth and decay] Suppose the function $f(x)$ satisfies the equation
+  \[
+ f'(x)=k f(x),
+  \]
+  where $k$ is a fixed constant.
+  \vspace{.1in}
+  \\
+  If $k>0$ then $f(x)$ is said to undergo {\bf exponential growth}.
+  \vspace{.1in}
+  \\
+  If $k<0$ then $f(x)$ is said to undergo {\bf exponential decay}.
+
+\end{namedtheorem}
+%***********************************************
+ % \subsection*{Theory}
+
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Separation of variables (prime form)] To solve a separable differential equation of the form
+  \[
+  f'(x)=g(x)h(f(x))
+  \]
+  proceed as follows:
+  \begin{enumerate}
+    \item {\em Separation}. Write the equation as
+    \[
+    \frac{f'(x)}{h(f(x))}=g(x).
+    \]
+    and take take the indefinite integral of both sides.
+    \[
+    \int \frac{f'(x)}{h(f(x))}\, dx=\int g(x)\, dx.
+    \]
+    \item {\em Substitution}. Use the substitution $u=f(x)$ to rewrite this equality as
+    \[
+    \int \frac{1}{h(u)}\, du=\int g(x)\, dx,
+    \]
+    and attempt to find an antiderivative $F(u)$ of $1/h(u)$ and an antiderivative $G(x)$ for $g(x)$.
+    \item {\em Algebra}. Attempt to solve the resulting general equation
+    \[
+    F(u)=G(x)+C
+    \]
+    for $u=f(x)$.
+
+
+  \end{enumerate}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Separation of variables (algebraic form)] To solve a separable differential equation of the form
+  \[
+  \frac{dy}{dx}=g(x)h(y)
+  \]
+  proceed as follows:
+  \begin{enumerate}
+    \item {\em Separation}. Write the equation as
+    \[
+    \frac{1}{h(y)}\, dy=g(x)\, dx
+    \]
+    and take take the indefinite integral of both sides.
+    \[
+    \int \frac{1}{h(y)}\, dy=\int g(x)\, dx.
+    \]
+    \item {\em Integration}. Attempt to find an antiderivative $F(y)$ of $1/h(y)$ and an antiderivative $G(x)$ for $g(x)$.
+    \item {\em Algebra}. Attempt to solve the resulting general equation
+    \[
+    F(y)=G(x)+C
+    \]
+    for $y$ in terms of $x$.
+
+
+  \end{enumerate}
+
+\end{namedtheorem}
+
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Suppose a hot object cools in a room kept at constant temperature of $T_0$ (in celcius). Newton's law of cooling states that the rate at which the object cools (with respect to time) is proportional to the {\em difference} between its current temperature and the room temperature $T_0$.
+  \begin{enumerate}
+    \item Write a differential equation that describes Newton's law of cooling in this setting.
+    \item Find the general solution to this differential equation.
+    \item Find a the particular solution to the situation where $T_0=15$$^\circ$C, the object's initial temperature is $100$$^\circ$C, and after $5$ minutes the object's temperature is $80$$^\circ$C.
+  \end{enumerate}
+  \item Solve the following differential equations using separation of variables. If an initial condition is given, provide the corresponding particular solution. Otherwise, give the general solution.
+  \begin{enumerate}
+    \item $\displaystyle f'(x)=xf(x)+x$
+    \item $\displaystyle\frac{dy}{dx}=\frac{x^3}{y^2}$
+    \item $\cot x\, f'(x)+f(x)=2$, $f(0)=0$.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es13_lHopital.tex
+%%%%%%%%%%
+
+\section{Executive summary: l'H\^opital's rule}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Indeterminate forms]Consider a limit expression of the form
+  \[
+  \lim_{x\to a}\frac{f(x)}{g(x)},
+  \]
+  where $a$ is either a finite number or $\pm\infty$.
+  \vspace{.1in}
+  \\
+  The expression is an {\bf indeterminate form of type $0/0$} if
+  \[
+  \lim_{x\to a}f(x)=\lim_{x\to a}g(x)=0.
+  \]
+  The expression is an {\bf indeterminate form of type $\infty/\infty$} if
+  \[
+  \lim_{x\to a}f(x)=\pm\infty \text{ and } \lim_{x\to a}g(x)=\pm\infty.
+  \]
+
+\end{namedtheorem}
+\begin{comment}
+  A limit expression having an indeterminate form does {\em not} mean that the limit does not exist. You should interpret this conclusion as saying simply that our current analysis is not detailed enough to determine whether the limit exists and/or what that limit is.
+  \vspace{.1in}
+  \\
+  In this spirit, we will be careful {\em not} to write
+  \[
+  \lim_{x\to a}\frac{f(x)}{g(x)}=\frac{0}{0} \text{ or } \lim_{x\to a}\frac{f(x)}{g(x)}=\frac{\infty}{\infty},
+  \]
+  as this suggests we are asserting something more definitive about the limit.
+
+\end{comment}
+\begin{namedtheorem}[Further indeterminate forms] Assume $a$ is either a finite number or $\pm\infty$.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}g(x)=\infty$, then
+  $\displaystyle\lim_{x\to a}f(x)-g(x)$ is an {\bf indeterminate form of type $\infty-\infty$}.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=0$ and $\lim_{x\to a}g(x)=\pm\infty$, then
+  $\displaystyle\lim_{x\to a}f(x)g(x)$ is an {\bf indeterminate \\ form of type $0\cdot\infty$}.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}g(x)=0$, then
+  $\displaystyle\lim_{x\to a}f(x)^{g(x)}$ is an {\bf indeterminate form of type $0^0$}.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=\infty$ and $\lim_{x\to a}g(x)=0$, then
+  $\displaystyle\lim_{x\to a}f(x)^{g(x)}$ is an {\bf indeterminate form  of type $\infty^0$}.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}f(x)=1$ and $\lim_{x\to a}g(x)=\infty$, then
+  $\displaystyle\lim_{x\to a}f(x)^{g(x)}$ is an {\bf indeterminate form of type $1^\infty$}.
+
+\end{namedtheorem}
+
+%***********************************************
+\subsection*{Theory}
+\begin{namedtheorem}[L'H\^opital's rule] Let $f$ and $g$ be differentiable on an open interval $I$ containing $a$, where $a$ is either a finite number or $\pm\infty$, and suppose $g'(x)\ne 0$ for all $x\ne a$ in the interval.
+  \vspace{.1in}
+  \\
+  If $\displaystyle\lim_{x\to a}\frac{f(x)}{g(x)}$ is an indeterminate form of type $0/0$ or $\infty/\infty$, then
+  \[
+  \lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)},
+  \]
+  provided the limit on the right exists or is equal to $\pm\infty$. \\
+  The same result holds if we replace the limit with a one-sided limit.
+
+\end{namedtheorem}
+\begin{comment}
+Students tend to fall madly in love with l'H\^opital's rule after seeing it for the first time. Some comments to temper your passion:
+\begin{enumerate}
+  \item Make sure the necessary conditions hold: (a) $f,g$ differentiable on an interval about $a$, $g(x)\ne 0$ on for $x\ne a$, and the limit expression is indeterminate of type $0/0$ or $\infty/\infty$.
+  \item As magic as the rule appears, there are many examples where either the application of this rule does not help, and/or it is easier to use a different technique. Consider the following limits, for example:
+  \[
+  \lim_{x\to\infty}\frac{e^x+e^{-x}}{e^x-e^{-x}}, \hspace{10pt} \lim_{x\rightarrow \infty}\frac{x^4-x^2+5x+7}{2x^4+x^3+x^2+x+1}
+  \]
+\end{enumerate}
+\end{comment}
+
+%***************************************
+
+\subsection*{Procedures}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Decide whether the following limit expressions have determinate or indeterminate forms. If determinate, compute the limit.
+  \begin{enumerate}
+    \item $\displaystyle\lim_{x\to 0+}\frac{\sin x}{\ln x}$
+    \item $\displaystyle\lim_{x\to (\pi/2)^-}\frac{\tan x}{\cos x}$
+    \item $\displaystyle\lim_{x\to\infty}\frac{e^x}{2^x+3^x}$
+  \end{enumerate}
+  \item Compute the following limits.
+  \begin{enumerate}
+    \item $\displaystyle\lim_{x\to\infty}\frac{\ln x}{x^{1000}}$
+    \item $\displaystyle\lim_{x\to 0}\frac{2^x-3^{-x}}{4^x-5^{-x}}$
+    \item $\displaystyle\lim_{x\to 1}\frac{\cos(\pi x/2)}{\log_2(x)}$
+    \item $\displaystyle\lim_{x\to 0}\frac{x-\sin x}{x\sin x}$
+  \end{enumerate}
+  \item Compute the following limits.
+  \begin{enumerate}
+    \item $\displaystyle\lim_{x\to 0^+}\frac{1}{\sin x}-\frac{1}{x}$
+    \item $\displaystyle\lim_{x\to \infty}2x-\sqrt{4x^2-13x}$
+    \item $\displaystyle\lim_{x\to -\infty}x^22^{x}$
+    \item $\displaystyle\lim_{x\to 0^+}(1+x)^{1/x}$
+    \item $\displaystyle\lim_{x\to \infty}(1+x^2)^{2/x}$
+  \end{enumerate}
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es14_inv_trig.tex
+%%%%%%%%%%
+
+\section{Executive summary: inverse trigonometric functions}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Inverse trigonometric functions] The following are examples of what are called {\bf inverse trigonometric functions}.
+  \begin{itemize}
+    \item On the restricted domain $[-\pi/2, \pi/2]$ the function $f(x)=\sin x$ is one-to-one, with range $[-1,1]$. The inverse function of $f$ restricted to this domain is called the {\bf arcsine function}, denoted $f^{-1}(x)=\arcsin x$.
+    \item On the restricted domain $[0, \pi]$ the function $g(x)=\cos x$ is one-to-one, with range $[-1,1]$. The inverse function of $g$ restricted to this domain is called the {\bf arccosine function}, denoted $g^{-1}(x)=\arccos x$.
+    \item On the restricted domain $(-\pi/2, \pi/2)$ the function $h(x)=\tan x$ is one-to-one, with range $(-\infty, \infty)$. The inverse function of $h$ restricted to this domain is called the {\bf arctangent function}, denoted $h^{-1}(x)=\arctan x$.
+  \end{itemize}
+
+\end{namedtheorem}
+\begin{comment}
+Occasionally an alternative notation is used to denote inverse trig functions: namely,
+\begin{align*}
+  \arcsin x&=\sin^{-1} x & \arccos x&=\cos^{-1} x & \arctan x&=\tan^{-1} x.
+\end{align*}
+We will avoid this alternative notation as it misleadingly suggests these inverse trigonometric functions are {\em reciprocals} of the corresponding trigonometric functions. They are not!
+\end{comment}
+
+%***********************************************
+ \subsection*{Theory}
+
+\begin{namedtheorem}[Properties of inverse trigonometric functions]\
+  \begin{itemize}
+    \item The function $\arcsin$ is an increasing function with domain $[-1,1]$ and range $[0,\pi]$. It satisfies the following properties:
+    \begin{align*}
+      \arcsin(x)=\theta &\iff \sin\theta=x \text{ and } -\pi/2\leq \theta\leq \pi/2\\
+      \arcsin(\sin \theta)&=\theta \text{ for all } -\pi/2\leq \theta\leq \pi/2\\
+      \sin(\arcsin x)&=x \text{ for all } -1\leq x\leq 1.
+    \end{align*}
+    \item The function $\arccos$ is a decreasing function with domain $[-1,1]$ and range $[0,\pi]$. It satisfies the following properties:
+    \begin{align*}
+      \arccos(x)=\theta &\iff \cos\theta=x \text{ and } 0\leq \theta\leq \pi\\
+      \arccos(\cos \theta)&=\theta \text{ for all } 0\leq \theta\leq \pi\\
+      \cos(\arccos x)&=x \text{ for all } -1\leq x\leq 1.
+    \end{align*}
+    \item The function $\arctan$ is an increasing function with domain $(-\infty, \infty)$ and range $(-\pi/2, \pi/2)$. It satisfies the following properties:
+    \begin{align*}
+      \arctan(x)=\theta &\iff \tan\theta=x \text{ and } -\pi/2< \theta< \pi/2\\
+      \arctan(\tan \theta)&=\theta \text{ for all } -\pi/2< \theta< \pi/2\\
+      \tan(\arctan x)&=x \text{ for all } x\\
+      \lim_{x\to\infty}\arctan x&=\pi/2,\hspace{5pt} \lim_{x\to-\infty}\arctan x=-\pi/2
+    \end{align*}
+  \end{itemize}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Derivative formulas for inverse trigonometric functions] The following derivative/antiderivative formulas hold:
+  \begin{align*}
+    \frac{d}{dx} \arcsin x=\frac{1}{\sqrt{1-x^2}}&\iff \int \frac{1}{\sqrt{1-x^2}}\, dx=\arcsin x+C &\text{(for all $x$ in $(-1,1)$)}\\
+    \frac{d}{dx} \arccos x=-\frac{1}{\sqrt{1-x^2}}&\iff \int \frac{1}{\sqrt{1-x^2}}\, dx=-\arccos x+C &\text{(for all $x$ in $(-1,1)$)}\\
+    \frac{d}{dx} \arctan x=\frac{1}{1+x^2}&\iff \int \frac{1}{1+x^2}\, dx=\arctan x+C &\text{(for all $x$)}.
+  \end{align*}
+
+\end{namedtheorem}
+%***************************************
+
+% \subsection*{Procedures}
+
+%*********************************************************
+\subsection*{Examples}
+
+\begin{enumerate}
+  \item Compute the following values of trigonometric functions by hand.
+  \begin{enumerate}
+    \item $\displaystyle\arcsin(-1)$
+    \item $\displaystyle\arccos(-\sqrt{2}/2)$
+    \item $\displaystyle\arctan(-1/\sqrt{3})$
+    \item $\displaystyle\arcsin\left(\sin\left(\frac{10\pi}{11}\right)\right)$
+
+    {\bf Hint}. The answer is not $10\pi/11$.
+  \end{enumerate}
+  \item Find all solutions to the following trigonometric equations lying within the interval $[0,2\pi]$. You may express your answer in terms of values of inverse trigonometric functions.
+  \begin{enumerate}
+    \item $\displaystyle 3\sin 2\theta +4=6$
+    \item $\displaystyle \tan (\theta+\pi)=-10$
+  \end{enumerate}
+  \item Find the equation of the tangent line to $f(x)=\arccos x $ at $x=1/2$.
+
+  \item Compute $\displaystyle\lim_{x\rightarrow 1^{-}}\frac{\arccos(x^2)}{\sqrt{1-x}}$
+
+  \item Compute $\displaystyle\int \frac{x+1}{\sqrt{1-(x+2)^2}}\, dx$.
+\end{enumerate}
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es15_integration_review.tex
+%%%%%%%%%%
+
+\section{Executive summary: taking stock of integration techniques}
+
+\thispagestyle{fancy}
+Having introduced a wealth of new derivative/integral formulas and rules, we now take a moment to give an overview of our integration techniques, and apply them in combination with some algebraic methods to solving integrals in the wild.
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Derivative/antiderivative formula compendium] We collect here our various derivative/antiderivative formulas.
+\begin{align*}
+  \frac{d}{dx} x^r=rx^{r-1}& \iff \int x^r \, dx=\frac{1}{r+1}x^{r+1}+C, r\ne -1\\
+  \frac{d}{dx} \sin x=\cos x& \iff \int\cos x \, dx=\sin x+C\\
+  \frac{d}{dx}\cos x=-\sin x & \iff \int \sin x \, dx=-\cos x+C\\
+  \frac{d}{dx}\tan x=\sec^2x & \iff \int \sec^2 x \, dx=\tan x+C\\
+  \frac{d}{dx}\cot x=-\csc^2x & \iff \int \csc ^2x\, dx=-\cot x+C\\
+  \frac{d}{dx}\sec x=\sec x\tan x & \iff \int \sec x\tan x \, dx=\sec x+C\\
+  \frac{d}{dx}\csc x=-\csc x\cot x & \iff \int\csc x\cot x \, dx=-\csc x+C\\
+  \frac{d}{dx}\ln\vert x\vert=\frac{1}{x} & \iff \int\frac{1}{x} \, dx=\ln\vert x\vert+C \\
+  \frac{d}{dx}\ln\vert \cos x \vert=-\tan x & \iff \int\tan x \, dx=-\ln\vert \cos x \vert+C=\ln\vert\sec x\vert+C \\
+  \frac{d}{dx}\ln\vert \sin x\vert=\cot x & \iff \int\cot x \, dx=\ln\vert \sin x\vert+C \\
+  \frac{d}{dx}\ln\vert \sec x+\tan x\vert=\sec x & \iff \int\sec x \, dx=\ln\vert \sec x+\tan x\vert+C \\
+  \frac{d}{dx}\ln\vert \csc x+\cot x\vert=-\csc x & \iff \int\csc x \, dx=-\ln\vert \csc x+\cot x\vert+C\\
+  \frac{d}{dx}e^x=e^x & \iff \int e^x \, dx=e^x+C\\
+  \frac{d}{dx}a^x=(\ln a)a^x & \iff \int a^x \, dx=\frac{1}{\ln a}a^x+C\\
+  \frac{d}{dx}\log_a \vert x\vert =\frac{1}{(\ln a)\, x} & \iff \int \frac{1}{(\ln a)\, x} \, dx=\log_a\vert x\vert+C\\
+  \frac{d}{dx} \arcsin x=\frac{1}{\sqrt{1-x^2}}&\iff \int \frac{1}{\sqrt{1-x^2}}\, dx=\arcsin x+C \\
+  \frac{d}{dx} \arccos x=-\frac{1}{\sqrt{1-x^2}}&\iff \int \frac{1}{\sqrt{1-x^2}}\, dx=-\arccos x+C \\
+  \frac{d}{dx} \arctan x=\frac{1}{1+x^2}&\iff \int \frac{1}{1+x^2}\, dx=\arctan x+C .
+\end{align*}
+
+\end{namedtheorem}
+
+\newpage
+%***************************************
+
+
+
+%*********************************************************
+\subsection*{Examples}
+Each of the integral computations below will combine various integral formulas, substitution, and an algebraic method.
+\begin{enumerate}
+  \item Compute $\displaystyle \int \frac{1}{x^2-6x+18}$
+  \item Compute $\displaystyle \int \frac{4x^3+3x+1}{4x^2+1}\, dx$
+
+  {\bf Hint}. Use polynomial division with remainder.
+  \item Compute $\displaystyle\int \frac{1}{e^x+e^{-x}}\, dx$
+  \item Compute $\displaystyle \frac{3}{\sqrt{e^{2x}-2}}\, dx$
+
+  \item Compute $\displaystyle \int_0^{\pi/3}\sin^2(2x)\cos(3x) \, dx$
+
+  {\bf Hint}. Make use of some of the following product-to-sum identities.
+  \begin{align}
+    \cos\theta\cos\phi&=\frac{\cos(\theta-\phi)+\cos(\theta+\phi)}{2} \\
+    \sin\theta\sin\phi&=\frac{\cos(\theta-\phi)-\cos(\theta+\phi)}{2} \\
+    \sin\theta\cos\phi&= \frac{\sin(\theta-\phi)+\sin(\theta+\phi)}{2}\\
+    \cos^2\theta&=\frac{1+\cos2\theta}{2}\\
+    \sin^2\theta&=\frac{1-\cos2\theta}{2}
+  \end{align}
+
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es16_by_parts.tex
+%%%%%%%%%%
+
+\section{Executive summary: integration by parts}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+
+
+%***********************************************
+ \subsection*{Theory}
+
+\begin{namedtheorem}[Integration by parts rule]
+Let $u$ and $v$ be continuously differentiable functions on an interval $I$ containing the interval $[a,b]$.
+\begin{enumerate}
+  \item {\em Indefinite integral form}. We have
+  \[
+  \int u(x)v'(x)\, dx= u(x)v(x)-\int u'(x)v(x)\, dx.
+  \]
+  \item {\em Definite integral form}. We have
+  \[
+  \int_a^b u(x)v'(x)\, dx= u(x)v(x)\Bigr]_a^b-\int_a^b u'(x)v(x)\, dx.
+  \]
+\end{enumerate}
+\end{namedtheorem}
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[The art of by parts]
+To use the integration by parts technique on an integral of the form $\displaystyle\int f(x)g(x)\, dx$ proceed as follows:
+\begin{enumerate}
+  \item {\em Who is $u$, and who $v'$}? Declare one of $f$ and $g$ to be $u$ and the other to be $v'$. The mnemonic device LIPET ((L)og, (I)nverse trig, (P)olynomial/radical, (E)xponent, (T)rig) often leads to a useful choice of $u$.
+  \item {\em Assemble ingredients}. Suppose without loss of generality that we have chosen $u=f$ and $v'=g$. Then compute the derivative $f'$ of $f$ and compute an {\em antiderivative} $G$ of $g$:
+  \[
+  \begin{tikzcd}
+    u(x)=f(x) \ar[d,bend right=80,"\text{compute derivative}"'] & v'(x)=g(x) \ar[d,bend left=80,"\text{compute antiderivative}"]\\
+    u'(x)=f'(x) & v(x)=G(x)
+  \end{tikzcd}
+  \]
+  \item Apply the integration by parts rule with ingredients assembled in (2):
+  \begin{align*}
+    \int \underset{u}{f(x)}\underset{v'}{g(x)}\, dx&= \underset{u}{f(x)}\underset{v}{G(x)}-\int \underset{u'}{f'(x)}\underset{v}{G(x)}\, dx.
+  \end{align*}
+  \end{enumerate}
+
+\end{namedtheorem}
+\begin{namedtheorem}[Integration workflow]
+For many integral computations it will be clear whether to use a formula, substitution, or integration by parts. When it is not clear how to proceed, the following {\em rough} workflow might be helpful.
+\begin{enumerate}[itemsep=0pt, topsep=0pt]
+  \item {\em Formula}. If possible, use an integration formula, perhaps after some simple algebraic preparation. Otherwise, move to (2).
+  \item {\em Substitution}. Evaluate whether a substitution could transform the integral into one where (1) applies. If not promising, move to (3).
+  \item {\em By parts}. Evaluate whether the integral is amenable to a by parts approach. You may want to mentally run through a couple of choices of ``who is $u$, and who $v'$". If not promising, move to (4).
+  \item {\em Algebraic techniques}. Consider more creative algebraic techniques, including trigonometric identities. If applicable, return to (1).
+\end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+Compute the following integrals using integration by parts. (You might explore whether the integral could also be computed using substitution.)
+\begin{enumerate}
+  \item Compute $\ds\int_0^1 xe^{-x}\, dx$
+  \item Compute $\ds\int x^2e^x\, dx$
+  \item Compute $\ds\int \ln \vert x\vert\, dx$
+  \item Compute $\ds\int \frac{x^3}{x^2+1}\, dx$
+  \item Compute $\ds\int \arctan x\, dx$
+  \item Compute $\int e^x\cos x\, dx$
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es17_trig_int.tex
+%%%%%%%%%%
+
+\section{Executive summary: trigonometric integrals}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+
+
+%***********************************************
+\subsection*{Theory}
+\begin{namedtheorem}[Trigonometric identities] The following identities hold for all $\theta, \phi\in\mathbb{R}$.
+  \begin{multicols}{2}
+    \begin{enumerate}
+      \item $\displaystyle\cos\theta\cos\phi=\frac{\cos(\theta-\phi)+\cos(\theta+\phi)}{2}$
+      \item $\displaystyle\sin\theta\sin\phi=\frac{\cos(\theta-\phi)-\cos(\theta+\phi)}{2}$
+      \item $\displaystyle\sin\theta\cos\phi= \frac{\sin(\theta-\phi)+\sin(\theta+\phi)}{2}$
+      \item $\displaystyle\cos^2\theta=\frac{1+\cos2\theta}{2}$
+      \item $\displaystyle\sin^2\theta=\frac{1-\cos2\theta}{2}$
+    \end{enumerate}
+  \end{multicols}
+
+\end{namedtheorem}
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{comment}
+The basic strategy for computing integrals of functions of the form $\sin^m x\cos^n x$ or $\tan^m x\sec^n x$ is to use one of the four substitutions
+\begin{align*}
+  u&=\sin x & u&=\cos x & u&=\tan x & u&=\sec x \\
+  du&=\cos x\, dx & du&=-\sin x\, dx & du&=\sec^2 x\, dx & du&=\sec x\tan x\, dx,
+\end{align*}
+``peel off" what is necessary for $du$, and express the rest of the integrand as a polynomial in $u$ using the trigonometric identities.
+\begin{align*}
+\sin^2 x+\cos^2 x&=1 & \sec^2 x&=\tan^2+1.
+\end{align*}
+\end{comment}
+\begin{namedtheorem}[Integrating $\sin^m x\cos^n x$] Let $m$ and $n$ be nonnegative integers. When computing
+  \[
+  \int \sin^m x\cos^n x\, dx
+  \]
+  the following strategies often help.
+  \begin{enumerate}
+    \item If $m=2k+1$ is odd, write
+    \[
+    \int \sin^m x\cos^n x\, dx=\int (1-\cos^2x)^k\cos^n x\sin x\, dx
+    \]
+    and use the substitution $u=\sin x, du=\cos x\, dx$.
+    \item If $n=2k+1$ is odd, write
+    \[
+    \int \sin^m x\cos^n x\, dx=\int \sin^m x(1-\sin^2x)^k\cos x \, dx
+    \]
+    and use the substitution $u=\cos x, du=-\sin x\, dx$.
+    \item If $m$ and $n$ are both even use $\displaystyle\sin^2 x=\frac{1-\cos 2x}{2}$ and $\displaystyle\cos^2 x=\frac{1+\cos 2x}{2}$ to reduce to a lower power of $\cos 2x$.
+  \end{enumerate}
+
+\end{namedtheorem}
+\newpage
+\begin{namedtheorem}[Integrating $\tan^m x\sec^n x$] Let $m$ and $n$ be nonnegative integers. When computing
+  \[
+  \int \tan^m x\sec^n x \, dx
+  \]
+  the following strategies often help.
+  \begin{enumerate}
+    \item If $m=2k+1$ is odd and $n\geq 1$, write
+    \[
+    \int \tan^m x\sec^n x \, dx=\int (\sec^2 x-1)^k\sec^{n-1} x\sec x\tan x \, dx
+    \]
+    and use the substitution $u=\sec x, du=\sec x\tan x\, dx$.
+    \item If $n=2k$ is even, write
+    \[
+    \int \tan^m x\sec^n x \, dx=\int (\tan^2 x+1)^{k-1}\tan^m x\sec^2 x\, dx
+    \]
+    and use the substitution $u=\tan x, du=\sec^2 x\, dx$.
+
+    \item If $m$ is even and $n$ is odd, express everything in terms of $\sec x$ and possibly use integration by parts.
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+Compute the following indefinite integrals.
+\begin{enumerate}
+  \item $\displaystyle \int \sin^3x \cos^2 x\, dx$
+  \item $\displaystyle \int \sin^2 x\cos^4 x\, dx$
+  \item $\displaystyle \int \sec^4 x\, dx$
+  \item $\displaystyle \int \tan^5 x\sec^7 x\, dx$
+  \item $\displaystyle \int \sec^3 x\, dx$
+  \item $\displaystyle \int \tan^5 x \, dx$
+
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es18_trig_sub.tex
+%%%%%%%%%%
+
+\section{Executive summary: trigonometric substitution}
+
+\thispagestyle{fancy}
+%\subsection*{Definitions}
+
+
+%***********************************************
+%  \subsection*{Theory}
+% \begin{namedtheorem}[Reverse substitution] Let $g$ be a one-to-one, differentiable function from the interval $J$ to the interval $I$ satisfying $g'(t)\ne 0$ for all $t$, and suppose $f$ is continuous on $I$.
+% \\
+% If $F(t)$ is an antiderivative of $f(g(t))g'(t)$ on $J$, then $F(g^{-1}(x))$ is an antiderivative of $f(x)$ on $I$. In other words, setting $x=g(t)$ and $t=g^{-1}(x)$, we have
+%   \[
+%   \int f(x)\, dx =F(t)+C=F(g^{-1}(x))+C
+%   \]
+% \end{namedtheorem}
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Reverse substitution technique (indefinite integral)] To compute $\displaystyle\int f(x)\, dx$ using reverse substitution, proceed as follows:
+\begin{enumerate}[topsep=0pt, itemsep=0pt]
+  \item Choose a 1-1, differentiable substitution function $g$ with differentiable inverse and assemble the two equations
+  \begin{align*}
+    x&=g(t)\\
+    dx&=g'(t)\, dt
+  \end{align*}
+  \item Compute
+  \[
+  \int f(g(t))g'(t)\, dt=F(t)+C.
+  \]
+  \item We conclude that
+  \[
+  \int f(x)\, dx=F(g^{-1}(x))+C.
+  \]
+  Alternatively, we compute an antiderivative for $f(x)$ by expressing the function $F(t)$ from (2) as a function of $x$ using $x=g(t)$ and $g^{-1}(x)=t$.
+\end{enumerate}
+
+\end{namedtheorem}
+\begin{samepage}
+\begin{namedtheorem}[Reverse substitution technique (definite integral)] To compute $\displaystyle\int_a^b f(x)\, dx$ using reverse substitution substitution, proceed as follows:
+\begin{enumerate}[topsep=0pt, itemsep=0pt]
+  \item Choose a 1-1, differentiable substitution function $g$ with differentiable inverse and assemble the two equations
+  \begin{align*}
+    x&=g(t)\\
+    dx&=g'(t)\, dt
+  \end{align*}
+  \item
+  Then we have
+  \[
+  \displaystyle\int_{x=a}^{x=b} f(x)\, dx=\int_{t=g^{-1}(a)}^{t=g^{-1}(b)}f(g(t))g'(t)\, dt.
+  \]
+\end{enumerate}
+
+\end{namedtheorem}
+\end{samepage}
+\begin{comment}
+What is the difference between our original (forward) substitution and reverse subsitution?
+\begin{itemize}
+  \item Forward substitution allows us to find an antiderivative of $f(u(x))u'(x)$ from an antiderivative of $f(x)$: namely,
+  \[
+  F(x) \text{ is an antiderivative of } f(x)\implies F(u(x)) \text{ is an antiderivative  of } f(u(x))u'(x).
+  \]
+  \item Reverse substitution allows us to find an antiderivative of $f(x)$ from an antiderivative of $f(g(t))g'(t)$: namely,
+  \[
+  F(t) \text{ is an antiderivative of } f(g(t))g'(t)\implies F(g^{-1}(x)) \text{ is an antiderivative  of } f(x).
+  \]
+\end{itemize}
+\end{comment}
+\begin{namedtheorem}[Trigonometric substitution]
+The table below indicates potentially helpful (reverse) substitutions for functions $f$ containing particular forms of expressions.
+\begin{align*}
+  f(x) \text{ contains } \sqrt{a^2-x^2}&\implies \text{try } \begin{array}{c}
+    x=a\sin\theta\\
+    dx=a\cos\theta\, d\theta
+  \end{array}, -\pi/2\leq\theta\leq\pi/2\\
+  f(x) \text{ contains } x^2+a^2 &\implies \text{try } \begin{array}{c}
+    x=a\tan\theta\\
+    dx=a\sec^2\theta\, d\theta
+  \end{array}, -\pi/2<\theta< \pi/2\\
+  f(x) \text{ contains } \sqrt{x^2-a^2} &\implies \text{try } \begin{array}{c}
+    x=a\sec\theta\\
+    dx=a\sec\theta\tan\theta\, d\theta
+  \end{array}, 0<\theta< \pi/2 \text{ or } \pi/2<\theta<\pi
+\end{align*}
+
+\end{namedtheorem}
+%*********************************************************
+\subsection*{Examples}
+
+\begin{enumerate}
+  \item Derive the area formula for a circle of radius $r$ using calculus.
+  \item Find an antiderivative of $\sqrt{1-x^2}$.
+  \item Compute the following integrals.
+  \begin{enumerate}
+    \item $\displaystyle\int_{-\sqrt{2}}^{-2/\sqrt{3}}\frac{\sqrt{x^2-1}}{x}\, dx$
+    \item $\displaystyle\int \frac{1}{x^2\sqrt{x^2+4}}$
+    \item $\displaystyle\int \frac{\sqrt{x^2-1}}{x}\, dx$, $x\leq -1$.
+
+    {\bf Note}. This is the indefinite integral version of (a). To finish the computation you need to use the $\operatorname{arcsec}$ function, which is defined as the inverse of $\sec$ with restricted domain $[-1,\pi/2)\cup (\pi/2,1]$. We don't officially cover $\operatorname{arcsec}$ in this course, but this exercise is good practice nonetheless.
+  \end{enumerate}
+\end{enumerate}
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es19_partial_frac.tex
+%%%%%%%%%%
+
+\section{Executive summary: partial fraction decomposition}
+
+\thispagestyle{fancy}
+% \subsection*{Definitions}
+
+
+%***********************************************
+ \subsection*{Theory}
+ \begin{namedtheorem}[Polynomial facts]\
+   \begin{enumerate}
+     \item Suppose $f(x)=\anpoly$ with $a_n\ne 0$. We call $n$ the {\bf degree} of $f$, denoted $\deg f$.
+     \item A polynomial of degree $n$ has at most $n$ distinct roots.
+     \item {\em Equating coefficients}. Given polynomials $f(x)=\anpoly$ and $g(x)=\varpoly{b}{n}$ we have
+     \[
+     f(x)=g(x) \iff n=m \text{ and } a_i=b_i \text{ for all $i$.}
+     \]
+     \item A nonzero polynomial is {\bf irreducible} if it cannot be factored into two polynomials of smaller degree. If $f(x)$ is an irreducible polynomial with real coefficients, then $\deg f=1$ or $\deg f=2$.
+   \end{enumerate}
+
+ \end{namedtheorem}
+\begin{namedtheorem}[Partial fraction decomposition] Let $f(x)/g(x)$ be a rational function (i.e, $f(x)$ and $g(x)$ are both polynomials), and suppose that $\boxed{\deg f<\deg g}$.
+\begin{itemize}
+  \item If $g(x)$ factors into non-repeated linear factors as
+  \[
+  g(x)=D(x-a_1)(x-a_2)\cdots (x-a_r),
+  \]
+  then there is a unique choice of constants $A_1, A_2,\dots, A_r$ such that
+  \[
+  \frac{f(x)}{g(x)}=\frac{A_1}{x-a_1}+\frac{A_2}{x-a_2}+\cdots +\frac{A_r}{x-a_r}.
+  \]
+  \item If $g(x)$ factors into non-repeated irreducible linear and quadratic factors as
+  \[
+  g(x)=D(x-a_1)(x-a_2)\cdots (x-a_r)(x^2+b_1x+c_1)(x^2+b_2x+c_2)\cdots (x^2+b_sx+c_s),
+  \]
+  there there is a unique choice of constants $A_1,A_2,\dots, A_r, B_1,B_2,\dots, B_s, C_1, C_2,\dots, C_s$ such that
+  \[
+  \frac{f(x)}{g(x)}=\frac{A_1}{x-a_1}+\frac{A_2}{x-a_2}+\cdots +\frac{A_r}{x-a_r}+\frac{B_1x+C_1}{x^2+b_1x+c_1}+\frac{B_2x+C_2}{x^2+b_2x+c_2}+\cdots +\frac{B_sx+C_s}{x^2+b_sx+c_s}.
+  \]
+\end{itemize}
+\end{namedtheorem}
+\begin{comment}
+\
+\begin{enumerate}
+  \item If $\deg f\geq \deg g$, then we can perform long polynomial division to write
+  \[
+  f(x)=h(x)+\frac{r(x)}{g(x)},
+  \]
+  where $h(x)$ is a polynomial and $\deg r(x)<\deg g(x)$, and then apply partial fraction decomposition to $r(x)/g(x)$.
+  \item There is a more general statement of partial fraction decomposition covering the case where $g(x)$ has repeated irreducible linear and quadratic factors, but we will not use it. See the text if you are interested.
+\end{enumerate}
+\end{comment}
+
+
+
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Partial fraction decomposition]
+  Let $f(x)/g(x)$ be a quotient of polynomials, and suppose $\deg f<\deg g$. To compute the partial fraction decomposition of $f(x)/g(x)$ proceed as follows.
+  \begin{enumerate}
+    \item Factor $g(x)$ into powers of distinct irreducible polynomials.
+
+    {\bf Factoring trick}. If $g(x)$ has integer coefficients and a leading coefficient equal to 1, then any integer roots of $g(x)$ will be factors of the constant term.
+    \item Set up the partial fraction decomposition equation with as yet unknown constants ($A_i$, $B_i$, etc.). Clear the denominators of both sides of the equation, resulting in an identity between two polynomials. The polynomial on the right will be expressed in terms of the unknowns ($A_i$, $B_i$, etc.).
+    \item To solve for the undetermined constants ($A_i$, $B_i$, etc.) set up and solve a linear system of equations using one of the following techniques.
+    \begin{enumerate}
+      \item {\em Equate coefficients}. Express the polynomial on right in ``standard form" by collecting like terms. For the left and right polynomials to be equal, their corresponding coefficients must all be equal. This yields a system of equations in the unknowns ($A_i$, $B_i$, etc.) that you must now solve.
+      \item {\em Evaluate equality at choices of $x$}. Evaluate the polynomial equation at various explicit choices of $x$. Each evaluation at a specific $x=c$ yields a new linear equation in the unknowns ($A_i$, $B_i$, etc.). Do this enough times so that your system of equations determines the unknowns uniquely. As far as possible, make judicious choices for $x$ to make your algebra easier.
+    \end{enumerate}
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Compute $\displaystyle\int \frac{x+2}{x^2-1}\, dx$
+  \item Compute $\displaystyle\int\frac{1}{x^4+3x^2+2}$
+  \item Compute $\displaystyle\int\frac{x^2+1}{x^3+2x^2-x-2}\, dx$
+  \item Compute $\displaystyle\int \frac{x^2}{x^2+2x-1}\, dx$
+  % \item Compute $\displaystyle\int\frac{1}{x^4-5x^2+4}\, dx$
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es20_num_int.tex
+%%%%%%%%%%
+
+\section{Executive summary: numerical integration}
+
+\thispagestyle{fancy}
+
+
+%***********************************************
+
+
+
+
+%***************************************
+
+\subsection*{Definitions}
+\begin{namedtheorem}[Trapezoidal rule] Let $f$ be an integrable function on $[a,b]$, let $n$ be a positive integer, and let
+  \[
+  a=x_0< x_1< x_2<\cdots < x_n=b
+  \]
+  be partition of $[a,b]$ into $n$ subintervals of equal length $\Delta x=\frac{b-a}{n}$.
+  \vspace{.1in}
+  \\
+  The {\bf $n$-th trapezoidal estimate} of $\displaystyle\int f(x)\, dx$, denoted $T_n$, is defined as
+  \[
+  T_n=\frac{1}{2}\Delta x(f(x_0)+2f(x_1)+2f(x_2)+\cdots +2f(x_{n-1})+f(x_n))\approx \int_a^b f(x)\, dx.
+  \]
+  The trapezoidal estimate is the result of approximating the graph of $f$ with the polygon passing through the points $P_0=(x_0, f(x_0)), P_1=(x_1,f(x_1)), \dots, P_n=(x_n, f(x_n))$.
+\end{namedtheorem}
+\begin{namedtheorem}[Simpson's rule]  Let $f$ be an integrable function on $[a,b]$, let $n=2r$ be an even positive integer, and let
+  \[
+  a=x_0< x_1< x_2<\cdots < x_n=b
+  \]
+  be partition of $[a,b]$ into $n$ subintervals of equal length $\Delta x=\frac{b-a}{n}$.
+  \vspace{.1in}
+  \\
+  The {\bf $n$-th Simpson's rule estimate} of $\displaystyle\int f(x)\, dx$, denoted $S_n$, is defined as
+  \[
+  S_n=\frac{1}{3}\Delta x(f(x_0)+4f(x_1)+2f(x_2)+\cdots +2f(x_{n-2})+4f(x_{n-1})+f(x_n))\approx \int_a^b f(x)\, dx.
+  \]
+  The Simpson's rule estimate is the result of approximating the graph of $f$ over each of the $r$ subintervals $[x_{2(k-1)},x_{2k}]$ with the unique ``parabolic arc"\footnote{If the three points happen to be colinear, then the ``parabolic arc" will actually be a line.} passing through $P_{2(k-1)}=(x_{2(k-1)}, f(x_{2(k-1)}))$, $P_{2k-1}=(x_{2k-1}, f(x_{2k-1})), P_{2k}=(x_{2k},f(x_{2k}))$.
+\end{namedtheorem}
+
+%************************
+\subsection*{Theory}
+\begin{namedtheorem}[Error estimates] Let $f$ be an integrable function on $[a,b]$, let $n$ be a positive integer, and let
+  \[
+  a=x_0< x_1< x_2<\cdots < x_n=b.
+  \]
+  be partition of $[a,b]$ into $n$ subintervals of equal length $\Delta x=\frac{b-a}{n}$.
+  \begin{enumerate}
+    \item Let $RS_n$ be either the right or left Riemann sum for this partition. Suppose $\vert f'(x)\vert \leq M$ for all $x$ in $[a,b]$. Then
+    \[
+    \left\vert\int_a^b f(x)\, dx - RS_n\right\vert\leq \frac{M(b-a)^2}{2n}.
+    \]
+    \item Let $T_n$ be the $n$-th trapezoidal estimate of $\int_a^b f(x)\, dx$. Suppose $\vert f''(x)\vert\leq N$ for all $x$ in $[a,b]$. Then
+    \[
+    \left\vert\int_a^b f(x)\, dx - T_n\right\vert\leq\frac{N(b-a)^3}{12n^2}.
+    \]
+    \item Suppose $n$ is even, and let $S_n$ be the $n$-th Simpson's rule estimate of $\int_a^bf(x)\, dx$. Suppose $\vert f^{(4)}(x)\vert\leq K$ for all $x$ in $[a,b]$. Then
+    \[
+    \left\vert\int_a^b f(x)\, dx - S_n\right\vert\leq\frac{K(b-a)^5}{180n^4}.
+    \]
+  \end{enumerate}
+
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Let $f(x)=\frac{1}{x}$. Recall that we have by definition $\ln 4=\int_1^4f(x)\, dx$. Compute (a) the $n=6$ trapezoidal estimate of $I$, and (b) the $n=6$ Simpson's rule estimate of $I$.
+  \item Let $f(x)=\frac{4}{x^2+1}$, and let $I=\int_0^1f(x)\, dx$. Observe that $I=4(\arctan(1)-\arctan 0)=\pi$.
+
+  Compute (a) the $n=6$ trapezoidal estimate of $I$, and (b) the $n=6$ Simpson's rule estimate of $I$.
+
+  \item Compute bounds for the errors in (a) the $n=10$ trapezoidal estimate of $\ln 4$ and (b) the $n=10$ Simpson's rule estimate of $\ln 4$.
+
+  \item Compute bounds for the errors in (a) the $n=10$ trapezoidal estimate of $\pi=\int_0^14/(x^2+1)\, dx$ and (b) the $n=10$ Simpson's rule estimate of $\pi=\int_0^14/(x^2+1)\, dx$.
+
+  {\bf Hint}. Letting $f(x)=4/(x^2+1)$, we have
+  \begin{align*}
+    f''(x)&=\frac{8(3x^2-1)}{(x^2+1)^3}\\
+    f^{(4)}(x)&=\frac{96(5x^4-10x^2+1)}{(x^2+1)^5}.
+  \end{align*}
+  \item Find (a) an $n$ such that the $n$-th trapezoidal estimate of $\pi=\int_0^14/(x^2+1)\, dx$ is within $10^{-9}$ of the actual value, and (b) an $n$ such that the $n$-th Simpson's rule estimate of $\pi=\int_0^14/(x^2+1)\, dx$ is within $10^{-9}$ of the actual value.
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es21_improper.tex
+%%%%%%%%%%
+
+\section{Executive summary: improper integrals}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[Improper integral of type I: infinite intervals] Below we define definite integrals over infinite intervals. These are called {\bf improper integrals of type I}, or {\bf integrals over infinite intervals}.
+\begin{description}[topsep=0pt, itemsep=0pt]
+  \item[Half-infinite intervals]\ \\ Definite integrals over intervals of the form $[a,\infty)$ or $(-\infty, a]$ are defined via the limit expressions below. When the relevant limit exists, we say the improper integral {\bf converges} (or {\bf exists}); otherwise we say the improper integral {\bf diverges}.
+  \begin{itemize}[topsep=0pt, itemsep=0pt]
+    \item Let $f$ be continuous on the interval $I=[a,\infty)$. We define the integral of $f$ over $I$, denoted $\displaystyle\int_a^\infty f(x)\, dx$, as the following limit, assuming it exists:
+    \[
+    \int_a^\infty f(x)\, dx=\lim_{R\to\infty}\int_a^R f(x)\, dx.
+    \]
+    \item Let $f$ be continuous on the interval $I=(-\infty,a]$. We define the integral of $f$ over $I$, denoted $\displaystyle\int_{-\infty}^a f(x)\, dx$, as the following limit, assuming it exists:
+    \[
+    \int_{-\infty}^af(x)\, dx=\lim_{R\to-\infty}\int_R^{a} f(x)\, dx.
+    \]
+  \end{itemize}
+  \item[Real line]\ \\ Let $f$ be continuous on the interval $I=(-\infty,\infty)$, and let $a$ be an element of $I$. We say the integral of $f$ over $I$ {\bf converges} (or {\bf exists}) if {\em both} of the half-infinite integrals $\displaystyle\int_{-\infty}^a f(x)\, dx$ and $\displaystyle\int_a^{\infty}f(x)\, dx$ converge, and define
+  \[
+  \int_{-\infty}^\infty f(x)\, dx=\int_{-\infty}^a f(x)\, dx+\int_a^{\infty}f(x)\, dx
+  \]
+  in this case. If {\em either} (or both) of the half-infinite integrals diverge, we say that the integral of $f$ over $(-\infty, \infty)$ {\bf diverges}.
+\end{description}
+\end{namedtheorem}
+\begin{samepage}
+\begin{namedtheorem}[Improper integrals of type II: discontinuities] Assume $f$ is continuous on the interval $I=[a,b]$, except possibly at one point.
+  \begin{itemize}
+    \item Assume $f$ is not continuous at $x=a$. We define the integral of $f$ over $[a,b]$ as
+    \[
+    \int_a^bf(x)\, dx=\lim_{c\to a^+}\int_c^b f(x)\, dx,
+    \]
+    assuming this limit exists.
+    \item Assume $f$ is not continuous at $x=b$. We define the integral of $f$ over $[a,b]$ as
+    \[
+    \int_a^bf(x)\, dx=\lim_{c\to b^-}\int_a^c f(x)\, dx,
+    \]
+    assuming this limit exists.
+    \item Assume $f$ is not continuous at $c\in (a,b)$. We define the integral of $f$ over $[a,b]$ as
+    \[
+    \int_a^bf(x)\, dx=\int_a^c f(x)\, dx+ \int_c^b f(x)\, dx, \tag{$*$}
+    \]
+    assuming both improper integrals on the right side of $(*)$ exist.
+  \end{itemize}
+
+\end{namedtheorem}
+\end{samepage}
+\begin{namedtheorem}[Area interpretation of improper integrals] Let $f$ be defined on an interval $I$ for which the corresponding integral is improper, and let $\mathcal{R}$ be the (potentially unbounded) region between the graph of $f$ and the $x$-axis over the interval $I$.
+  \begin{itemize}
+  \item We define the {\bf area} (or {\bf total area}) of $\mathcal{R}$ to be the integral of $\lvert f\rvert$ over $I$, assuming this integral converges.
+  \item We define the {\bf signed area} of $\mathcal{R}$ to be the integral of $f$ over $I$, assuming this interval converges.
+\end{itemize}
+\end{namedtheorem}
+
+%***********************************************
+ \subsection*{Theory}
+\begin{namedtheorem}[Direct comparison test] Let $f$ and $g$ be {\em nonnegative} functions on an interval $I$, and suppose $f(x)\leq g(x)$ for all $x$ in $I$. If the integral of $g$ over $I$ converges, then the integral of $f$ over $I$ converges. Using logical notation:
+  \[
+  \text{integral of $g$ over $I$ converges }\implies \text{ integral of $f$ over $I$ converges}.
+  \]
+  Equivalently,
+  \[
+  \text{integral of $f$ over $I$ diverges }\implies \text{ integral of $g$ over $I$ diverges}.
+  \]
+\end{namedtheorem}
+
+\begin{namedtheorem}[Limit comparison test] Let $f$ and $g$ be continuous and {\em positive} on the interval $I$.
+  \begin{itemize}
+    \item If $I=[a,\infty)$ and $\displaystyle\lim_{x\to\infty}\frac{f(x)}{g(x)}=L$ with $0< L <\infty$, then
+    \[
+    \int_a^\infty f(x)\, dx \text{ converges }\iff \int_a^\infty g(x)\, dx \text{ converges}.
+    \]
+    \item If $I=(-\infty,a]$ and $\displaystyle\lim_{x\to-\infty}\frac{f(x)}{g(x)}=L$ with $0< L <\infty$, then
+    \[
+    \int_{-\infty}^a f(x)\, dx \text{ converges }\iff \int_{-\infty}^a g(x)\, dx \text{ converges}.
+    \]
+    \item If $I=(a,b]$ and $\displaystyle\lim_{x\to a^+}\frac{f(x)}{g(x)}=L$ with $0< L <\infty$, then
+    \[
+    \int_{a}^b f(x)\, dx \text{ converges }\iff \int_a^b g(x)\, dx \text{ converges}.
+    \]
+    \item If $I=[a,b)$ and $\displaystyle\lim_{x\to b^-}\frac{f(x)}{g(x)}=L$ with $0< L <\infty$, then
+    \[
+    \int_{a}^b f(x)\, dx \text{ converges }\iff \int_a^b g(x)\, dx \text{ converges}.
+    \]
+  \end{itemize}
+\end{namedtheorem}
+
+
+%***************************************
+
+%\subsection*{Procedures}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Evaluate $\displaystyle\int_{-2}^{\infty}e^{-x}\, dx$.
+  \item Evaluate $\displaystyle\int_{0}^\infty xe^{-x}\, dx$.
+  \item Evaluate $\displaystyle\int_{1}^\infty x^{r}\, dx$ for $r\ne 0$.
+  \item Evaluate $\displaystyle\int_{-\infty}^{\infty}\frac{1}{x^2+1}\, dx$.
+  \item Decide whether $\displaystyle\int_2^\infty \frac{1}{x^5+\sqrt{x+3}}\, dx$ converges.
+  \item Decide whether $\displaystyle\int_1^\infty \frac{2+\sin x}{x}\, dx$ converges.
+  \item Let $f(x)=ax^2+bx+c$ be any fixed irreducible quadratic polynomial with $a>0$. Decide whether $\displaystyle\int_{-\infty}^\infty \frac{1}{f(x)}\, dx$ exists.
+  \item Evaluate $\displaystyle\int_{0}^2\frac{1}{x-1}\, dx$.
+  \item Evaluate $\displaystyle\int_0^{1}\ln x\, dx$.
+  \item Evaluate $\displaystyle\int_1^{4}\frac{x}{\sqrt[3]{x^2-4}}\, dx$.
+  \item Decide whether $\displaystyle\int_0^\infty\frac{1}{\sqrt{x}+3x^5}\, dx$ converges.
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es22_lin_diff_eq.tex
+%%%%%%%%%%
+
+\section{Executive summary: first-order linear differential equations}
+
+\thispagestyle{fancy}
+\subsection*{Definitions}
+\begin{namedtheorem}[First-order linear equation]A {\bf first-order linear differential equation} in the unknown $f(x)$ is a differential equation that can be written in the form
+  \[
+  f'(x)+p(x)f(x)=q(x) \tag{$*$}
+  \]
+Equation $(*)$ is called the {\bf standard form} of the equation.
+\end{namedtheorem}
+\begin{namedtheorem}[Integrating factor] Consider a first-order linear equation in the unknown $f(x)$ with standard form
+  \[
+  f'(x)+p(x)f(x)=q(x).
+  \]
+  An {\bf integrating factor} for this equation is any function of the form
+  \[
+  v(x)=e^{P(x)},
+  \]
+  where $P(x)$ is an antiderivative of $p(x)$. Using indefinite integral notation, we have
+  \[
+  v(x)=e^{\int p(x)\, dx}.
+  \]
+\end{namedtheorem}
+
+%***********************************************
+
+
+%***************************************
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Solving first-order linear equations] Suppose $p, q$ are continuous on the interval $I$. To solve the differential equation with standard form
+  \[
+  f'(x)+p(x)f(x)=q(x), \ x\in I, \tag{$*$}
+  \]
+ proceed as follows:
+ \begin{enumerate}
+   \item Compute an antiderivative $P(x)$ of $p(x)$.
+   \item Set $v(x)=e^{P(x)}$: i.e., $v(x)=e^{\int p(x)\, dx}$.
+   \item The function $f(x)$ is a solution of $(*)$ if and only if it is a solution of
+   \[
+   (v(x)f(x))'=v(x)q(x).
+   \]
+   \item Find an antiderivative $G(x)$ of $v(x)q(x)$. Then the general solution of $(*)$ is
+   \[
+   f(x)=\frac{G(x)}{v(x)}+\frac{C}{v(x)},
+   \]
+   where $C$ is any constant. Using indefinite integral notation:
+   \[
+   f(x)=\frac{1}{v(x)}\int v(x)q(x)\, dx.
+   \]
+ \end{enumerate}
+\end{namedtheorem}
+
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item Use the integrating factor method to find the general solution to $y'=k y$, where $k$ is any fixed constant.
+  \item Consider the differential equation
+  \[
+  (x-2)f'=e^{-x}-3f, \ x\in (-\infty, 2).
+  \]
+  \begin{enumerate}
+    \item Find the general solution to the differential equation.
+    \item Find the solution satisfying $f(1)=-1$.
+  \end{enumerate}
+  \item Find the general solution to the differential equation
+  \[
+  (x^2+1)f'(x)-x=x^3-xf(x), \  x\in (-\infty, \infty).
+  \]
+\end{enumerate}
+
+
+
+
+\newpage
+%%%%%%%%%%
+%Exercises from ./es23_diff_eqns_overview.tex
+%%%%%%%%%%
+
+\section{Executive summary: overview of first-order differential equations}
+
+\thispagestyle{fancy}
+
+\subsection*{Procedures}
+\begin{namedtheorem}[Modeling with differential equations] Many applications present information about a quantity in a form that can be modeled by a differential equation. Here is an outline of the steps to take in these settings.
+  \begin{enumerate}
+    \item Explicitly identify the quantity $Q$ under consideration as a function of some other quantity $x$, and give a name to this function: $Q=f(x)$.
+    \item Translate the given information about $Q$ into a (in our case) first-order differential equation:
+    \[
+    f'(x)=F(x, f(x)) \tag{$*$}
+    \]
+    This is often the trickiest step! Look for phrases that indicate rate of change. When there is a combination of components to the rate of change, a diagram may be useful. Translate phrases like ``blah is proportional to blah" as ``\text{blah}=k(\text{blah})", where $k$ is the (possibly undetermined) constant of proportionality.
+    \item Decide whether your differential equation $(*)$ is {\em linear} or {\em separable} and use the appropriate technique to solve $(*)$ in as general a form as you can. If the differential equation is linear, make sure to bring it into standard form before using the integrating factor method. At this point you will have a formula for $Q=f(x)$ that includes some undetermined constants.
+    \item Use any additional information given about $Q$ to solve for any undetermined constants in your formula for $f(x)$.
+  \end{enumerate}
+
+\end{namedtheorem}
+%*********************************************************
+\subsection*{Examples}
+\begin{enumerate}
+  \item A large tank in a pickle factory initially contains 50 liters of brine in which 20 kg of salt is dissolved. The mixture is kept uniform by stirring. Brine containing 0.2 kg of dissolved salt per liter enters the tank at a rate of 10 liters per minute. At the same time the mixture from the tank leaves at a rate of 6 liters per minute. How much salt is in the tank after 30 minutes.
+  \item Dudley is dropped out of a plane and falls vertically toward the earth. Dudley's acceleration is the sum of two components:
+  \begin{itemize}[itemsep=0pt, topsep=0pt]
+    \item a downward acceleration due to gravity equal to $g\approx 9.8\text{ kg}\cdot \text{m}/\text{s}^2$;
+    \item an acceleration in the opposite direction to Dudley's current velocity, and proportional to {\em the square} of this velocity.
+  \end{itemize}
+  \begin{enumerate}
+    \item Write a differential equation describing Dudley's velocity, and find the general solution to this equation. Your expression will contain two undetermined constants.
+    \item Find an explicit formula for Dudley's velocity, assuming that his initial vertical velocity is 0 m/s, and he approaches a terminal velocity of 55 m/s.
+  \end{enumerate}
+  \item The logistic growth differential equation is a model of population growth that serves as an alternative to exponential growth. If $P=f(t)$ is the population at time $t$, then the logistic growth model posits that $P$ satisfies the differential equation
+  \[
+  \frac{dP}{dt}=k\, P(M-P), \tag{$*$}
+  \]
+  where $k, M$ are fixed positive constants.
+
+  Find the general solution to $(*)$ and interpret the constant $M$ in terms of population growth.
+\end{enumerate}
+
+
+
+
+
+\newpage
+\end{document}
