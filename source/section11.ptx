@@ -1,0 +1,188 @@
+<section>
+  <title>Executive summary: exponential functions</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Exponential function</title>
+      <statement>
+        <p>
+          The <em>exponential function</em>, denoted <m>\exp</m>,
+          is defined as the inverse of the natural logarithm function.
+          In other words, letting <m>f(x)=\ln x</m>,
+          we have <m>f^{-1}(x)=\exp(x)</m>.
+          We also write <m>e^x</m> for <m>\exp(x)</m>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Exponential function with base $a$</title>
+      <statement>
+        <p>
+          Let <m>a</m> be a fixed positive number.
+          The <em>exponential function with base <m>a</m></em>, denoted <m>f(x)=a^x</m>,
+          is the function with domain all real numbers defined as
+          <me>
+            a^x=e^{x\ln a}
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Logarithmic function with base $a$</title>
+      <statement>
+        <p>
+          Let <m>a</m> be a fixed positive number.
+          The <em>logarathmic function with base <m>a</m></em>,
+          denoted <m>f(x)=\log_a(x)</m> is defined as the inverse function of <m>g(x)=a^x</m>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Properties of the exponential function</title>
+      <statement>
+        <p>
+          The following properties hold:
+          <ol marker="itemsep0pttopsep0pt">
+            <li>
+              <p>
+                The exponential function is differentiable
+                (hence also continuous)
+                on all of <m>\mathbb{R}</m> and satisfies
+                <me>
+                  \frac{d}{dx}e^x=e^x
+                </me>.
+                Equivalently, we have
+                <me>
+                  \int e^x\, dx=e^x+C
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The exponential function is increasing and hence one-to-one.
+                Its graph is always concave up.
+              </p>
+            </li>
+            <li>
+              <p>
+                We have
+                <md>
+                  <mrow>\lim_{x\to\infty}e^x\amp =\infty</mrow>
+                  <mrow>\lim_{x\to -\infty}e^x\amp =0</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                The domain of <m>\exp</m> is <m>\mathbb{R}=(-\infty, \infty)</m>;
+                the range of <m>\exp</m> is <m>(0,\infty)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>e^0=1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                We have
+                <md>
+                  <mrow>e^{x+y}\amp =e^xe^y \amp e^{x-y}\amp =e^x/e^y \amp e^{xy}\amp =(e^x)^y</mrow>
+                </md>
+                for all <m>x,y\in\mathbb{R}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                We have
+                <md>
+                  <mrow>\ln(e^x)\amp =x, \text{ for all \(x\) } ; \amp e^{\ln x}\amp =x, \text{ for all \(x\in (0,\infty)\). }</mrow>
+                </md>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Logarithmic and exponential compendium</title>
+      <statement>
+        <p>
+          The table below summarizes the important properties of our various families of logarithmic and exponential functions.
+          <me>
+            \begin{array}{c|c|c|c||c|c|c|} f(x) \amp  \ln x\amp  \log_a x,\, a>1\amp  \log_a x,\, 0\lt a\lt 1\amp   e^x \amp  a^x,\, a>1 \amp  a^x,\, 0\lt a\lt 1 \\ \hline \text{ Domain }  \amp (0,\infty)\amp (-\infty, \infty)\\ \hline \text{ Range }  \amp (-\infty,\infty)\amp (0, \infty)\\ \hline \text{ Monotonicity } \amp \multicolumn{2}{|c|}{\text{ Increasing } }\amp \text{ Decreasing } \amp \multicolumn{2}{|c|}{\text{ Increasing } }\amp \text{ Decreasing } \\ \hline \text{ Limit as } x\to\infty\amp  \infty\amp -\infty \amp   \infty\amp  0\\ \hline \text{ Limit as } x\to 0^+ \amp  -\infty\amp  \infty \amp  *\\ \hline \text{ Limit as } x\to-\infty \amp  *\amp   0\amp  \infty\\ \hline \text{ Inverse } \amp e^x\amp a^x\amp  \ln x\amp  \log_a x\\ \hline \text{ Relation to base-\(e\) } \amp \ln x=\log_e x\amp \multicolumn{2}{|c||}{\log_a x=\frac{\ln x}{\ln a}} \amp * \amp \multicolumn{2}{|c|}{a^x=e^{x\ln a}}\\ \hline \text{ Algebra } \amp \multicolumn{3}{|c||}{\begin{array}{c} \log_a(xy)=\log_ax+\log_ay\\ \log_a(x^y)=y\log_a x\\ \log_a(a^x)=x \end{array} } \amp \multicolumn{3}{|c||}{\begin{array}{c} a^{x+y}=a^xa^y\\ a^{xy}=(a^x)^y\\ a^{\log_a x}=x \end{array} }\\ \hline \end{array}
+          </me>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Derivative/antiderivative compendium</title>
+      <statement>
+        <p>
+          We collect here the new derivative formulas obtained via logarithms and exponential functions,
+          along with their equivalent antiderivative formulas.
+          <md>
+            <mrow>\frac{d}{dx}\ln\vert x\vert=\frac{1}{x} \amp  \iff \int\frac{1}{x} \, dx=\ln\vert x\vert+C</mrow>
+            <mrow>\frac{d}{dx}\ln\vert \cos x \vert=-\tan x \amp  \iff \int\tan x \, dx=-\ln\vert \cos x \vert+C=\ln\vert\sec x\vert+C</mrow>
+            <mrow>\frac{d}{dx}\ln\vert \sin x\vert=\cot x \amp  \iff \int\cot x \, dx=\ln\vert \sin x\vert+C</mrow>
+            <mrow>\frac{d}{dx}\ln\vert \sec x+\tan x\vert=\sec x \amp  \iff \int\sec x \, dx=\ln\vert \sec x+\tan x\vert+C</mrow>
+            <mrow>\frac{d}{dx}\ln\vert \csc x+\cot x\vert=-\csc x \amp  \iff \int\csc x \, dx=-\ln\vert \csc x+\cot x\vert+C</mrow>
+            <mrow>\frac{d}{dx}e^x=e^x \amp  \iff \int e^x \, dx=e^x+C</mrow>
+            <mrow>\frac{d}{dx}a^x=(\ln a)a^x \amp  \iff \int a^x \, dx=\frac{1}{\ln a}a^x+C</mrow>
+            <mrow>\frac{d}{dx}\log_a \vert x\vert =\frac{1}{(\ln a)\, x} \amp  \iff \int \frac{1}{(\ln a)\, x} \, dx=\log_a\vert x\vert+C</mrow>
+          </md>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Find all <m>t</m> satisfying <m>\displaystyle 2^{-t^2}=\frac{1}{16}</m>.
+          Simplify your answer as much as possible.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute <m>f'(x)</m> for each of the following functions.
+          <ol>
+            <li>
+              <p>
+                <m>f(x)=\ln(\sin x)e^{\cos x}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f(x)=\log_3(2^x+3^{x^2})</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute the following definite indefinite integrals.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\int (e^t)^2\sin(e^{2t})\, dt</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int_0^\pi \sin(2^x)2^{\cos(2^x)+x}\, dx</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

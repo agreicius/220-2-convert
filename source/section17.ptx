@@ -1,0 +1,162 @@
+<section>
+  <title>Executive summary: trigonometric integrals</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Trigonometric identities</title>
+      <statement>
+        <p>
+          The following identities hold for all <m>\theta, \phi\in\mathbb{R}</m>.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\cos\theta\cos\phi=\frac{\cos(\theta-\phi)+\cos(\theta+\phi)}{2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\sin\theta\sin\phi=\frac{\cos(\theta-\phi)-\cos(\theta+\phi)}{2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\sin\theta\cos\phi= \frac{\sin(\theta-\phi)+\sin(\theta+\phi)}{2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\cos^2\theta=\frac{1+\cos2\theta}{2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\sin^2\theta=\frac{1-\cos2\theta}{2}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Integrating $\sin^m x\cos^n x$</title>
+      <statement>
+        <p>
+          Let <m>m</m> and <m>n</m> be nonnegative integers.
+          When computing
+          <me>
+            \int \sin^m x\cos^n x\, dx
+          </me>
+          the following strategies often help.
+          <ol>
+            <li>
+              <p>
+                If <m>m=2k+1</m> is odd, write
+                <me>
+                  \int \sin^m x\cos^n x\, dx=\int (1-\cos^2x)^k\cos^n x\sin x\, dx
+                </me>
+                and use the substitution <m>u=\sin x, du=\cos x\, dx</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>n=2k+1</m> is odd, write
+                <me>
+                  \int \sin^m x\cos^n x\, dx=\int \sin^m x(1-\sin^2x)^k\cos x \, dx
+                </me>
+                and use the substitution <m>u=\cos x, du=-\sin x\, dx</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>m</m> and <m>n</m> are both even use <m>\displaystyle\sin^2 x=\frac{1-\cos 2x}{2}</m> and
+                <m>\displaystyle\cos^2 x=\frac{1+\cos 2x}{2}</m> to reduce to a lower power of <m>\cos 2x</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Integrating $\tan^m x\sec^n x$</title>
+      <statement>
+        <p>
+          Let <m>m</m> and <m>n</m> be nonnegative integers.
+          When computing
+          <me>
+            \int \tan^m x\sec^n x \, dx
+          </me>
+          the following strategies often help.
+          <ol>
+            <li>
+              <p>
+                If <m>m=2k+1</m> is odd and <m>n\geq 1</m>, write
+                <me>
+                  \int \tan^m x\sec^n x \, dx=\int (\sec^2 x-1)^k\sec^{n-1} x\sec x\tan x \, dx
+                </me>
+                and use the substitution <m>u=\sec x, du=\sec x\tan x\, dx</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>n=2k</m> is even, write
+                <me>
+                  \int \tan^m x\sec^n x \, dx=\int (\tan^2 x+1)^{k-1}\tan^m x\sec^2 x\, dx
+                </me>
+                and use the substitution <m>u=\tan x, du=\sec^2 x\, dx</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>m</m> is even and <m>n</m> is odd,
+                express everything in terms of <m>\sec x</m> and possibly use integration by parts.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <p>
+      Compute the following indefinite integrals.
+      <ol>
+        <li>
+          <p>
+            <m>\displaystyle \int \sin^3x \cos^2 x\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\displaystyle \int \sin^2 x\cos^4 x\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\displaystyle \int \sec^4 x\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\displaystyle \int \tan^5 x\sec^7 x\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\displaystyle \int \sec^3 x\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            <m>\displaystyle \int \tan^5 x \, dx</m>
+          </p>
+        </li>
+      </ol>
+    </p>
+  </subsection>
+</section>

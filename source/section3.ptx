@@ -1,0 +1,197 @@
+<section>
+  <title>Executive summary: Riemann sums</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Sigma notation</title>
+      <statement>
+        <p>
+          Given real numbers <m>a_1, a_2, \dots, a_n</m> the notation
+          <me>
+            \sum_{i=1}^{n}a_i
+          </me>
+          denotes their sum: i.e.,
+          <me>
+            \sum_{i=1}^{n}a_i=a_1+a_2+\cdots +a_n
+          </me>.
+        </p>
+        <p>
+          More generally given any sequence of real numbers <m>a_{m}, a_{m+1},\dots</m>,
+          we define
+          <me>
+            \sum_{k=m}^na_k=a_m+a_{m+1}+\cdots +a_{n}
+          </me>.
+        </p>
+        <p>
+          If the terms in the sequence are given by a formula of the form <m>a_k=f(k)</m>,
+          then we also write
+          <me>
+            \sum_{k=m}^nf(k)
+          </me>
+          for <m>\ds\sum_{k=m}^na_k</m>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Riemann sums</title>
+      <statement>
+        <p>
+          Let <m>f</m> be a function defined on the interval <m>[a,b]</m>,
+          and let <m>n</m> be a positive integer.
+          A <em>partition</em> of <m>[a,b]</m> into <m>n</m> subintervals is a choice of points <m>x_0, x_1,\dots,
+          x_n</m> satisfying
+          <me>
+            a=x_0\lt x_1\lt x_2\lt \cdots \lt x_n=b
+          </me>.
+        </p>
+        <p>
+          Such a partition gives rise to <m>n</m> subintervals of <m>[a,b]</m>:
+          <me>
+            I_1=[x_0, x_1], I_2=[x_1, x_2], \dots , I_n=[x_{n-1}, x_n]
+          </me>.
+        </p>
+        <p>
+          The <m>k</m>-th subinterval has length
+          <me>
+            \Delta x_k=x_{k}-x_{k-1}
+          </me>.
+        </p>
+        <p>
+          Given a choice of sample points
+          <m>c_k\in I_k</m> for each subinterval,
+          the corresponding <em>Riemann sum</em> is
+          <me>
+            \sum_{k=1}^n f(c_k)\Delta x_k=f(c_1)(x_1-x_0)+f(c_2)(x_2-x_1)+\cdots +f(c_n)(x_n-x_{n-1})
+          </me>.
+        </p>
+        <p>
+          As with our estimates,
+          we call the Riemann sum a left/right/midpoint/upper/lower sum if the sample points <m>c_k</m> are picked using the corresponding rule.
+          Thus the left Riemann sum corresponding to the partition above is
+          <me>
+            \sum_{k=1}^nf(x_{k-1})\Delta x_k
+          </me>
+          and the right Riemann sum is
+          <me>
+            \sum_{k=1}^nf(x_k)\Delta x_{k}
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Summation formulas</title>
+      <statement>
+        <p>
+          Let <m>n</m> be a positive integer.
+          The following summation equalities hold:
+          <ol marker="topsep0ptitemsep0pt">
+            <li>
+              <p>
+                <m>\ds\sum_{k=1}^n 1=n</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds \sum_{k=1}^nk=\frac{n(n+1)}{2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds\sum_{k=1}^nk^2=\frac{n(n+1)(2n+1)}{6}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds \sum_{k=1}^nk^3=\left(\frac{n(n+1)}{2}\right)^2</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Summation rules</title>
+      <statement>
+        <p>
+          Given any sequences <m>a_m, a_{m+1}, \dots</m> and <m>b_m, b_{m+1}, \dots</m>,
+          and any <m>c\in \R</m>, the following equalities hold:
+          <ol>
+            <li>
+              <p>
+                <m>\ds\sum_{k=m}^na_k+\sum_{k=m}^nb_k=\sum_{k=m}^n(a_k+b_k)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds\sum_{k=m}^na_k-\sum_{k=m}^nb_k=\sum_{k=m}^n(a_k-b_k)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds\sum_{k=m}^nca_k=c\sum_{k=m}^na_k</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>p_1, p_2,p_3, \dots</m>,
+          be the sequence of prime numbers in increasing order:
+          i.e., <m>p_1=2</m>, <m>p_2=3</m>, <m>p_3=5</m>, etc.
+          Compute <m>\ds\sum_{k=3}^{6}p_k</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute <m>\ds \sum_{k=1}^{21}\sin(\pi k/2)</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute <m>\ds \sum_{k=1}^{5} 5k^3-10k+2</m> using appropriate summation rules and formulas.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>n</m> be a positive integer and define <m>R_n</m> to be the right Riemann sum of
+          <m>f(x)=1-x^3</m> corresponding to the partition of <m>[0,1]</m> into <m>n</m> equal subintervals.
+          <ol>
+            <li>
+              <p>
+                Derive a closed formula for <m>R_n</m>.
+                Your answer will be expressed in terms of <m>n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute <m>\lim_{n\to \infty}R_n</m>.
+                Look familiar?
+              </p>
+            </li>
+            <li>
+              <p>
+                Now do the same thing with <m>L_n</m>,
+                the left Riemann sum of <m>f(x)</m> corresponding to the partion of <m>[0,1]</m> into <m>n</m> equal subintervals.
+                <em>Hint</em>.
+                For the closed formula of <m>L_n</m> use an
+                <q>index-shift</q>
+                technique to simplify the summation.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

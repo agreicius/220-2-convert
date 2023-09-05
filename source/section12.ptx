@@ -1,0 +1,222 @@
+<section>
+  <title>Executive summary: separable differential equations</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>First-order differential equation</title>
+      <statement>
+        <p>
+          A <em>first-order differential equation in the unknown <m>f(x)</m></em>
+          is an equation that can be written in the form
+          <me>
+            f'(x)=F(x,f(x)) \tag{\(*\)}
+          </me>
+          where <m>F(x,f(x))</m> denotes an arbitrary expression involving <m>x</m> and <m>f(x)</m>.
+          Equivalently,
+          a first-order differential equation is an equation that can be written in the form
+          <me>
+            G(x, f'(x), f(x))=0
+          </me>,
+          where <m>G(x,f(x),
+          f'(x))</m> denotes an arbitrary expression involving <m>x,
+          f(x)</m>, and <m>f'(x)</m>.
+        </p>
+        <p>
+          A <em>solution</em> to a differential equation is any function <m>f(x)</m> that satisfies this equation.
+          The <em>general solution</em> to a differential equation is a formula,
+          possibly containing undetermined constants,
+          describing all solutions to the differential equation.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Separable first-order differential equation</title>
+      <statement>
+        <p>
+          A <em>separable differential equation in the unknown <m>f(x)</m></em>
+          is a differential equation that can be written in the form
+          <me>
+            f'(x)=g(x)h(f(x)), \text{ or equivalently,  }  \frac{dy}{dx}=g(x)h(y)
+          </me>,
+          where <m>y=f(x)</m>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Exponential growth and decay</title>
+      <statement>
+        <p>
+          Suppose the function <m>f(x)</m> satisfies the equation
+          <me>
+            f'(x)=k f(x)
+          </me>,
+          where <m>k</m> is a fixed constant.
+        </p>
+        <p>
+          If <m>k>0</m> then <m>f(x)</m> is said to undergo
+          <em>exponential growth</em>.
+        </p>
+        <p>
+          If <m>k\lt 0</m> then <m>f(x)</m> is said to undergo
+          <em>exponential decay</em>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Separation of variables (prime form)</title>
+      <statement>
+        <p>
+          To solve a separable differential equation of the form
+          <me>
+            f'(x)=g(x)h(f(x))
+          </me>
+          proceed as follows:
+          <ol>
+            <li>
+              <p>
+                <em>Separation</em>.
+                Write the equation as
+                <me>
+                  \frac{f'(x)}{h(f(x))}=g(x)
+                </me>.
+                and take take the indefinite integral of both sides.
+                <me>
+                  \int \frac{f'(x)}{h(f(x))}\, dx=\int g(x)\, dx
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Substitution</em>.
+                Use the substitution <m>u=f(x)</m> to rewrite this equality as
+                <me>
+                  \int \frac{1}{h(u)}\, du=\int g(x)\, dx
+                </me>,
+                and attempt to find an antiderivative <m>F(u)</m> of <m>1/h(u)</m> and an antiderivative <m>G(x)</m> for <m>g(x)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Algebra</em>.
+                Attempt to solve the resulting general equation
+                <me>
+                  F(u)=G(x)+C
+                </me>
+                for <m>u=f(x)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Separation of variables (algebraic form)</title>
+      <statement>
+        <p>
+          To solve a separable differential equation of the form
+          <me>
+            \frac{dy}{dx}=g(x)h(y)
+          </me>
+          proceed as follows:
+          <ol>
+            <li>
+              <p>
+                <em>Separation</em>.
+                Write the equation as
+                <me>
+                  \frac{1}{h(y)}\, dy=g(x)\, dx
+                </me>
+                and take take the indefinite integral of both sides.
+                <me>
+                  \int \frac{1}{h(y)}\, dy=\int g(x)\, dx
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Integration</em>.
+                Attempt to find an antiderivative <m>F(y)</m> of <m>1/h(y)</m> and an antiderivative <m>G(x)</m> for <m>g(x)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Algebra</em>.
+                Attempt to solve the resulting general equation
+                <me>
+                  F(y)=G(x)+C
+                </me>
+                for <m>y</m> in terms of <m>x</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Suppose a hot object cools in a room kept at constant temperature of <m>T_0</m>
+          (in celcius).
+          Newton's law of cooling states that the rate at which the object cools
+          (with respect to time)
+          is proportional to the <em>difference</em>
+          between its current temperature and the room temperature <m>T_0</m>.
+          <ol>
+            <li>
+              <p>
+                Write a differential equation that describes Newton's law of cooling in this setting.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the general solution to this differential equation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find a the particular solution to the situation where <m>T_0=15
+                <me>
+                  ^\circ$C, the object's initial temperature is $100
+                </me>
+                ^\circ</m>C, and after <m>5</m> minutes the object's temperature is <m>80</m><m>^\circ</m>C.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Solve the following differential equations using separation of variables.
+          If an initial condition is given,
+          provide the corresponding particular solution.
+          Otherwise, give the general solution.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle f'(x)=xf(x)+x</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\frac{dy}{dx}=\frac{x^3}{y^2}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\cot x\, f'(x)+f(x)=2</m>, <m>f(0)=0</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

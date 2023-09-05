@@ -1,0 +1,120 @@
+<section>
+  <title>Executive summary: overview of first-order differential equations</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Modeling with differential equations</title>
+      <statement>
+        <p>
+          Many applications present information about a quantity in a form that can be modeled by a differential equation.
+          Here is an outline of the steps to take in these settings.
+          <ol>
+            <li>
+              <p>
+                Explicitly identify the quantity <m>Q</m> under consideration as a function of some other quantity <m>x</m>,
+                and give a name to this function: <m>Q=f(x)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Translate the given information about <m>Q</m> into a
+                (in our case)
+                first-order differential equation:
+                <me>
+                  f'(x)=F(x, f(x)) \tag{\(*\)}
+                </me>
+                This is often the trickiest step!
+                Look for phrases that indicate rate of change.
+                When there is a combination of components to the rate of change,
+                a diagram may be useful.
+                Translate phrases like
+                <q>blah is proportional to blah</q>
+                as
+                <q>\text{ blah } =k(\text{ blah } )</q>, where <m>k</m> is the
+                (possibly undetermined)
+                constant of proportionality.
+              </p>
+            </li>
+            <li>
+              <p>
+                Decide whether your differential equation <m>(*)</m> is
+                <em>linear</em> or <em>separable</em>
+                and use the appropriate technique to solve <m>(*)</m> in as general a form as you can.
+                If the differential equation is linear,
+                make sure to bring it into standard form before using the integrating factor method.
+                At this point you will have a formula for <m>Q=f(x)</m> that includes some undetermined constants.
+              </p>
+            </li>
+            <li>
+              <p>
+                Use any additional information given about <m>Q</m> to solve for any undetermined constants in your formula for <m>f(x)</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          A large tank in a pickle factory initially contains 50 liters of brine in which 20 kg of salt is dissolved.
+          The mixture is kept uniform by stirring.
+          Brine containing 0.2 kg of dissolved salt per liter enters the tank at a rate of 10 liters per minute.
+          At the same time the mixture from the tank leaves at a rate of 6 liters per minute.
+          How much salt is in the tank after 30 minutes.
+        </p>
+      </li>
+      <li>
+        <p>
+          Dudley is dropped out of a plane and falls vertically toward the earth.
+          Dudley's acceleration is the sum of two components:
+          <ul>
+            <li>
+              <p>
+                a downward acceleration due to gravity equal to <m>g\approx 9.8\text{ kg } \cdot \text{m} /\text{s} ^2</m>;
+              </p>
+            </li>
+            <li>
+              <p>
+                an acceleration in the opposite direction to Dudley's current velocity,
+                and proportional to <em>the square</em> of this velocity.
+              </p>
+            </li>
+          </ul>
+          <ol>
+            <li>
+              <p>
+                Write a differential equation describing Dudley's velocity,
+                and find the general solution to this equation.
+                Your expression will contain two undetermined constants.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find an explicit formula for Dudley's velocity,
+                assuming that his initial vertical velocity is 0 m/s, and he approaches a terminal velocity of 55 m/s.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          The logistic growth differential equation is a model of population growth that serves as an alternative to exponential growth.
+          If <m>P=f(t)</m> is the population at time <m>t</m>,
+          then the logistic growth model posits that <m>P</m> satisfies the differential equation
+          <me>
+            \frac{dP}{dt}=k\, P(M-P), \tag{\(*\)}
+          </me>
+          where <m>k, M</m> are fixed positive constants.
+          Find the general solution to <m>(*)</m> and interpret the constant <m>M</m> in terms of population growth.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

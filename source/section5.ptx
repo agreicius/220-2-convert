@@ -1,0 +1,226 @@
+<section>
+  <title>Executive summary: fundamental theorem of calculus</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Average value of a function</title>
+      <statement>
+        <p>
+          Let <m>f</m> be integrable on <m>[a,b]</m>.
+          The <em>average value of <m>f</m> over <m>[a,b]</m></em> is defined as
+          <me>
+            \frac{1}{b-a}\int_a^bf(x)\, dx
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Difference-evaluation notation</title>
+      <statement>
+        <p>
+          Let <m>g</m> be a real-valued function,
+          and let <m>a,b</m> be elements of the domain of <m>g</m>.
+          The notation <m>\Bigl[g(x)\Bigr]_a^b</m> is defined as follows:
+          <me>
+            \Bigl[ g(x)\Bigr ]_a^b=g(b)-g(a)
+          </me>.
+        </p>
+        <p>
+          It is worthwile recording some simple identities involving this notation:
+          <md>
+            <mrow>\Bigl[ f(x)\pm g(x)\Bigr ]_a^b\amp =\Bigl[f(x)\Bigr ]_a^b\pm \Bigl[ g(x)\Bigr ]_a^b</mrow>
+            <mrow>\Bigl[ cg(x)\Bigr]_a^b\amp =c\Bigl[g(x)\Bigr]_a^b</mrow>
+          </md>
+        </p>
+        <p>
+          We will often abbreviate the notation
+          <m>\Bigl[g(x)\Bigr]_a^b</m> to <m>g(x)\Bigr]_a^b</m>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Fundamental theorem of calculus (I)</title>
+      <statement>
+        <p>
+          Let <m>f</m> be continuous on an open interval <m>I</m> containing <m>a</m>.
+          Let <m>F(x)</m> be the function defined on <m>I</m> as
+          <me>
+            F(x)=\int_a^x f(t)\, dt
+          </me>.
+        </p>
+        <p>
+          Then <m>F(x)</m> is differentiable on <m>I</m> and
+          <me>
+            F'(x)=\frac{d}{dx}\int_a^xf(t)\, dt=f(x)
+          </me>
+          for all <m>x\in I</m>.
+        </p>
+      </statement>
+    </theorem>
+    <corollary>
+      <statement>
+        <p>
+          If <m>f</m> is continuous on the open interval <m>I</m>,
+          then <m>f</m> has an antiderivative on <m>I</m>.
+        </p>
+      </statement>
+    </corollary>
+    <theorem>
+      <title>Fundamental theorem of calculus (II)</title>
+      <statement>
+        <p>
+          Let <m>f</m> be continuous on the interval <m>[a,b]</m>.
+          If <m>F(x)</m> is an antiderivative of <m>f(x)</m> on <m>[a,b]</m>, then
+          <me>
+            \int_a^b f(x)\, dx=F(b)-F(a)
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>FTC II: rate of change version</title>
+      <statement>
+        <p>
+          Suppose <m>g</m> is differentiable on <m>[a,b]</m>.
+          The derivative function <m>g'</m> computes the (instantaneous) rate of change of <m>g</m> with respect to <m>x</m>.
+          By FTC II, we have:
+          <me>
+            \int_a^b g'(x)\, dx=g(b)-g(a)
+          </me>.
+        </p>
+        <p>
+          In other words, the integral of the <em>rate of change</em>
+          of a function over <m>[a,b]</m> is the <em>net change</em>
+          of that function from <m>a</m> to <m>b</m>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Antiderivative method of computing integrals</title>
+      <statement>
+        <p>
+          Suppose <m>f(x)</m> is continuous on <m>[a,b]</m>.
+          The antiderivative method for computing <m>\int_a^b f(x)\, dx</m> proceeds as follows:
+          <ol>
+            <li>
+              <p>
+                Find an antiderivative of <m>f</m>:
+                i.e., find <m>F</m> such that
+                <m>F'(x)=f(x)</m> for all <m>x\in [a,b]</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                By the fundamental theorem of calculus (II) we have
+                <me>
+                  \int_a^bf(x)\, dx=F(b)-F(a)
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Use the fundamental theorem of calculus to compute the following definite integrals.
+          <ol>
+            <li>
+              <p>
+                <m>\ds\int_a^b 1-x^3\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds\int_0^{10} \frac{1}{\sqrt{2t+1}}\, dt</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds\int_{3\pi/4}^{\pi}\sec^2 u\, du</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f(x)=\sin(x/3)</m>,
+          and let <m>\mathcal{C}</m> be the graph of <m>f</m>.
+          For each region <m>\mathcal{R}</m> compute the area of
+          <m>\mathcal{R}</m> and the signed area of <m>\mathcal{R}</m>.
+          Include a diagram of <m>\mathcal{C}</m> and <m>\mathcal{R}</m>.
+          Make sure your answer is consistent with your graph.
+          If your answer happens to be 0, use the diagram to explain why.
+          <ol>
+            <li>
+              <p>
+                <m>\mathcal{R}</m> is the region between
+                <m>\mathcal{C}</m> and the <m>x</m>-axis,
+                from <m>x=-\pi</m> to <m>x=\pi</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mathcal{R}</m> is the region between
+                <m>\mathcal{C}</m> and the <m>x</m>-axis,
+                from <m>x=-\pi</m> to <m>x=\pi/2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\mathcal{R}</m> is the region between
+                <m>\mathcal{C}</m> and the <m>x</m>-axis,
+                from <m>x=0</m> to <m>x=6\pi</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>F(x)=\int_1^x \frac{1}{t^2}\, dt</m>.
+          Make a table of values of <m>F(x)</m> for <m>x=1, 2, 3, 4, 5</m>.
+          Explain graphically what <m>F(b)</m> is for any <m>b\geq 1</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          For each <m>F(x)</m> defined below,
+          use the fundamental theorem of calculus
+          (along with some other useful pieces of theory)
+          to compute <m>\ds F'(x)=\frac{d}{dx}F(x)</m>.
+          <ol>
+            <li>
+              <p>
+                <m>\ds F(x)=\int_{x}^5 \sqrt{t+1}\, dt</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds F(x)=\int_{-2}^{\sin x}\cos(u^2) \, du</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds F(x)=\int_{4x}^{\sqrt{x^2+1}}\sin(s^2)\, ds</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

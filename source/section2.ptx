@@ -1,0 +1,146 @@
+<section>
+  <title>Executive summary: estimating area</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Area estimates</title>
+      <statement>
+        <p>
+          Let <m>f</m> be a nonnegative function defined on the interval <m>[a,b]</m>,
+          and let <m>\mathcal{C}</m> be the graph of <m>f</m> from <m>x=a</m> to <m>x=b</m>.
+          To estimate the area between
+          <m>\mathcal{C}</m> and the <m>x</m>-axis proceed as follows:
+          <ol marker="iitemsep0pttopsep0pt">
+            <li>
+              <p>
+                Divide <m>[a,b]</m> into <m>n</m> equal subintervals,
+                each of width <m>\Delta x=(b-a)/n</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                For each subinterval pick a <em>sample</em>
+                input <m>x^*</m> in that interval and build the rectangle whose base is the subinterval and whose height is given by <m>h=f(x^*)</m>.
+                The area of this block is
+                <me>
+                  A=\underset{\text{ height } }{\underbrace{f(x^*)}}\,\underset{\text{ width } }{\underbrace{\Delta x}}
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Sum together the areas of the <m>n</m> blocks constructed in
+                (ii).
+              </p>
+            </li>
+          </ol>
+        </p>
+        <p>
+          Depending on how the sample inputs <m>x^*</m> are chosen in each subinterval,
+          we get a different estimate.
+          Below you find a number of common methods.
+          <ul>
+            <li>
+              <p>
+                If <m>x^*</m> is chosen as the left (resp. right) endpoint of each subinterval,
+                the estimate is called a <em>left sum estimate</em>
+                (resp.
+                <em>right sum estimate</em>).
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>x^*</m> is chosen as the midpoint of each subinterval,
+                the estimate is called a <em>midpoint sum estimate</em>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>x^*</m> is chosen so that <m>f(x^*)</m> is the minimum value of <m>f</m> on each subinterval,
+                the estimate is called a <em>lower sum estimate</em>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>x^*</m> is chosen so that <m>f(x^*)</m> is the maximum value of <m>f</m> on each subinterval,
+                the estimate is called an <em>upper sum estimate</em>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Estimating net change from rate of change</title>
+      <statement>
+        <p>
+          Suppose physical quantity <m>Q</m> is a function of an input <m>x</m>,
+          and that <m>f(x)</m> is the <em>instantaneous rate of change</em>
+          of <m>Q</m> with respect to <m>x</m>.
+          The same method used to estimate area under the graph of a function now provides an estimate of the
+          <em>net change of <m>Q</m></em>
+          as <m>x</m> varies from <m>a</m> to <m>b</m>.
+        </p>
+        <p>
+          In this context we think of <m>r^*=f(x^*)</m> as a
+          <em>fixed rate of change</em>
+          over the given subinterval,
+          in which case an individual term
+          <me>
+            f(x^*)\, \Delta x
+          </me>
+          in our sum is understood as an estimate of the net change of <m>Q</m> over the given subinterval under the simplifying assumption that <m>Q</m> changes with
+          <em>fixed rate of change</em>
+          <m>r^*=f(x^*)</m> over the interval.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Below you find the graph of the velocity <m>v(t)</m>
+          (in mph)
+          of a driver heading due east <m>t</m> minutes after setting off.
+          Compute an estimate of the area under the graph of <m>v(t)</m> between <m>t=0</m> and <m>t=20</m>,
+          and explain what this estimate means physically speaking.
+          Include units!
+          <me>
+            <image width="56%" source="CollectedES/EstDistance"/>
+          </me>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f(x)=1-x^3</m>, and let
+          <m>\mathcal{C}</m> be the graph of <m>f</m>.
+          Compute the upper and lower area estimates of the region between
+          <m>\mathcal{C}</m> and the <m>x</m>-axis from <m>x=0</m> to <m>x=1</m> by dividing the interval <m>[0,1]</m> into 4 equal subintervals.
+          Draw block pictures of your estimates on the provided graphs.
+          Explain why the lower estimate is equal to the right estimate,
+          and why the the upper estimate is equal to the left estimate.
+          <me>
+            <image width="37%" source="CollectedES/AreaEstSmallDomain"/> \  <image width="37%" source="CollectedES/AreaEstSmallDomain"/>
+          </me>
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f(x)=1-\val{x}^3</m>,
+          and let <m>\mathcal{C}</m> be the graph of <m>f</m>.
+          Compute the upper and lower area estimates of the region between
+          <m>\mathcal{C}</m> and the <m>x</m>-axis from <m>x=0</m> to <m>x=1</m> by dividing the interval
+          <m>[-1/2,1]</m> into 4 equal subintervals.
+          Draw block pictures of your estimates on the provided graphs.
+          <me>
+            <image width="56%" source="CollectedES/AreaEstLargeDomain"/> \  <image width="56%" source="CollectedES/AreaEstLargeDomain"/>
+          </me>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

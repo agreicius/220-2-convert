@@ -1,0 +1,281 @@
+<section>
+  <title>Executive summary: improper integrals</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Improper integral of type I: infinite intervals</title>
+      <statement>
+        <p>
+          Below we define definite integrals over infinite intervals.
+          These are called <em>improper integrals of type I</em>,
+          or <em>integrals over infinite intervals</em>.
+        </p>
+        <ul>
+          <li>
+            <title>Half-infinite intervals</title>
+            <p>
+              Definite integrals over intervals of the form <m>[a,\infty)</m> or
+              <m>(-\infty,
+              a]</m> are defined via the limit expressions below.
+              When the relevant limit exists,
+              we say the improper integral <em>converges</em> (or <em>exists</em>);
+              otherwise we say the improper integral <em>diverges</em>.
+            </p>
+            <ul>
+              <li>
+                <p>
+                  Let <m>f</m> be continuous on the interval <m>I=[a,\infty)</m>.
+                  We define the integral of <m>f</m> over <m>I</m>,
+                  denoted <m>\displaystyle\int_a^\infty f(x)\, dx</m>,
+                  as the following limit, assuming it exists:
+                  <me>
+                    \int_a^\infty f(x)\, dx=\lim_{R\to\infty}\int_a^R f(x)\, dx
+                  </me>.
+                </p>
+              </li>
+              <li>
+                <p>
+                  Let <m>f</m> be continuous on the interval <m>I=(-\infty,a]</m>.
+                  We define the integral of <m>f</m> over <m>I</m>,
+                  denoted <m>\displaystyle\int_{-\infty}^a f(x)\, dx</m>,
+                  as the following limit, assuming it exists:
+                  <me>
+                    \int_{-\infty}^af(x)\, dx=\lim_{R\to-\infty}\int_R^{a} f(x)\, dx
+                  </me>.
+                </p>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <title>Real line</title>
+            <p>
+              Let <m>f</m> be continuous on the interval <m>I=(-\infty,\infty)</m>,
+              and let <m>a</m> be an element of <m>I</m>.
+              We say the integral of <m>f</m> over <m>I</m> <em>converges</em>
+              (or <em>exists</em>)
+              if <em>both</em> of the half-infinite integrals
+              <m>\displaystyle\int_{-\infty}^a f(x)\, dx</m> and <m>\displaystyle\int_a^{\infty}f(x)\, dx</m> converge,
+              and define
+              <me>
+                \int_{-\infty}^\infty f(x)\, dx=\int_{-\infty}^a f(x)\, dx+\int_a^{\infty}f(x)\, dx
+              </me>
+              in this case.
+              If <em>either</em>
+              (or both)
+              of the half-infinite integrals diverge,
+              we say that the integral of <m>f</m> over <m>(-\infty, \infty)</m> <em>diverges</em>.
+            </p>
+          </li>
+        </ul>
+      </statement>
+    </theorem>
+    <p>
+      \begin{samepage}
+    </p>
+    <theorem>
+      <title>Improper integrals of type II: discontinuities</title>
+      <statement>
+        <p>
+          Assume <m>f</m> is continuous on the interval <m>I=[a,b]</m>,
+          except possibly at one point.
+          <ul>
+            <li>
+              <p>
+                Assume <m>f</m> is not continuous at <m>x=a</m>.
+                We define the integral of <m>f</m> over <m>[a,b]</m> as
+                <me>
+                  \int_a^bf(x)\, dx=\lim_{c\to a^+}\int_c^b f(x)\, dx
+                </me>,
+                assuming this limit exists.
+              </p>
+            </li>
+            <li>
+              <p>
+                Assume <m>f</m> is not continuous at <m>x=b</m>.
+                We define the integral of <m>f</m> over <m>[a,b]</m> as
+                <me>
+                  \int_a^bf(x)\, dx=\lim_{c\to b^-}\int_a^c f(x)\, dx
+                </me>,
+                assuming this limit exists.
+              </p>
+            </li>
+            <li>
+              <p>
+                Assume <m>f</m> is not continuous at <m>c\in (a,b)</m>.
+                We define the integral of <m>f</m> over <m>[a,b]</m> as
+                <me>
+                  \int_a^bf(x)\, dx=\int_a^c f(x)\, dx+ \int_c^b f(x)\, dx, \tag{\(*\)}
+                </me>
+                assuming both improper integrals on the right side of <m>(*)</m> exist.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      \end{samepage}
+    </p>
+    <theorem>
+      <title>Area interpretation of improper integrals</title>
+      <statement>
+        <p>
+          Let <m>f</m> be defined on an interval <m>I</m> for which the corresponding integral is improper,
+          and let <m>\mathcal{R}</m> be the
+          (potentially unbounded)
+          region between the graph of <m>f</m> and the <m>x</m>-axis over the interval <m>I</m>.
+          <ul>
+            <li>
+              <p>
+                We define the <em>area</em>
+                (or <em>total area</em>)
+                of <m>\mathcal{R}</m> to be the integral of <m>\lvert f\rvert</m> over <m>I</m>,
+                assuming this integral converges.
+              </p>
+            </li>
+            <li>
+              <p>
+                We define the <em>signed area</em>
+                of <m>\mathcal{R}</m> to be the integral of <m>f</m> over <m>I</m>,
+                assuming this interval converges.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Direct comparison test</title>
+      <statement>
+        <p>
+          Let <m>f</m> and <m>g</m> be <em>nonnegative</em>
+          functions on an interval <m>I</m>,
+          and suppose <m>f(x)\leq g(x)</m> for all <m>x</m> in <m>I</m>.
+          If the integral of <m>g</m> over <m>I</m> converges,
+          then the integral of <m>f</m> over <m>I</m> converges.
+          Using logical notation:
+          <me>
+            \text{ integral of \(g\) over \(I\) converges } \implies \text{ integral of \(f\) over \(I\) converges }
+          </me>.
+        </p>
+        <p>
+          Equivalently,
+          <me>
+            \text{ integral of \(f\) over \(I\) diverges } \implies \text{ integral of \(g\) over \(I\) diverges }
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Limit comparison test</title>
+      <statement>
+        <p>
+          Let <m>f</m> and <m>g</m> be continuous and <em>positive</em>
+          on the interval <m>I</m>.
+          <ul>
+            <li>
+              <p>
+                If <m>I=[a,\infty)</m> and
+                <m>\displaystyle\lim_{x\to\infty}\frac{f(x)}{g(x)}=L</m> with <m>0\lt  L \lt \infty</m>, then
+                <me>
+                  \int_a^\infty f(x)\, dx \text{ converges } \iff \int_a^\infty g(x)\, dx \text{ converges }
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>I=(-\infty,a]</m> and
+                <m>\displaystyle\lim_{x\to-\infty}\frac{f(x)}{g(x)}=L</m> with <m>0\lt  L \lt \infty</m>, then
+                <me>
+                  \int_{-\infty}^a f(x)\, dx \text{ converges } \iff \int_{-\infty}^a g(x)\, dx \text{ converges }
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>I=(a,b]</m> and <m>\displaystyle\lim_{x\to a^+}\frac{f(x)}{g(x)}=L</m> with <m>0\lt  L \lt \infty</m>, then
+                <me>
+                  \int_{a}^b f(x)\, dx \text{ converges } \iff \int_a^b g(x)\, dx \text{ converges }
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>I=[a,b)</m> and <m>\displaystyle\lim_{x\to b^-}\frac{f(x)}{g(x)}=L</m> with <m>0\lt  L \lt \infty</m>, then
+                <me>
+                  \int_{a}^b f(x)\, dx \text{ converges } \iff \int_a^b g(x)\, dx \text{ converges }
+                </me>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Evaluate <m>\displaystyle\int_{-2}^{\infty}e^{-x}\, dx</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Evaluate <m>\displaystyle\int_{0}^\infty xe^{-x}\, dx</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Evaluate <m>\displaystyle\int_{1}^\infty x^{r}\, dx</m> for <m>r\ne 0</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Evaluate <m>\displaystyle\int_{-\infty}^{\infty}\frac{1}{x^2+1}\, dx</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Decide whether <m>\displaystyle\int_2^\infty \frac{1}{x^5+\sqrt{x+3}}\, dx</m> converges.
+        </p>
+      </li>
+      <li>
+        <p>
+          Decide whether <m>\displaystyle\int_1^\infty \frac{2+\sin x}{x}\, dx</m> converges.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f(x)=ax^2+bx+c</m> be any fixed irreducible quadratic polynomial with <m>a>0</m>.
+          Decide whether <m>\displaystyle\int_{-\infty}^\infty \frac{1}{f(x)}\, dx</m> exists.
+        </p>
+      </li>
+      <li>
+        <p>
+          Evaluate <m>\displaystyle\int_{0}^2\frac{1}{x-1}\, dx</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Evaluate <m>\displaystyle\int_0^{1}\ln x\, dx</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Evaluate <m>\displaystyle\int_1^{4}\frac{x}{\sqrt[3]{x^2-4}}\, dx</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Decide whether <m>\displaystyle\int_0^\infty\frac{1}{\sqrt{x}+3x^5}\, dx</m> converges.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

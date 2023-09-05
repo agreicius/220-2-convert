@@ -1,0 +1,135 @@
+<section>
+  <title>Executive summary: the natural logarithm function</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Natural logarithm</title>
+      <statement>
+        <p>
+          The <em>natural logarithm function</em> is defined as
+          <me>
+            \ln x=\int_1^x\frac{1}{t}\, dt
+          </me>
+          where <m>x</m> is an element of <m>(0,\infty)</m>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Euler's number</title>
+      <statement>
+        <p>
+          <em>Euler's number</em>,
+          denoted <m>e</m>, is the unique number satisfying <m>\ln e=1</m>.
+          In other words, <m>e</m> is the number satisfying
+          <me>
+            1=\int_1^e\frac{1}{t}\, dt
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Properties of the natural logarithm</title>
+      <statement>
+        <p>
+          The following properties hold:
+          <ol>
+            <li>
+              <p>
+                The natural logarithm is differentiable
+                (hence also continuous)
+                on <m>(0,\infty)</m> and satisfies
+                <me>
+                  \frac{d}{dx}\ln x=\frac{1}{x}
+                </me>.
+                for all <m>x</m> in <m>(0,\infty)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The natural logarithm is increasing on
+                <m>(0,\infty)</m> and hence one-to-one.
+                The graph of <m>\ln</m> is always concave down.
+              </p>
+            </li>
+            <li>
+              <p>
+                We have
+                <md>
+                  <mrow>\lim_{x\to\infty}\ln x\amp =\infty</mrow>
+                  <mrow>\lim_{x\to 0^+}\ln x\amp =-\infty</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                The domain of <m>\ln</m> is <m>(0,\infty)</m>;
+                the range of <m>\ln</m> is <m>(-\infty, \infty)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ln 1=0</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                We have
+                <md>
+                  <mrow>\ln(ab)\amp =\ln a+\ln b,  \text{ for all \(a,b\in (0,\infty)\). }</mrow>
+                  <mrow>\ln(a/b)\amp =\ln a-\ln b,  \text{ for all \(a,b\in (0,\infty)\), \(b\ne 0\). }</mrow>
+                  <mrow>\ln a^r\amp =r\ln a,  \text{ for all \(a\in (0,\infty)\) and \(r\) rational. }</mrow>
+                </md>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <corollary>
+      <statement>
+        <p>
+          The function <m>f(x)=\ln\lvert x\rvert</m> is an antiderivative of <m>1/x</m> on its entire domain <m>D=(-\infty, 0)\cup (0,\infty)</m>:
+          i.e., we have
+          <me>
+            \int\frac{1}{x}\, dx=\ln \vert x\rvert\, dx+C
+          </me>.
+        </p>
+      </statement>
+    </corollary>
+    <theorem>
+      <title>Further trigonometric antiderivative formulas</title>
+      <statement>
+        <p>
+          The following antiderivative formulas hold:
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\int \tan x\, dx=-\ln\lvert \cos x\rvert+C=\ln\lvert\sec x\rvert+C</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int \cot x\, dx=\ln\vert \sin x\vert+C</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int \sec x\, dx=\ln\vert \sec x+\tan x\vert+C</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int \csc x\, dx=-\ln\vert \csc x+\cot x\vert+C</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+</section>
