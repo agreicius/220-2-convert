@@ -1,0 +1,139 @@
+<section>
+  <title>Executive summary: trigonometric substitution</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Reverse substitution technique (indefinite integral)</title>
+      <statement>
+        <p>
+          To compute <m>\displaystyle\int f(x)\, dx</m> using reverse substitution,
+          proceed as follows:
+          <ol marker="topsep0ptitemsep0pt">
+            <li>
+              <p>
+                Choose a 1-1, differentiable substitution function <m>g</m> with differentiable inverse and assemble the two equations
+                <md>
+                  <mrow>x\amp =g(t)</mrow>
+                  <mrow>dx\amp =g'(t)\, dt</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute
+                <me>
+                  \int f(g(t))g'(t)\, dt=F(t)+C
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                We conclude that
+                <me>
+                  \int f(x)\, dx=F(g^{-1}(x))+C
+                </me>.
+                Alternatively,
+                we compute an antiderivative for <m>f(x)</m> by expressing the function <m>F(t)</m> from (2) as a function of <m>x</m> using <m>x=g(t)</m> and <m>g^{-1}(x)=t</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      \begin{samepage}
+    </p>
+    <theorem>
+      <title>Reverse substitution technique (definite integral)</title>
+      <statement>
+        <p>
+          To compute <m>\displaystyle\int_a^b f(x)\, dx</m> using reverse substitution substitution,
+          proceed as follows:
+          <ol marker="topsep0ptitemsep0pt">
+            <li>
+              <p>
+                Choose a 1-1, differentiable substitution function <m>g</m> with differentiable inverse and assemble the two equations
+                <md>
+                  <mrow>x\amp =g(t)</mrow>
+                  <mrow>dx\amp =g'(t)\, dt</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                Then we have
+                <me>
+                  \displaystyle\int_{x=a}^{x=b} f(x)\, dx=\int_{t=g^{-1}(a)}^{t=g^{-1}(b)}f(g(t))g'(t)\, dt
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <p>
+      \end{samepage}
+    </p>
+    <theorem>
+      <title>Trigonometric substitution</title>
+      <statement>
+        <p>
+          The table below indicates potentially helpful (reverse) substitutions for functions <m>f</m> containing particular forms of expressions.
+          <md>
+            <mrow>f(x) \text{ contains }  \sqrt{a^2-x^2}\amp \implies \text{ try }  \begin{array}{c} x=a\sin\theta</mrow>
+            <mrow>dx=a\cos\theta\, d\theta \end{array}, -\pi/2\leq\theta\leq\pi/2</mrow>
+            <mrow>f(x) \text{ contains }  x^2+a^2 \amp \implies \text{ try }  \begin{array}{c} x=a\tan\theta</mrow>
+            <mrow>dx=a\sec^2\theta\, d\theta \end{array}, -\pi/2\lt \theta\lt  \pi/2</mrow>
+            <mrow>f(x) \text{ contains }  \sqrt{x^2-a^2} \amp \implies \text{ try }  \begin{array}{c} x=a\sec\theta</mrow>
+            <mrow>dx=a\sec\theta\tan\theta\, d\theta \end{array}, 0\lt \theta\lt  \pi/2 \text{ or }  \pi/2\lt \theta\lt \pi</mrow>
+          </md>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Derive the area formula for a circle of radius <m>r</m> using calculus.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find an antiderivative of <m>\sqrt{1-x^2}</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute the following integrals.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\int_{-\sqrt{2}}^{-2/\sqrt{3}}\frac{\sqrt{x^2-1}}{x}\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int \frac{1}{x^2\sqrt{x^2+4}}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int \frac{\sqrt{x^2-1}}{x}\, dx</m>, <m>x\leq -1</m>.
+                <em>Note</em>.
+                This is the indefinite integral version of (a).
+                To finish the computation you need to use the <m>\operatorname{arcsec}</m> function,
+                which is defined as the inverse of <m>\sec</m> with restricted domain <m>[-1,\pi/2)\cup (\pi/2,1]</m>.
+                We don't officially cover <m>\operatorname{arcsec}</m> in this course,
+                but this exercise is good practice nonetheless.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

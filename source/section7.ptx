@@ -1,0 +1,128 @@
+<section>
+  <title>Executive summary: regions between curves</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Area of region between curves</title>
+      <statement>
+        <p>
+          Suppose <m>f(x)\geq g(x)</m> for all <m>x\in [a,b]</m>.
+          Let <m>\mathcal{C}_1</m> be the graph of <m>f</m>,
+          let <m>\mathcal{C}_2</m> be the graph of <m>g</m>,
+          and let <m>\mathcal{R}</m> be the region between <m>\mathcal{C}_1</m> and
+          <m>\mathcal{C}_2</m> lying over the interval <m>[a,b]</m> on the <m>x</m>-axis.
+          We define the area of <m>\mathcal{R}</m> to be the integral of <m>f-g</m> over <m>[a,b]</m>: i.e.,
+          <me>
+            \text{ area } (\mathcal{R})=\int_a^b f(x)-g(x)\, dx
+          </me>.
+        </p>
+        <p>
+          Similarly, suppose <m>x=p(y)</m> and <m>x=p(q)</m> are two functions of <m>y</m> satisfying
+          <m>p(y)\geq q(y)</m> for all <m>y\in [c,d]</m>.
+          Let <m>\mathcal{C}_1</m> be the graph of <m>p</m>,
+          let <m>\mathcal{C}_2</m> be the graph of <m>q</m>,
+          and let <m>\mathcal{R}</m> be the region between <m>\mathcal{C}_1</m> and
+          <m>\mathcal{C}_2</m> lying over the interval <m>[c,d]</m> on the <m>y</m>-axis.
+          We define the area of <m>\mathcal{R}</m> to be the integral of <m>p-q</m> over <m>[c,d]</m>: i.e.,
+          <me>
+            \text{ area } (\mathcal{R})=\int_c^d p(y)-q(y)\, dy
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Graphical argument in support of area definition</title>
+      <statement>
+        <p>
+          Suppose <m>f(x)\geq g(x)</m> for all <m>x\in [a,b]</m>.
+          Let <m>\mathcal{C}_1</m> be the graph of <m>f</m>,
+          let <m>\mathcal{C}_2</m> be the graph of <m>g</m>,
+          and <m>\mathcal{R}</m> be the region between <m>\mathcal{C}_1</m> and
+          <m>\mathcal{C}_2</m> over the interval <m>[a,b]</m> on the <m>x</m>-axis.
+          <ol>
+            <li>
+              <p>
+                Suppose we also have <m>f(x)\geq g(x)\geq 0</m> for all <m>x\in [a,b]</m>.
+                Then we have
+                <md>
+                  <mrow>\text{ area } (\mathcal{R})\amp =\int_a^b f(x)-g(x)\, dx</mrow>
+                  <mrow>\amp =\int_a^b f(x)\, dx -\int_a^bg(x)\, dx</mrow>
+                  <mrow>\amp =\text{ area } (\mathcal{R}_1)-\text{ area } (\mathcal{R}_2)</mrow>
+                </md>,
+                where <m>\mathcal{R}_i</m> is the region lying between
+                <m>\mathcal{C}_i</m> and the <m>x</m>-axis over the interval <m>[a,b]</m>.
+                Intuitively,
+                this difference of areas should indeed be the area between the two curves.
+              </p>
+            </li>
+            <li>
+              <p>
+                To reduce the general case <m>f(x)\geq g(x)</m> to the case above,
+                simply shift both functions
+                (and hence also <m>\mathcal{R}</m>)
+                up by a large enough constant <m>C</m> so that <m>f(x)\geq g(x)\geq 0</m>.
+                This operation does not affect the area of <m>\mathcal{R}</m>,
+                and the <m>C</m> gets canceled in the integral computation thanks to the difference operator!
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Regions between intertwined curves</title>
+      <statement>
+        <p>
+          Suppose <m>f</m> and <m>g</m> are continuous on the interval <m>[a,b]</m> and intersect one another finitely many times.
+          Let <m>\mathcal{R}</m> be the region between the graphs of <m>f</m> and <m>g</m> lying over the interval <m>[a,b]</m>.
+          To compute the area of <m>\mathcal{R}</m>, proceed as follows:
+          <ol>
+            <li>
+              <p>
+                Parition <m>[a,b]</m> into subintervals for which one of the functions is always greater than or equal to the other.
+              </p>
+            </li>
+            <li>
+              <p>
+                On each such subinterval compute the area of the corresponding region by integrating the appropriate difference.
+              </p>
+            </li>
+            <li>
+              <p>
+                Sum up the areas you compute in (2).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>\mathcal{R}</m> be the region between the parabola <m>x+y^2=4</m> and the line <m>2x+y=2</m> lying in the first quadrant.
+          Compute the are of <m>\mathcal{R}</m>.
+          You may do this either by thinking of the curves as graphs of functions of <m>x</m>,
+          or graphs of functions of <m>y</m>.
+          Which approach is easier?
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute the area of the region between the parabolas
+          <m>y=-x^2-2x</m> and <m>y=x^2-4</m> lying within the lines <m>x=-3</m> and <m>x=2</m>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

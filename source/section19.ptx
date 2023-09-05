@@ -1,0 +1,167 @@
+<section>
+  <title>Executive summary: partial fraction decomposition</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Polynomial facts</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              Suppose <m>f(x)=\anpoly</m> with <m>a_n\ne 0</m>.
+              We call <m>n</m> the <em>degree</em>
+              of <m>f</m>, denoted <m>\deg f</m>.
+            </p>
+          </li>
+          <li>
+            <p>
+              A polynomial of degree <m>n</m> has at most <m>n</m> distinct roots.
+            </p>
+          </li>
+          <li>
+            <p>
+              <em>Equating coefficients</em>.
+              Given polynomials <m>f(x)=\anpoly</m> and <m>g(x)=\varpoly{b}{n}</m> we have
+              <me>
+                f(x)=g(x) \iff n=m \text{ and }  a_i=b_i \text{ for all \(i\). }
+              </me>
+            </p>
+          </li>
+          <li>
+            <p>
+              A nonzero polynomial is <em>irreducible</em>
+              if it cannot be factored into two polynomials of smaller degree.
+              If <m>f(x)</m> is an irreducible polynomial with real coefficients,
+              then <m>\deg f=1</m> or <m>\deg f=2</m>.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Partial fraction decomposition</title>
+      <statement>
+        <p>
+          Let <m>f(x)/g(x)</m> be a rational function (i.e, <m>f(x)</m> and <m>g(x)</m> are both polynomials),
+          and suppose that <m>\deg f\lt \deg g</m>.
+          <ul>
+            <li>
+              <p>
+                If <m>g(x)</m> factors into non-repeated linear factors as
+                <me>
+                  g(x)=D(x-a_1)(x-a_2)\cdots (x-a_r)
+                </me>,
+                then there is a unique choice of constants <m>A_1, A_2,\dots, A_r</m> such that
+                <me>
+                  \frac{f(x)}{g(x)}=\frac{A_1}{x-a_1}+\frac{A_2}{x-a_2}+\cdots +\frac{A_r}{x-a_r}
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>g(x)</m> factors into non-repeated irreducible linear and quadratic factors as
+                <me>
+                  g(x)=D(x-a_1)(x-a_2)\cdots (x-a_r)(x^2+b_1x+c_1)(x^2+b_2x+c_2)\cdots (x^2+b_sx+c_s)
+                </me>,
+                there there is a unique choice of constants <m>A_1,A_2,\dots, A_r, B_1,B_2,\dots, B_s, C_1, C_2,\dots, C_s</m> such that
+                <me>
+                  \frac{f(x)}{g(x)}=\frac{A_1}{x-a_1}+\frac{A_2}{x-a_2}+\cdots +\frac{A_r}{x-a_r}+\frac{B_1x+C_1}{x^2+b_1x+c_1}+\frac{B_2x+C_2}{x^2+b_2x+c_2}+\cdots +\frac{B_sx+C_s}{x^2+b_sx+c_s}
+                </me>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Partial fraction decomposition</title>
+      <statement>
+        <p>
+          Let <m>f(x)/g(x)</m> be a quotient of polynomials,
+          and suppose <m>\deg f\lt \deg g</m>.
+          To compute the partial fraction decomposition of <m>f(x)/g(x)</m> proceed as follows.
+        </p>
+        <ol>
+          <li>
+            <p>
+              Factor <m>g(x)</m> into powers of distinct irreducible polynomials.
+              <em>Factoring trick</em>.
+              If <m>g(x)</m> has integer coefficients and a leading coefficient equal to 1, then any integer roots of <m>g(x)</m> will be factors of the constant term.
+            </p>
+          </li>
+          <li>
+            <p>
+              Set up the partial fraction decomposition equation with as yet unknown constants
+              (<m>A_i</m>, <m>B_i</m>, etc.).
+              Clear the denominators of both sides of the equation,
+              resulting in an identity between two polynomials.
+              The polynomial on the right will be expressed in terms of the unknowns
+              (<m>A_i</m>, <m>B_i</m>, etc.).
+            </p>
+          </li>
+          <li>
+            <p>
+              To solve for the undetermined constants (<m>A_i</m>, <m>B_i</m>,
+              etc.) set up and solve a linear system of equations using one of the following techniques.
+            </p>
+            <ol>
+              <li>
+                <p>
+                  <em>Equate coefficients</em>.
+                  Express the polynomial on right in
+                  <q>standard form</q>
+                  by collecting like terms.
+                  For the left and right polynomials to be equal,
+                  their corresponding coefficients must all be equal.
+                  This yields a system of equations in the unknowns (<m>A_i</m>,
+                  <m>B_i</m>, etc.) that you must now solve.
+                </p>
+              </li>
+              <li>
+                <p>
+                  <em>Evaluate equality at choices of <m>x</m></em>.
+                  Evaluate the polynomial equation at various explicit choices of <m>x</m>.
+                  Each evaluation at a specific <m>x=c</m> yields a new linear equation in the unknowns
+                  (<m>A_i</m>, <m>B_i</m>, etc.).
+                  Do this enough times so that your system of equations determines the unknowns uniquely.
+                  As far as possible,
+                  make judicious choices for <m>x</m> to make your algebra easier.
+                </p>
+              </li>
+            </ol>
+          </li>
+        </ol>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Compute <m>\displaystyle\int \frac{x+2}{x^2-1}\, dx</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute <m>\displaystyle\int\frac{1}{x^4+3x^2+2}</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute <m>\displaystyle\int\frac{x^2+1}{x^3+2x^2-x-2}\, dx</m>
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute <m>\displaystyle\int \frac{x^2}{x^2+2x-1}\, dx</m>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

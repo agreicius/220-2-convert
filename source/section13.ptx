@@ -1,0 +1,177 @@
+<section>
+  <title>Executive summary: l'H&#xf4;pital's rule</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Indeterminate forms</title>
+      <statement>
+        <p>
+          Consider a limit expression of the form
+          <me>
+            \lim_{x\to a}\frac{f(x)}{g(x)}
+          </me>,
+          where <m>a</m> is either a finite number or <m>\pm\infty</m>.
+        </p>
+        <p>
+          The expression is an <em>indeterminate form of type <m>0/0</m></em> if
+          <me>
+            \lim_{x\to a}f(x)=\lim_{x\to a}g(x)=0
+          </me>.
+        </p>
+        <p>
+          The expression is an <em>indeterminate form of type <m>\infty/\infty</m></em> if
+          <me>
+            \lim_{x\to a}f(x)=\pm\infty \text{ and }  \lim_{x\to a}g(x)=\pm\infty
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Further indeterminate forms</title>
+      <statement>
+        <p>
+          Assume <m>a</m> is either a finite number or <m>\pm\infty</m>.
+        </p>
+        <p>
+          If <m>\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}g(x)=\infty</m>,
+          then <m>\displaystyle\lim_{x\to a}f(x)-g(x)</m> is an
+          <em>indeterminate form of type <m>\infty-\infty</m></em>.
+        </p>
+        <p>
+          If <m>\displaystyle\lim_{x\to a}f(x)=0</m> and <m>\lim_{x\to a}g(x)=\pm\infty</m>,
+          then <m>\displaystyle\lim_{x\to a}f(x)g(x)</m> is an <em></em>indeterminate
+        </p>
+        <p>
+          form of type <m>0\cdot\infty</m>}.
+        </p>
+        <p>
+          If <m>\displaystyle\lim_{x\to a}f(x)=\lim_{x\to a}g(x)=0</m>,
+          then <m>\displaystyle\lim_{x\to a}f(x)^{g(x)}</m> is an
+          <em>indeterminate form of type <m>0^0</m></em>.
+        </p>
+        <p>
+          If <m>\displaystyle\lim_{x\to a}f(x)=\infty</m> and <m>\lim_{x\to a}g(x)=0</m>,
+          then <m>\displaystyle\lim_{x\to a}f(x)^{g(x)}</m> is an
+          <em>indeterminate form of type <m>\infty^0</m></em>.
+        </p>
+        <p>
+          If <m>\displaystyle\lim_{x\to a}f(x)=1</m> and <m>\lim_{x\to a}g(x)=\infty</m>,
+          then <m>\displaystyle\lim_{x\to a}f(x)^{g(x)}</m> is an
+          <em>indeterminate form of type <m>1^\infty</m></em>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>L'H&#xf4;pital's rule</title>
+      <statement>
+        <p>
+          Let <m>f</m> and <m>g</m> be differentiable on an open interval <m>I</m> containing <m>a</m>,
+          where <m>a</m> is either a finite number or <m>\pm\infty</m>,
+          and suppose <m>g'(x)\ne 0</m> for all <m>x\ne a</m> in the interval.
+        </p>
+        <p>
+          If <m>\displaystyle\lim_{x\to a}\frac{f(x)}{g(x)}</m> is an indeterminate form of type <m>0/0</m> or <m>\infty/\infty</m>, then
+          <me>
+            \lim_{x\to a}\frac{f(x)}{g(x)}=\lim_{x\to a}\frac{f'(x)}{g'(x)}
+          </me>,
+          provided the limit on the right exists or is equal to <m>\pm\infty</m>.
+        </p>
+        <p>
+          The same result holds if we replace the limit with a one-sided limit.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Decide whether the following limit expressions have determinate or indeterminate forms.
+          If determinate, compute the limit.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to 0+}\frac{\sin x}{\ln x}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to (\pi/2)^-}\frac{\tan x}{\cos x}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to\infty}\frac{e^x}{2^x+3^x}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute the following limits.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to\infty}\frac{\ln x}{x^{1000}}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to 0}\frac{2^x-3^{-x}}{4^x-5^{-x}}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to 1}\frac{\cos(\pi x/2)}{\log_2(x)}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to 0}\frac{x-\sin x}{x\sin x}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute the following limits.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to 0^+}\frac{1}{\sin x}-\frac{1}{x}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to \infty}2x-\sqrt{4x^2-13x}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to -\infty}x^22^{x}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to 0^+}(1+x)^{1/x}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\lim_{x\to \infty}(1+x^2)^{2/x}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

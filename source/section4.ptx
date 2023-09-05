@@ -1,0 +1,230 @@
+<section>
+  <title>Executive summary: definite integral</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Integrable function</title>
+      <statement>
+        <p>
+          Let <m>f</m> be a function defined on the interval <m>[a,b]</m>.
+        </p>
+        <p>
+          We say the <em>definite integral of <m>f</m> over <m>[a,b]</m> exists</em>
+          if there is a real number <m>J</m> such that for <em>any</em>
+          sequence of partitions <m>P_n</m> of <m>[a,b]</m> and <em>any</em>
+          choice of Riemann sums <m>S_n</m> corresponding to the partitions <m>P_n</m>,
+          if the maximum width of a subinterval in <m>P_n</m> approaches 0, then
+          <me>
+            \lim_{n\to\infty} S_n=J
+          </me>.
+        </p>
+        <p>
+          In plain English,
+          the definite integral of <m>f</m> exists if any sequence of Riemann sums corresponding to a finer and finer partition of <m>[a,b]</m> approaches the same value <m>J</m> in the limit.
+        </p>
+        <p>
+          In this case we say <em><m>f</m> is integrable over <m>[a,b]</m></em>
+          and call <m>J</m> the <em>definite integral of <m>f</m> over <m>[a,b]</m></em>, denoted
+          <me>
+            \int_a^bf(x)\, dx=J
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Area and signed area of regions defined by functions</title>
+      <statement>
+        <p>
+          Let <m>f</m> be integrable over the interval <m>[a,b]</m>,
+          let <m>\mathcal{C}</m> be the graph of <m>f</m>,
+          and let <m>\mathcal{R}</m> be the region between
+          <m>\mathcal{C}</m> and the <m>x</m>-axis from <m>x=a</m> to <m>x=b</m>.
+          <ul>
+            <li>
+              <p>
+                We define the <em>area</em>
+                (or <em>total area</em>)
+                of <m>\mathcal{R}</m> to be the integral of
+                <m>\lvert f\rvert</m> over <m>[a,b]</m>: i.e.,
+                <me>
+                  \text{area of \(\mathcal{R}\)} =\int_a^b\lvert f(x)\rvert\, dx
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                We define the <em>signed area</em>
+                of <m>\mathcal{R}</m> to be the integral of <m>f</m> over <m>[a,b]</m>: i.e.,
+                <me>
+                  \text{signed area of \(\mathcal{R}\)} =\int_a^b f(x)\, dx
+                </me>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Direct computation of definite integral</title>
+      <statement>
+        <p>
+          Suppose <m>f</m> is integrable on the interval <m>[a,b]</m>.
+        </p>
+        <p>
+          Since <m>\displaystyle\int_a^bf(x)\, dx</m> can be computed using any sequence of Riemann sums,
+          we may compute it as a limit of right Riemann sums <m>R_n</m> corresponding to partitions of <m>[a,b]</m> into <m>n</m> equal subintervals.
+          For such partitions the length of each subinterval is <m>\Delta x=(b-a)/n</m>,
+          and the right endpoint of the <m>k</m>-th subinterval is <m>x_k=a+k(b-a)/n</m>.
+          We conclude:
+          <me>
+            \int_a^b f(x)\, dx=\lim_{n\to\infty} R_n=\lim_{n\to\infty}\sum_{k=1}^n f\left(a+\frac{k(b-a)}{n}\right)\frac{(b-a)}{n}
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Integrable functions theorem</title>
+      <statement>
+        <p>
+          Let <m>f</m> be defined on the interval <m>[a,b]</m>.
+          If <m>f</m> is continuous everywhere on <m>[a,b]</m>,
+          or if <m>f</m> has at most finitely many jump discontinuities on <m>[a,b]</m>,
+          then <m>f</m> is integrable over <m>[a,b]</m>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Properties of definite integrals</title>
+      <statement>
+        <p>
+          Let <m>f</m> and <m>g</m> be integrable over <m>[a,b]</m>.
+          <ol>
+            <li>
+              <p>
+                <m>\ds\int_a^a f(x)\, dx=0</m>. (By definition)
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds\int_b^af(x)\, dx=-\int_a^b f(x)\, dx</m>. (By definition)
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Sum and difference</em>.
+                <m>\ds\int_a^b f(x)\pm g(x)\, dx=\int_a^bf(x)\, dx\pm \int_a^bg(x)\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Constant multiple</em>.
+                <m>\ds\int_a^bcf(x)\, dx=c\int_a^bf(x)\, dx</m> for any <m>c\in \R</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Additive</em>.
+                For any <m>c\in \R</m> we have
+                <me>
+                  \int_a^bf(x)\, dx=\int_a^cf(x)\, dx+\int_c^b f(x)\, dx
+                </me>,
+                as long as all of the integrals involved are defined.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Max-min inequality</em>.
+                If <m>f</m> has a minumum value <m>\min f</m> on <m>[a,b]</m> and a maximum value <m>\max f</m> on <m>[a,b]</m>, then
+                <me>
+                  (\min f)(b-a)\leq \int_a^b f(x)\, dx\leq (\max f)(b-a)
+                </me>
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Domination</em>.
+                If <m>f(x)\leq g(x)</m> for all <m>x\in [a,b]</m>, then
+                <me>
+                  \int_a^bf(x)\, dx\leq \int_a^bg(x)\, dx
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Fix positive constants <m>m</m> and <m>b</m>,
+          and define <m>f(x)=mx+b</m>.
+          <ol>
+            <li>
+              <p>
+                Fix a positive constant <m>a</m>.
+                Compute <m>\int_0^a f(x)\, dx</m> directly as a limit of right Riemann sums.
+              </p>
+            </li>
+            <li>
+              <p>
+                Graph <m>f(x)</m> on <m>[0,a]</m> and explain how your answer in (a) is consistent with known area formulas.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Fix a positive constant <m>b</m>.
+          Compute <m>\ds\int_0^b f(x)\, dx</m> directly as a limit of right Riemann sums.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f(x)=1-x^3</m>.
+          Fix constants <m>a</m> and <m>b</m> with <m>0\lt a\lt b</m>.
+          Use your result in Example 2 and various integral properties
+          (including the additivite property)
+          to derive a formula for <m>\ds\int_a^bf(x)\, dx</m> in terms of <m>a</m> and <m>b</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f(x)=1-x^3</m>.
+          Fix a constant <m>b</m> with <m>b>1</m>, let <m>f(x)=1-x^3</m>,
+          and let <m>\mathcal{R}</m> be the region between the graph of <m>f</m> and the <m>x</m>-axis from <m>x=0</m> to <m>x=b</m>.
+          <ol>
+            <li>
+              <p>
+                Graph <m>f(x)</m> on <m>[0,b]</m>.
+                Your graph should reflect the assumption that <m>b>1</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Describe precisely how the signed area of
+                <m>\mathcal{R}</m> is a difference of areas of two distinct regions.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute the area of <m>\mathcal{R}</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

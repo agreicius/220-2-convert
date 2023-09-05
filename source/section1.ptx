@@ -1,0 +1,208 @@
+<section>
+  <title>Executive summary: antiderivatives</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Antiderivative</title>
+      <statement>
+        <p>
+          Let <m>f</m> be a real-valued function defined on an interval <m>I</m>.
+          A function <m>F</m> is called an antiderivative of <m>f</m> if
+          <m>F'(x)=f(x)</m> for all <m>x\in I</m>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Indefinite integral</title>
+      <statement>
+        <p>
+          Let <m>f</m> be a real-valued function defined on an interval <m>I</m> and suppose <m>f</m> has an antiderivative.
+          The <em>indefinite integral</em>
+          of <m>f</m> with respect to <m>x</m> is the notation
+          <me>
+            \int f \ dx
+          </me>
+          and is used to denote the general antiderivative of <m>f</m>.
+          Thus if <m>F</m> is a particular antiderivative, then we write
+          <me>
+            \int f \ dx=F(x)+C
+          </me>
+          to express the fact that the general antiderivative of <m>f</m> is of the form <m>F(x)+C</m> for some <m>C\in \mathbb{R}</m>.
+          The symbol <m>\int</m> is called the
+          <em>integral symbol</em>,
+          the function <m>f</m> is called the
+          <em>integrand</em> of the integral,
+          and <m>x</m> is called the <em>variable of integration</em>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>General antiderivative theorem</title>
+      <statement>
+        <p>
+          Let <m>f</m> be a real-valued function defined on an interval <m>I</m> and suppose <m>F</m> is an antiderivative of <m>f</m>.
+          <ol marker="itemsep0pttopsep0pt">
+            <li>
+              <p>
+                Given any <m>C\in \mathbb{R}</m>,
+                the function <m>F(x)+C</m> is an antiderivative of <m>f</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If <m>G</m> is an antiderivative of <m>f</m>,
+                then there is a <m>C\in \mathbb{R}</m> such that
+                <me>
+                  G(x)=F(x)+C
+                </me>
+                for all <m>x\in I</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Thus (1) and (2) imply that the
+                <em>general antiderivative</em>
+                of <m>f</m> on <m>I</m> can be expressed as <m>F(x)+C</m>,
+                where <m>C</m> is any real number.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Antiderivative formulas</title>
+      <statement>
+        <p>
+          The following antiderivative
+          (or indefinite integral)
+          formulas follow directly from a corresponding derivative formula.
+          <md>
+            <mrow>\int 0\, dx\amp =C \amp  \int x^r\, dx\amp =\frac{x^{r+1}}{r+1}+C, r\ne -1</mrow>
+            <mrow>\int \cos kx\, dx\amp =\frac{1}{k}\sin kx+C \amp  \int \sin kx\, dx \amp =-\frac{1}{k}\cos kx+C</mrow>
+            <mrow>\int\sec^2kx\, dx\amp =\frac{1}{k}\tan kx+C \amp  \int \csc^2 kx \, dx\amp =-\frac{1}{k}\cot kx+C</mrow>
+            <mrow>\int \sec kx\tan kx\, dx\amp =\frac{1}{k}\sec kx+C \amp  \int \csc x\cot x\, dx\amp =-\frac{1}{k}\csc kx+C</mrow>
+          </md>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Antiderivative rules</title>
+      <statement>
+        <p>
+          Let <m>f</m> and <m>g</m> be real-valued functions defined on an interval <m>I</m>.
+          Suppose <m>F</m> is an antiderivative of <m>f</m> and <m>G</m> is an antiderivative of <m>g</m>.
+          <ol marker="itemsep0pttopsep0pt">
+            <li>
+              <p>
+                Given any constant <m>a\in \mathbb{R}</m>,
+                the function <m>aF</m> is an antiderivative of <m>af</m>,
+                and hence
+                <me>
+                  \int af\, dx=aF(x)+C
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The function <m>F(x)\pm G(x)</m> is an antiderivative of <m>f(x)\pm g(x)</m>,
+                and hence
+                <me>
+                  \int f\pm g\, dx=F(x)\pm G(x)+C
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Find an antiderivative for the given function.
+          <ol>
+            <li>
+              <p>
+                <m>\ds f(x)=x^7</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds f(x)=\frac{1}{\sqrt{x}}</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\ds f(x)=2\sin x-x^{2/3}</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Find an antiderivative for the given function.
+          <ol>
+            <li>
+              <p>
+                <m>f(x)=\sec^25x</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f(x)=2x\cos(x^2)</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>f(x)=\cos(x^2)</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          At time <m>t=0</m> minutes a tank containing 100 gallons of water begins leaking.
+          After <m>t</m> minutes the rate at which the water leaves the tank is given by
+          <me>
+            r(t)=\frac{1}{\sqrt{2t+1}}
+          </me>.
+          Let <m>f(t)</m> be the amount of water in the tank after <m>t</m> minutes.
+          Find a formula for <m>f(t)</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the differential equation
+          <me>
+            f''(x)=-\frac{2}{3}\cos(2x)+x \tag{\(*\)}
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Find the general formula for a function <m>f(x)</m> satisfying <m>(*)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the unique function <m>f(x)</m> satisfying <m>(*)</m> and the initial conditions
+                <me>
+                  f(0)=0, f'(0)=-1
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

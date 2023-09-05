@@ -1,0 +1,135 @@
+<section>
+  <title>Executive summary: first-order linear differential equations</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>First-order linear equation</title>
+      <statement>
+        <p>
+          A <em>first-order linear differential equation</em>
+          in the unknown <m>f(x)</m> is a differential equation that can be written in the form
+          <me>
+            f'(x)+p(x)f(x)=q(x) \tag{\(*\)}
+          </me>
+        </p>
+        <p>
+          Equation <m>(*)</m> is called the
+          <em>standard form</em> of the equation.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Integrating factor</title>
+      <statement>
+        <p>
+          Consider a first-order linear equation in the unknown <m>f(x)</m> with standard form
+          <me>
+            f'(x)+p(x)f(x)=q(x)
+          </me>.
+        </p>
+        <p>
+          An <em>integrating factor</em> for this equation is any function of the form
+          <me>
+            v(x)=e^{P(x)}
+          </me>,
+          where <m>P(x)</m> is an antiderivative of <m>p(x)</m>.
+          Using indefinite integral notation, we have
+          <me>
+            v(x)=e^{\int p(x)\, dx}
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Solving first-order linear equations</title>
+      <statement>
+        <p>
+          Suppose <m>p, q</m> are continuous on the interval <m>I</m>.
+          To solve the differential equation with standard form
+          <me>
+            f'(x)+p(x)f(x)=q(x), \ x\in I, \tag{\(*\)}
+          </me>
+          proceed as follows:
+          <ol>
+            <li>
+              <p>
+                Compute an antiderivative <m>P(x)</m> of <m>p(x)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Set <m>v(x)=e^{P(x)}</m>: i.e., <m>v(x)=e^{\int p(x)\, dx}</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The function <m>f(x)</m> is a solution of <m>(*)</m> if and only if it is a solution of
+                <me>
+                  (v(x)f(x))'=v(x)q(x)
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find an antiderivative <m>G(x)</m> of <m>v(x)q(x)</m>.
+                Then the general solution of <m>(*)</m> is
+                <me>
+                  f(x)=\frac{G(x)}{v(x)}+\frac{C}{v(x)}
+                </me>,
+                where <m>C</m> is any constant.
+                Using indefinite integral notation:
+                <me>
+                  f(x)=\frac{1}{v(x)}\int v(x)q(x)\, dx
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Use the integrating factor method to find the general solution to <m>y'=k y</m>,
+          where <m>k</m> is any fixed constant.
+        </p>
+      </li>
+      <li>
+        <p>
+          Consider the differential equation
+          <me>
+            (x-2)f'=e^{-x}-3f, \ x\in (-\infty, 2)
+          </me>.
+          <ol>
+            <li>
+              <p>
+                Find the general solution to the differential equation.
+              </p>
+            </li>
+            <li>
+              <p>
+                Find the solution satisfying <m>f(1)=-1</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          Find the general solution to the differential equation
+          <me>
+            (x^2+1)f'(x)-x=x^3-xf(x), \  x\in (-\infty, \infty)
+          </me>.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

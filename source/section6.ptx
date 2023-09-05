@@ -1,0 +1,170 @@
+<section>
+  <title>Executive summary: substitution</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Chain rule (antiderivative version)</title>
+      <statement>
+        <p>
+          Let <m>u</m> be a differentiable function on its domain,
+          and suppose <m>f</m> is continuous on the range of <m>u</m>.
+          Suppose <m>F(x)</m> is an antiderivative of <m>f(x)</m>.
+          Then <m>F(u(x))</m> is an antiderivative of <m>f(u(x))u'(x)</m>: i.e.,
+          <me>
+            \int f(u(x))u'(x)\, dx=F(u(x))+C
+          </me>.
+        </p>
+        <p>
+          Alternatively, letting <m>u=u(x)</m> we have
+          <me>
+            \int f(u(x))u'(x)\, dx=\int f(u)\, du
+          </me>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Substitution technique (indefinite integrals)</title>
+      <statement>
+        <p>
+          We wish to compute <m>\displaystyle\int f(x)\, dx</m>.
+          <ol marker="itemsep0pttopsep0pt">
+            <li>
+              <p>
+                Pick a differentiable substitution function <m>u=u(x)</m>.
+                Set
+                <md>
+                  <mrow>u\amp =u(x)</mrow>
+                  <mrow>du\amp =u'(x)\, dx</mrow>
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                Algebraically manipulate equations (1) and (2) to find a function <m>g</m> such that
+                <me>
+                  f(x)\, dx=g(u)\, du
+                </me>.
+                By the chain rule
+                (antiderivative form)
+                we have
+                <me>
+                  \int f(x)\, dx=\int g(u)\, du
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                If possible, find an antiderivative <m>G</m> of <m>g</m>.
+                Then <m>F(x)=G(u(x))</m> is an antiderivative of <m>f(x)</m>: i.e.,
+                <me>
+                  \int f(x)\, dx=G(u(x))+C
+                </me>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Substitution technique (definite integrals)</title>
+      <statement>
+        <p>
+          We wish to compute the definite integral
+          <m>\displaystyle\int_a^b f(x)\, dx</m> using a substitution <m>u=u(x)</m>.
+          We can proceed in two different ways.
+          <ol marker="itemsep0pt">
+            <li>
+              <p>
+                <em>Two-step method</em>.
+                <em>First</em> find an antiderivative <m>F(x)</m> of <m>f(x)</m> using the substitution method for indefinite integrals,
+                then use the FTC to compute <m>\displaystyle\int_a^bf(x)\, dx=F(b)-F(a)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Streamlined method</em>.
+                Find the <m>g</m> such that <m>f(x)\, dx=g(u)\, du</m>
+                (as with indefinite integral substitution)
+                then convert the original definite integral into a new definite integral with respect to <m>u</m> by also
+                <em>changing the limits of integration</em>:
+                <me>
+                  \int_{x=a}^{x=b}f(x)\, dx=\int_{u=u(a)}^{u=u(b)}g(u)\, du
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          <em>More or less obvious substitutions</em>.
+          Use the substitution technique to compute the following indefinite integrals.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\int x^2\sqrt{x^3+1}\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int -\sin t\, \sqrt{\cos t}\, dt</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int \frac{\sin(\sqrt{u})}{\sqrt{u}}\, du</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Less obvious substitutions</em>.
+          Use the substitution technique to compute the following indefinite integrals.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\int\frac{x}{\sqrt{x+1}}\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int (1+\sqrt{t})^{100}\, dt</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+      <li>
+        <p>
+          <em>Substitution with definite integrals</em>.
+          Use the substitution technique to compute the following definite integrals.
+          You may use either the two-step or streamlined method.
+          <ol>
+            <li>
+              <p>
+                <m>\displaystyle\int_{\pi}^{2\pi}\cos^2(x)\sin x\, dx</m>
+              </p>
+            </li>
+            <li>
+              <p>
+                <m>\displaystyle\int_{1}^{2} \sqrt{s^8+s^6}\, ds</m>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

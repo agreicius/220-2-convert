@@ -1,0 +1,179 @@
+<section>
+  <title>Executive summary: computing volume</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Volume of solid via cross sections</title>
+      <statement>
+        <p>
+          Let <m>\mathcal{S}\subseteq \R^3</m> be a solid region in <m>3</m>-space.
+        </p>
+        <p>
+          For each <m>x_0\in \R</m> let
+          <m>\mathcal{S}_{x_0}</m> be the <em>cross section</em>
+          of <m>\mathcal{S}</m> consisting of all points of
+          <m>\mathcal{S}</m> whose <m>x</m>-coordinate is equal to <m>x_0</m>,
+          and let <m>A(x_0)</m> be the area of <m>S_{x_0}</m>.
+        </p>
+        <p>
+          Assume <m>A(x)</m> is integrable on the interval <m>[a,b]</m>.
+          We define the <em>volume</em> <m>V</m> of
+          <m>\mathcal{S}</m> between <m>x=a</m> and <m>x=b</m> as the integral of <m>A(x)</m> from <m>x=a</m> to <m>x=b</m>: i.e.,
+          <me>
+            V=\int_a^b A(x)\, dx
+          </me>.
+        </p>
+        <p>
+          The volume of <m>\mathcal{S}</m> between <m>y=c</m> and <m>y=d</m>,
+          or <m>z=e</m> and <m>z=f</m> is defined similarly.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Solid of revolution</title>
+      <statement>
+        <p>
+          Given a planar region <m>\mathcal{R}</m> and a line <m>L</m> in that plane,
+          the <em>solid of revolution</em>
+          with <em>axis of revolution <m>L</m></em>
+          is the solid region <m>\mathcal{S}</m> obtained by rotating <m>\mathcal{R}</m> about <m>L</m>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>Volume via cross sections</title>
+      <statement>
+        <p>
+          To compute the volume of a solid region
+          <m>\mathcal{S}</m> via <m>x</m>-cross sections, proceed as follows:
+          <ol>
+            <li>
+              <p>
+                Sketch <m>\mathcal{S}</m> along with a typical cross section <m>\mathcal{S}_x</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Derive a formula for <m>A(x)</m> in terms of <m>x</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Determine the appropriate limits of integration:
+                <m>x=a</m> and <m>x=b</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Compute <m>\ds \int_a^b A(x)\, dx</m>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Volumes of solids of revolution</title>
+      <statement>
+        <p>
+          The cross section method can be applied to the
+          <em>special case</em> of solids of revolution.
+          The two cases below are typical,
+          and the given procedures can be modified appropriately if a vertical axis is replaced with a horizontal one.
+        </p>
+        <p>
+          <em>Cylinder
+          (or disk)
+          method</em>.
+          Suppose <m>f(x)</m> is integrable on <m>[a,b]</m> and that
+          <m>f(x)\geq c</m> for all <m>x\in [a,b]</m>.
+          Let <m>\mathcal{R}</m> be the region between the graph of <m>f(x)</m> and the line <m>y=c</m> from <m>x=a</m> to <m>x=b</m>,
+          and let <m>\mathcal{S}</m> be the solid obtained by revolving
+          <m>\mathcal{R}</m> about the horizontal axis <m>y=c</m>.
+          <ul>
+            <li>
+              <p>
+                For each <m>x\in [a,b]</m>,
+                <m>S_x</m> is a disc of radius <m>f(x)-c</m> and area <m>A(x)=\pi(f(x)-c)^2</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The volume of <m>\mathcal{S}</m> from <m>x=a</m> to <m>x=b</m> is thus
+                <me>
+                  V=\int_a^b \pi(f(x)-c)^2\, dx
+                </me>.
+              </p>
+            </li>
+          </ul>
+        </p>
+        <p>
+          <em>Annulus
+          (or washer)
+          method</em>.
+          Suppose <m>p(y)</m> and <m>q(y)</m> are integrable on <m>[a,b]</m> and that
+          <m>p(y)\geq q(y)> c</m> for all <m>y\in [a,b]</m>.
+          Let <m>\mathcal{R}</m> be the region between the graph of <m>p(y)</m> and <m>q(y)</m> over the interval <m>[a,b]</m> in the <m>y</m>-axis,
+          and let <m>\mathcal{S}</m> be the solid obtained by revolving
+          <m>\mathcal{R}</m> about the vertical axis <m>x=c</m>.
+          <ul>
+            <li>
+              <p>
+                For each <m>y\in [a,b]</m>,
+                <m>S_y</m> is an <em>annulus</em>
+                of inner radius <m>q(y)-c</m> and outer radius <m>p(y)-c</m>.
+                The area of this annulus is <m>\pi((p(y)-c)^2-(q(y)-c)^2)</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                The volume of <m>\mathcal{S}</m> from <m>y=a</m> to <m>y=b</m> is thus
+                <me>
+                  V=\int_a^b \pi((p(y)-c)^2-(q(y)-c)^2)\, dy
+                </me>.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Use the volume via cross sections method to compute the volume of a sphere of radius <m>r</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Use the volume via cross sections method to compute the volume of a right circular cone of height <m>h</m> and base of radius <m>r</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\mathcal{R}</m> be the region between the graph of
+          <m>y=-\frac{3}{25}x^2+5</m> and the <m>x</m>-axis from <m>x=0</m> to <m>x=5</m>,
+          and let <m>\mathcal{S}</m> be the solid obtained by revolving
+          <m>\mathcal{R}</m> about the <m>x</m>-axis.
+          Sketch <m>\mathcal{S}</m> and compute its volume.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>\mathcal{R}</m> be the region enclosed by the line <m>y+2x=2</m> and the parabola <m>y^2+x=4</m>,
+          and let <m>\mathcal{S}</m> be the solid obtained revolving
+          <m>\mathcal{R}</m> about the <m>y</m>-axis.
+          Sketch <m>\mathcal{R}</m> and compute the volume of <m>\mathcal{S}</m>.
+          Can you sketch, or at least describe <m>\mathcal{S}</m>?
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>

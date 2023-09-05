@@ -1,0 +1,158 @@
+<section>
+  <title>Executive summary: integration by parts</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Integration by parts rule</title>
+      <statement>
+        <p>
+          Let <m>u</m> and <m>v</m> be continuously differentiable functions on an interval <m>I</m> containing the interval <m>[a,b]</m>.
+          <ol>
+            <li>
+              <p>
+                <em>Indefinite integral form</em>.
+                We have
+                <me>
+                  \int u(x)v'(x)\, dx= u(x)v(x)-\int u'(x)v(x)\, dx
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Definite integral form</em>.
+                We have
+                <me>
+                  \int_a^b u(x)v'(x)\, dx= u(x)v(x)\Bigr]_a^b-\int_a^b u'(x)v(x)\, dx
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Procedures</title>
+    <theorem>
+      <title>The art of by parts</title>
+      <statement>
+        <p>
+          To use the integration by parts technique on an integral of the form <m>\displaystyle\int f(x)g(x)\, dx</m> proceed as follows:
+          <ol>
+            <li>
+              <p>
+                <em>Who is <m>u</m>, and who <m>v'</m></em>?
+                Declare one of <m>f</m> and <m>g</m> to be <m>u</m> and the other to be <m>v'</m>.
+                The mnemonic device LIPET ((L)og, (I)nverse trig, (P)olynomial/radical, (E)xponent, (T)rig) often leads to a useful choice of <m>u</m>.
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Assemble ingredients</em>.
+                Suppose without loss of generality that we have chosen <m>u=f</m> and <m>v'=g</m>.
+                Then compute the derivative <m>f'</m> of <m>f</m> and compute an
+                <em>antiderivative</em> <m>G</m> of <m>g</m>:
+                <md>
+                  \begin{tikzcd} u(x)=f(x) \ar[d,bend right=80,"\text{ compute derivative } "'] \amp  v'(x)=g(x) \ar[d,bend left=80,"\text{ compute antiderivative } "]\\ u'(x)=f'(x) \amp  v(x)=G(x) \end{tikzcd}
+                </md>
+              </p>
+            </li>
+            <li>
+              <p>
+                Apply the integration by parts rule with ingredients assembled in (2):
+                <md>
+                  <mrow>\int \underset{u}{f(x)}\underset{v'}{g(x)}\, dx\amp = \underset{u}{f(x)}\underset{v}{G(x)}-\int \underset{u'}{f'(x)}\underset{v}{G(x)}\, dx</mrow>
+                </md>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Integration workflow</title>
+      <statement>
+        <p>
+          For many integral computations it will be clear whether to use a formula,
+          substitution, or integration by parts.
+          When it is not clear how to proceed,
+          the following <em>rough</em> workflow might be helpful.
+          <ol marker="itemsep0pttopsep0pt">
+            <li>
+              <p>
+                <em>Formula</em>.
+                If possible, use an integration formula,
+                perhaps after some simple algebraic preparation.
+                Otherwise, move to (2).
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Substitution</em>.
+                Evaluate whether a substitution could transform the integral into one where (1) applies.
+                If not promising, move to (3).
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>By parts</em>.
+                Evaluate whether the integral is amenable to a by parts approach.
+                You may want to mentally run through a couple of choices of ``who is <m>u</m>,
+                and who <m>v'</m>". If not promising, move to (4).
+              </p>
+            </li>
+            <li>
+              <p>
+                <em>Algebraic techniques</em>.
+                Consider more creative algebraic techniques,
+                including trigonometric identities.
+                If applicable, return to (1).
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <p>
+      Compute the following integrals using integration by parts.
+      (You might explore whether the integral could also be computed using substitution.)
+      <ol>
+        <li>
+          <p>
+            Compute <m>\ds\int_0^1 xe^{-x}\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Compute <m>\ds\int x^2e^x\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Compute <m>\ds\int \ln \vert x\vert\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Compute <m>\ds\int \frac{x^3}{x^2+1}\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Compute <m>\ds\int \arctan x\, dx</m>
+          </p>
+        </li>
+        <li>
+          <p>
+            Compute <m>\int e^x\cos x\, dx</m>
+          </p>
+        </li>
+      </ol>
+    </p>
+  </subsection>
+</section>

@@ -1,0 +1,158 @@
+<section>
+  <title>Executive summary: numerical integration</title>
+  <introduction>
+  </introduction>
+  <subsection>
+    <title>Definitions</title>
+    <theorem>
+      <title>Trapezoidal rule</title>
+      <statement>
+        <p>
+          Let <m>f</m> be an integrable function on <m>[a,b]</m>,
+          let <m>n</m> be a positive integer, and let
+          <me>
+            a=x_0\lt  x_1\lt  x_2\lt \cdots \lt  x_n=b
+          </me>
+          be partition of <m>[a,b]</m> into <m>n</m> subintervals of equal length <m>\Delta x=\frac{b-a}{n}</m>.
+        </p>
+        <p>
+          The <em><m>n</m>-th trapezoidal estimate</em>
+          of <m>\displaystyle\int f(x)\, dx</m>,
+          denoted <m>T_n</m>, is defined as
+          <me>
+            T_n=\frac{1}{2}\Delta x(f(x_0)+2f(x_1)+2f(x_2)+\cdots +2f(x_{n-1})+f(x_n))\approx \int_a^b f(x)\, dx
+          </me>.
+        </p>
+        <p>
+          The trapezoidal estimate is the result of approximating the graph of <m>f</m> with the polygon passing through the points <m>P_0=(x_0, f(x_0)), P_1=(x_1,f(x_1)), \dots, P_n=(x_n, f(x_n))</m>.
+        </p>
+      </statement>
+    </theorem>
+    <theorem>
+      <title>Simpson's rule</title>
+      <statement>
+        <p>
+          Let <m>f</m> be an integrable function on <m>[a,b]</m>,
+          let <m>n=2r</m> be an even positive integer, and let
+          <me>
+            a=x_0\lt  x_1\lt  x_2\lt \cdots \lt  x_n=b
+          </me>
+          be partition of <m>[a,b]</m> into <m>n</m> subintervals of equal length <m>\Delta x=\frac{b-a}{n}</m>.
+        </p>
+        <p>
+          The <em><m>n</m>-th Simpson's rule estimate</em>
+          of <m>\displaystyle\int f(x)\, dx</m>,
+          denoted <m>S_n</m>, is defined as
+          <me>
+            S_n=\frac{1}{3}\Delta x(f(x_0)+4f(x_1)+2f(x_2)+\cdots +2f(x_{n-2})+4f(x_{n-1})+f(x_n))\approx \int_a^b f(x)\, dx
+          </me>.
+        </p>
+        <p>
+          The Simpson's rule estimate is the result of approximating the graph of <m>f</m> over each of the <m>r</m> subintervals <m>[x_{2(k-1)},x_{2k}]</m> with the unique
+          <q>parabolic arc</q><fn>
+          If the three points happen to be colinear, then the
+          <q>parabolic arc</q>
+          will actually be a line.
+          </fn> passing through <m>P_{2(k-1)}=(x_{2(k-1)}, f(x_{2(k-1)}))</m>,
+          <m>P_{2k-1}=(x_{2k-1}, f(x_{2k-1})), P_{2k}=(x_{2k},f(x_{2k}))</m>.
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Theory</title>
+    <theorem>
+      <title>Error estimates</title>
+      <statement>
+        <p>
+          Let <m>f</m> be an integrable function on <m>[a,b]</m>,
+          let <m>n</m> be a positive integer, and let
+          <me>
+            a=x_0\lt  x_1\lt  x_2\lt \cdots \lt  x_n=b
+          </me>.
+          be partition of <m>[a,b]</m> into <m>n</m> subintervals of equal length <m>\Delta x=\frac{b-a}{n}</m>.
+          <ol>
+            <li>
+              <p>
+                Let <m>RS_n</m> be either the right or left Riemann sum for this partition.
+                Suppose <m>\vert f'(x)\vert \leq M</m> for all <m>x</m> in <m>[a,b]</m>.
+                Then
+                <me>
+                  \left\vert\int_a^b f(x)\, dx - RS_n\right\vert\leq \frac{M(b-a)^2}{2n}
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Let <m>T_n</m> be the <m>n</m>-th trapezoidal estimate of <m>\int_a^b f(x)\, dx</m>.
+                Suppose <m>\vert f''(x)\vert\leq N</m> for all <m>x</m> in <m>[a,b]</m>.
+                Then
+                <me>
+                  \left\vert\int_a^b f(x)\, dx - T_n\right\vert\leq\frac{N(b-a)^3}{12n^2}
+                </me>.
+              </p>
+            </li>
+            <li>
+              <p>
+                Suppose <m>n</m> is even,
+                and let <m>S_n</m> be the <m>n</m>-th Simpson's rule estimate of <m>\int_a^bf(x)\, dx</m>.
+                Suppose <m>\vert f^{(4)}(x)\vert\leq K</m> for all <m>x</m> in <m>[a,b]</m>.
+                Then
+                <me>
+                  \left\vert\int_a^b f(x)\, dx - S_n\right\vert\leq\frac{K(b-a)^5}{180n^4}
+                </me>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </theorem>
+  </subsection>
+  <subsection>
+    <title>Examples</title>
+    <ol>
+      <li>
+        <p>
+          Let <m>f(x)=\frac{1}{x}</m>.
+          Recall that we have by definition <m>\ln 4=\int_1^4f(x)\, dx</m>.
+          Compute (a) the <m>n=6</m> trapezoidal estimate of <m>I</m>,
+          and (b) the <m>n=6</m> Simpson's rule estimate of <m>I</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Let <m>f(x)=\frac{4}{x^2+1}</m>,
+          and let <m>I=\int_0^1f(x)\, dx</m>.
+          Observe that <m>I=4(\arctan(1)-\arctan 0)=\pi</m>.
+          Compute (a) the <m>n=6</m> trapezoidal estimate of <m>I</m>,
+          and (b) the <m>n=6</m> Simpson's rule estimate of <m>I</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute bounds for the errors in (a) the <m>n=10</m> trapezoidal estimate of <m>\ln 4</m> and (b) the <m>n=10</m> Simpson's rule estimate of <m>\ln 4</m>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Compute bounds for the errors in (a) the <m>n=10</m> trapezoidal estimate of
+          <m>\pi=\int_0^14/(x^2+1)\, dx</m> and (b) the <m>n=10</m> Simpson's rule estimate of <m>\pi=\int_0^14/(x^2+1)\, dx</m>.
+          <em>Hint</em>.
+          Letting <m>f(x)=4/(x^2+1)</m>, we have
+          <md>
+            <mrow>f''(x)\amp =\frac{8(3x^2-1)}{(x^2+1)^3}</mrow>
+            <mrow>f^{(4)}(x)\amp =\frac{96(5x^4-10x^2+1)}{(x^2+1)^5}</mrow>
+          </md>.
+        </p>
+      </li>
+      <li>
+        <p>
+          Find (a) an <m>n</m> such that the <m>n</m>-th trapezoidal estimate of
+          <m>\pi=\int_0^14/(x^2+1)\, dx</m> is within <m>10^{-9}</m> of the actual value,
+          and (b) an <m>n</m> such that the <m>n</m>-th Simpson's rule estimate of
+          <m>\pi=\int_0^14/(x^2+1)\, dx</m> is within <m>10^{-9}</m> of the actual value.
+        </p>
+      </li>
+    </ol>
+  </subsection>
+</section>
